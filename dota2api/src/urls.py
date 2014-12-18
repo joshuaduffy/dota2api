@@ -1,0 +1,12 @@
+class Urls(object):
+    """The base URL and the API calls are defined in this file"""
+    BASE_URL = "https://api.steampowered.com/"
+    GET_MATCH_HISTORY = "IDOTA2Match_570/GetMatchHistory/v001/"
+    GET_MATCH_DETAILS = "IDOTA2Match_570/GetMatchDetails/v001/"
+    GET_LEAGUE_LISTING = "IDOTA2Match_570/GetLeagueListing/v0001/"
+    GET_LIVE_LEAGUE_GAMES = "IDOTA2Match_570/GetLiveLeagueGames/v0001/"
+    GET_TEAM_INFO_BY_TEAM_ID = "IDOTA2Match_570/GetTeamInfoByTeamID/v001/"
+    GET_PLAYER_SUMMARIES = "ISteamUser/GetPlayerSummaries/v0002/"
+    GET_HEROES = "IEconDOTA2_570/GetHeroes/v0001/"
+    GET_GAME_ITEMS = "IEconDOTA2_570/GetGameItems/v0001/"
+    GET_TOURNAMENT_PRIZE_POOL = "IEconDOTA2_570/GetTournamentPrizePool/v1/"

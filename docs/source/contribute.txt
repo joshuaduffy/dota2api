@@ -1,0 +1,19 @@
+############
+Contributing
+############
+
+This document provides help with people who wish to contribute to the project.
+
+
+*************
+Documentation
+*************
+
+Documentation improvements are always welcome, I am looking for this to be one of the definitive guides to the API as most information online is out of date.
+
+
+***********
+Bug Reports
+***********
+
+Bug reports are welcome!

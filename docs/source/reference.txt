@@ -1,0 +1,21 @@
+#################
+Library Reference
+#################
+
+Here is the library reference for the ``api`` module along with the ``exceptions`` used.
+
+
+************
+dota2api.api
+************
+
+.. automodule:: dota2api.api
+   :members:
+
+
+************
+dota2api.src.exceptions
+************
+
+.. automodule:: dota2api.src.exceptions
+   :members:
