@@ -5,17 +5,17 @@ Library Reference
 Here is the library reference for the ``wrapper`` module along with the ``exceptions`` used.
 
 
-**************
+****************
 dota2api.wrapper
-**************
+****************
 
 .. automodule:: dota2api.wrapper
    :members:
 
 
-*******************
+*********************
 dota2api.src.exceptions
-*******************
+*********************
 
 .. automodule:: dota2api.src.exceptions
    :members:
