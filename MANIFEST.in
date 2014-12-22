@@ -1,3 +1,4 @@
 include *.py
 recursive-include *.py
 recursive-include *.json
+include dota2api/ref/*
