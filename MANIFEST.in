@@ -1,7 +1,7 @@
-include README.md LICENSE
-include dota2api/*.py
-include ref/*
-include docs/*
-include dota2api/src/*.py
-include dota2api/tests/*.py
+include LICENSE
+include *.md
+recursive-include tests *
+recursive-include dota2api/ref *
+recursive-include docs *
+recursive-exclude dota2api/src *.pyc
 prune docs/build
