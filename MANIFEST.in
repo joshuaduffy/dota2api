@@ -1,7 +1,1 @@
-include LICENSE
-include *.md
-recursive-include tests *
 recursive-include dota2api/ref *
-recursive-include docs *
-recursive-exclude dota2api/src *.pyc
-prune docs/build

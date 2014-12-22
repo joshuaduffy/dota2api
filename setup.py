@@ -2,20 +2,12 @@ import os
 from setuptools import setup
 import dota2api
 
-# Utility function to read the README file.
-# Used for the long_description.  It's nice, because now 1) we have a top level
-# README file and 2) it's easier to type in the README file than to put a raw
-# string in below ...
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 setup(
     name="dota2api",
     version=dota2api.__version__,
     author=dota2api.__author__,
     author_email="mail@joshuaduffy.org",
     description=dota2api.__doc__,
-    long_description=read("README.md"),
     license = dota2api.__licence__,
     keywords = "dota2 dota api dota2api parser",
     packages=['dota2api', 'dota2api.src'],
