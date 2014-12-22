@@ -13,7 +13,7 @@ class Dota2MatchDetails(object):
     def __init__(self, response, url):
         self.url = url
         if 'players' in response:
-            self.resp = parse.hero_id(response)
-            self.resp = parse.item_id(response)
+            self.resp = parse.hero_id(self.resp)
+            self.resp = parse.item_id(self.resp)
         else:
-            pass
+            self.resp = response
