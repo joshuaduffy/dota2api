@@ -27,10 +27,10 @@ setup(
                                   'dota2api/ref/regions.json'])],
     install_requires=['requests'],
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: GNU General Public License (GPL)",
-        "Programming Language :: Python :: 2.7"
+        "Programming Language :: Python"
     ]
 )
