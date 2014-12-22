@@ -12,7 +12,8 @@ class Dota2MatchDetails(object):
     """This is used to package up the response"""
     def __init__(self, response, url):
         self.url = url
-        if 'players' in response:
+        self.resp = response
+        if 'players' in self.resp:
             self.resp = parse.hero_id(self.resp)
             self.resp = parse.item_id(self.resp)
         else:
