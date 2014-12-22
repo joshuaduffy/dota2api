@@ -17,7 +17,6 @@ setup(
     description=dota2api.__doc__,
     license = dota2api.__licence__,
     keywords = "dota2 dota api dota2api parser",
-    long_description=read('README.md'),
     packages=['dota2api', 'dota2api.src'],
     data_files=[('dota2api/ref', ['dota2api/ref/abilities.json',
                                   'dota2api/ref/heroes.json',

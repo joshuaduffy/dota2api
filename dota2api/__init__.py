@@ -2,5 +2,5 @@
 
 __author__ = "Joshua Duffy"
 __date__ = "29/10/2014"
-__version__ = "1.1.2.2"
+__version__ = "1.1.4"
 __licence__ = "GPL"
