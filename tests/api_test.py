@@ -15,7 +15,7 @@ class ApiMatchTests(unittest.TestCase):
     def get_match_history_test(self):
         """Test get_match_history"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_match_history().resp), type(dict()))
+        self.assertEqual(type(self.api_test.get_match_history().resp), type(dict()))
         # Do we default at 100 responses
         self.assertEquals(
             len(self.api_test.get_match_history().resp['matches']), 100)
@@ -32,7 +32,7 @@ class ApiMatchTests(unittest.TestCase):
     def get_match_details_test(self):
         """Test get_match_details"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_match_details(
+        self.assertEqual(type(self.api_test.get_match_details(
             match_id=988604774).resp), type(dict()))
         # Do we get an error with no match ID
         self.assertEquals(self.api_test.get_match_details().resp['error'],
@@ -47,43 +47,43 @@ class ApiOtherTests(unittest.TestCase):
     def get_league_listing_test(self):
         """Test get_league_listing"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_league_listing().resp),
+        self.assertEqual(type(self.api_test.get_league_listing().resp),
                       type(dict()))
 
     def get_live_league_games_test(self):
         """Test get_live_league_games"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_live_league_games().resp),
+        self.assertEqual(type(self.api_test.get_live_league_games().resp),
                       type(dict()))
 
     def get_team_info_by_team_id_test(self):
         """Test get_team_info_by_team_id"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_team_info_by_team_id().resp),
+        self.assertEqual(type(self.api_test.get_team_info_by_team_id().resp),
                       type(dict()))
 
     def get_player_summaries_test(self):
         """Test get_player_summaries"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_player_summaries().resp),
+        self.assertEqual(type(self.api_test.get_player_summaries().resp),
                       type(dict()))
 
     def get_heroes_test(self):
         """Test get_heroes"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_heroes().resp),
+        self.assertEqual(type(self.api_test.get_heroes().resp),
                       type(dict()))
 
     def get_game_items_test(self):
         """Test get_game_items"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_game_items().resp),
+        self.assertEqual(type(self.api_test.get_game_items().resp),
                       type(dict()))
 
     def get_tournament_prize_pool_test(self):
         """Test get_tournament_prize_pool"""
         # Is the response a dictionary
-        self.assertIs(type(self.api_test.get_tournament_prize_pool().resp),
+        self.assertEqual(type(self.api_test.get_tournament_prize_pool().resp),
                       type(dict()))
 
 def invalid_api_key_test():
