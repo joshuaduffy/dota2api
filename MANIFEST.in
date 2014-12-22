@@ -1,7 +1,7 @@
 include README.md LICENSE
-include dota2api *.py
-include ref *
-include docs *
-include dota2api src *.py
-include dota2api tests *.py
+include dota2api/*.py
+include ref/*
+include docs/*
+include dota2api/src/*.py
+include dota2api/tests/*.py
 prune docs/build
