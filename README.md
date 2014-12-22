@@ -1,7 +1,5 @@
 dota2api
 ========
-[![PyPI version](https://badge.fury.io/py/dota2api.svg)](http://badge.fury.io/py/dota2api)
-
 [![Build Status](https://travis-ci.org/joshuaduffy/dota2api.svg)](https://travis-ci.org/joshuaduffy/dota2api)
 [![Documentation Status](https://readthedocs.org/projects/dota2api/badge/?version=latest)](https://readthedocs.org/projects/dota2api/?badge=latest)
 
@@ -13,4 +11,4 @@ Documentation is available at http://dota2api.readthedocs.org/
 
 Install
 -------
-    pip install dota2api
+    setup.py install
