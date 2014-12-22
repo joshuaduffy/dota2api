@@ -15,6 +15,7 @@ setup(
     author=dota2api.__author__,
     author_email="mail@joshuaduffy.org",
     description=dota2api.__doc__,
+    long_description=read("README.md"),
     license = dota2api.__licence__,
     keywords = "dota2 dota api dota2api parser",
     packages=['dota2api', 'dota2api.src'],
