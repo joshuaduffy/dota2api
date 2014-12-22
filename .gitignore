@@ -49,3 +49,6 @@ coverage.xml
 
 # PyBuilder
 target/
+
+# Mine
+key.tmp

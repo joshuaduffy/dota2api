@@ -1,0 +1,27 @@
+########
+Tutorial
+########
+
+This part of the documentation covers the basic usage of the library.
+
+*****************
+Getting an API Key
+*****************
+
+Grab one from `Valve`_.
+
+
+************
+Basic Usage
+************
+
+Coming soon.
+
+
+**************
+Common Uses
+**************
+
+Coming soon.
+
+.. _`Valve`: https://steamcommunity.com/dev/apikey

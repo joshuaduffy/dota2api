@@ -9,7 +9,7 @@ class ApiMatchTests(unittest.TestCase):
     """Tests relating to the Dota 2 API wrapper"""
     def setUp(self):
         """Set up test fixtures"""
-        self.api_test = wrapper.Initialise("INSERT KEY")
+        self.api_test = wrapper.Initialise("806654CB26BD2D2D6F04DBD953AFF918")
 
     def get_match_history_test(self):
         """Test get_match_history"""
@@ -41,7 +41,7 @@ class ApiOtherTests(unittest.TestCase):
     """Tests relating to the other tests."""
     def setUp(self):
         """Set up test fixtures"""
-        self.api_test = api.Initialise("INSERT KEY")
+        self.api_test = wrapper.Initialise("806654CB26BD2D2D6F04DBD953AFF918")
 
     def get_league_listing_test(self):
         """Test get_league_listing"""
@@ -87,7 +87,7 @@ class ApiOtherTests(unittest.TestCase):
 
 def invalid_api_key_test():
     """Test invalid_api_key"""
-    api_test = wrapper.Initialize("INVALID_KEY")
+    api_test = wrapper.Initialise("INVALID_KEY")
     try:
         api_test.get_match_history()
     except APIAuthenticationError:
