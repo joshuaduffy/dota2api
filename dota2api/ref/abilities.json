@@ -2199,6 +2199,22 @@
         {
             "name": "drow_ranger_wave_of_silence",
             "id": "5632"
+        },
+        {
+            "name": "oracle_fortunes_end",
+            "id": "5637"
+        },
+        {
+            "name": "oracle_fates_edict",
+            "id": "5638"
+        },
+        {
+            "name": "oracle_purifying_flames",
+            "id": "5639"
+        },
+        {
+            "name": "oracle_false_promise",
+            "id": "5640"
         }
     ]
 }

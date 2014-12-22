@@ -516,6 +516,11 @@
             "localized_name": "Legion Commander"
         },
         {
+            "name": "techies",
+            "id": 105,
+            "localized_name": "Techies"
+        },
+        {
             "name": "ember_spirit",
             "id": 106,
             "localized_name": "Ember Spirit"
@@ -541,9 +546,9 @@
             "localized_name": "Phoenix"
         },
         {
-            "name": "techies",
-            "id": 105,
-            "localized_name": "Techies"
+            "name": "oracle",
+            "id": 111,
+            "localized_name": "Oracle"
         }
     ]
 }
