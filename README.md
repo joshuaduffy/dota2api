@@ -1,9 +1,11 @@
 dota2api
 ========
 
-Dota 2 API for internal use
+Dota 2 API wrapper in Python
 
-A library for interacting with the Dota 2 API
+Documentation
+-------------
+http://dota2api.readthedocs.org/
 
 Use
 ---
