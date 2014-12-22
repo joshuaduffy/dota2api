@@ -1,4 +1,4 @@
-""""dota2api, a wrapper and parser for the Dota 2 API"""
+"""dota2api, a wrapper and parser for the Dota 2 API"""
 
 __author__ = "Joshua Duffy"
 __date__ = "29/10/2014"
