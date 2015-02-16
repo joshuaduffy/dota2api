@@ -8,9 +8,11 @@ class Dota2Response(object):
         self.url = url
         self.resp = response
 
-class Dota2MatchDetails(Dota2Response):
+class Dota2MatchDetails(object):
     """Match details"""
     def __init__(self, response, url):
+        self.url = url
+        self.resp = response
         if 'players' in self.resp:
             self.resp = parse.hero_id(self.resp)
             self.resp = parse.item_id(self.resp)
