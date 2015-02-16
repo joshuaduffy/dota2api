@@ -18,7 +18,6 @@ class Initialise(object):
     """
     def __init__(self, api_key, language=None):
         self.api_key = api_key
-        self.__save_api_key()
         if language == None:
             self.language = "en_us"
         else:
