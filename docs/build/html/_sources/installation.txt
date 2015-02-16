@@ -14,6 +14,10 @@ Pip
 
 Installing via `pip`_ is probably the easiest method:
 
+.. tip::
+
+    Currently removed, TBC!
+
 .. code-block:: bash
 
     $ pip install dota2api
