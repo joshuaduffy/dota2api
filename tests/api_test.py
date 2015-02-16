@@ -24,7 +24,7 @@ class ApiMatchTests(unittest.TestCase):
             matches_requested=1).resp['matches']), 1)
         # Can we use the parameter to get only 1 players matches
         for matches in self.api_test \
-            .get_match_history(account_id=19672354,
+            .get_match_history(account_id=88585077,
                                matches_requested=10).resp['matches']:
             if 19672354 in matches['players']:
                 self.assertTrue(True)
