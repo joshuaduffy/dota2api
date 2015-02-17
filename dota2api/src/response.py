@@ -5,6 +5,7 @@
 
 import parse
 
+
 class Dota2Response(object):
     """Generic response"""
     def __init__(self, response, url):
@@ -13,6 +14,7 @@ class Dota2Response(object):
 
     def __repr__(self):
         return str(self.dict)
+
 
 class Dota2MatchDetails(object):
     """Match details"""
