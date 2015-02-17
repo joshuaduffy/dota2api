@@ -3,6 +3,7 @@ was used"""
 
 import requests
 import urllib
+import os
 
 from src.urls import Urls
 from src.exceptions import APIAuthenticationError, APITimeoutError
@@ -18,7 +19,13 @@ class Initialise(object):
         not set
     """
     def __init__(self, api_key, language=None):
-        self.api_key = api_key
+        if os.environ['D2_API_KEY']:
+            self.api_key = os.environ['D2_API_KEY']
+        elif api_key:
+            self.api_key = api_key
+        else:
+            raise APIAuthenticationError()
+
         if language == None:
             self.language = "en_us"
         else:
