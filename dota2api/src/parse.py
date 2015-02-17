@@ -2,6 +2,7 @@ import json
 import os
 import itertools
 
+
 def hero_id(response):
     """Parse the hero id"""
     for player in response['players']:
@@ -10,6 +11,7 @@ def hero_id(response):
                 player[u'hero_name'] = hero['localized_name']
 
     return response
+
 
 def item_id(response):
     """Parse the item ids"""
@@ -26,6 +28,18 @@ def item_id(response):
                                                                    ' ').title()
 
     return response
+
+
+def game_mode(response):
+    """Parse the game mode"""
+    for mode in modes['modes']:
+        print mode
+        if mode == response['game_mode']:
+            print response['game_mode']
+            response[u'game_mode_name'] = mode['name']
+
+    return response
+
 
 def load_json_file(file_name):
     """Load the static data"""
