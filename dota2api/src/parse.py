@@ -48,6 +48,15 @@ def game_mode(response):
     return response
 
 
+def cluster(response):
+    """Parse the cluster/region"""
+    for reg in regions['regions']:
+        if reg['id'] == response['cluster']:
+            response[u'cluster_name'] = reg['name']
+
+    return response
+
+
 def load_json_file(file_name):
     """Load the static data"""
     inp_file = os.path.abspath(os.path.join(

@@ -21,6 +21,7 @@ class Dota2MatchDetails(object):
             self.dict = parse.item_id(self.dict)
             self.dict = parse.lobby_type(self.dict)
             self.dict = parse.game_mode(self.dict)
+            self.dict = parse.cluster(self.dict)
 
     def __repr__(self):
         return str(self.dict)
