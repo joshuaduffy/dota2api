@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """Returns a response object, the exact object returned depends on what API call
 was used"""
 
@@ -5,9 +8,9 @@ import requests
 import urllib
 import os
 
-from src.urls import Urls
-from src.exceptions import APIAuthenticationError, APITimeoutError
-from src.response import Dota2Response, Dota2MatchDetails
+import src.urls
+import src.exceptions
+import src.response
 
 
 class Initialise(object):
@@ -24,7 +27,7 @@ class Initialise(object):
         elif api_key:
             self.api_key = api_key
         else:
-            raise APIAuthenticationError()
+            raise src.exceptions.APIAuthenticationError()
 
         if language == None:
             self.language = "en_us"
@@ -54,10 +57,10 @@ class Initialise(object):
         """
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
-        url = self.__build_url(Urls.GET_MATCH_HISTORY, **kwargs)
+        url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a dota 2 match
@@ -67,10 +70,10 @@ class Initialise(object):
         """
         if 'match_id' not in kwargs:
             kwargs['match_id'] = match_id
-        url = self.__build_url(Urls.GET_MATCH_DETAILS, **kwargs)
+        url = self.__build_url(src.urls.GET_MATCH_DETAILS, **kwargs)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2MatchDetails(req.json()['result'], url)
+            return src.response.Dota2MatchDetails(req.json()['result'], url)
 
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
@@ -78,20 +81,20 @@ class Initialise(object):
         :param match_id: (int, optional)
         :return: dictionary of ticketed leagues see ``examples``
         """
-        url = self.__build_url(Urls.GET_LEAGUE_LISTING)
+        url = self.__build_url(src.urls.GET_LEAGUE_LISTING)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
 
         :return: dictionary of live games see ``examples``
         """
-        url = self.__build_url(Urls.GET_LIVE_LEAGUE_GAMES)
+        url = self.__build_url(src.urls.GET_LIVE_LEAGUE_GAMES)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_team_info_by_team_id(self, start_at_team_id=None, **kwargs):
         """Returns a dictionary containing a in-game teams
@@ -102,10 +105,10 @@ class Initialise(object):
         """
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
-        url = self.__build_url(Urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
+        url = self.__build_url(src.urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
@@ -115,30 +118,30 @@ class Initialise(object):
         """
         if 'steamids' not in kwargs:
             kwargs['steamids'] = steamids
-        url = self.__build_url(Urls.GET_PLAYER_SUMMARIES, **kwargs)
+        url = self.__build_url(src.urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['response'], url)
+            return src.response.Dota2Response(req.json()['response'], url)
 
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
 
         :return: dictionary of heroes see ``examples``
         """
-        url = self.__build_url(Urls.GET_HEROES)
+        url = self.__build_url(src.urls.GET_HEROES)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
 
         :return: dictionary of items see ``examples``
         """
-        url = self.__build_url(Urls.GET_GAME_ITEMS)
+        url = self.__build_url(src.urls.GET_GAME_ITEMS)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def get_tournament_prize_pool(self, leagueid=None, **kwargs):
         """Returns a dictionary that includes community funded tournament prize pools
@@ -148,10 +151,10 @@ class Initialise(object):
         """
         if 'leagueid' not in kwargs:
             kwargs['leagueid'] = leagueid
-        url = self.__build_url(Urls.GET_TOURNAMENT_PRIZE_POOL)
+        url = self.__build_url(src.urls.GET_TOURNAMENT_PRIZE_POOL)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return Dota2Response(req.json()['result'], url)
+            return src.response.Dota2Response(req.json()['result'], url)
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
@@ -162,16 +165,16 @@ class Initialise(object):
             kwargs['format'] = self.__format
         api_query = urllib.urlencode(kwargs)
 
-        return "{0}{1}?{2}".format(Urls.BASE_URL,
+        return "{0}{1}?{2}".format(src.urls.BASE_URL,
                                    api_call,
                                    api_query)
 
     def __check_http_err(self, status_code):
         """Raises an exception if we get a http error"""
         if status_code == 403:
-            raise APIAuthenticationError(self.api_key)
+            raise src.exceptions.APIAuthenticationError(self.api_key)
         elif status_code == 503:
-            raise APITimeoutError()
+            raise src.exceptions.APITimeoutError()
         else:
             return False
 
