@@ -33,9 +33,7 @@ def item_id(response):
 def game_mode(response):
     """Parse the game mode"""
     for mode in modes['modes']:
-        print mode
-        if mode == response['game_mode']:
-            print response['game_mode']
+        if mode['id'] == response['game_mode']:
             response[u'game_mode_name'] = mode['name']
 
     return response
