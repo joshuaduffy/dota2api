@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """Not many exceptions exist due to server side validation on the parameters"""
 
 

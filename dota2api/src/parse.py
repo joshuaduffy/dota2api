@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""parse.py: Parse some of the values returned"""
+
 import json
 import os
 import itertools

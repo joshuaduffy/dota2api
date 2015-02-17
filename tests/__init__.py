@@ -1,1 +1,4 @@
-"""__init__.py: Does as it says on the tin"""
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""__init__.py"""

@@ -1,4 +1,8 @@
-import os
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Setup script"""
+
 from setuptools import setup
 import dota2api
 
@@ -8,8 +12,8 @@ setup(
     author=dota2api.__author__,
     author_email="mail@joshuaduffy.org",
     description=dota2api.__doc__,
-    license = dota2api.__licence__,
-    keywords = "dota2 dota api dota2api parser",
+    license=dota2api.__licence__,
+    keywords="dota2 dota api dota2api parser",
     packages=['dota2api', 'dota2api.src'],
     data_files=[('dota2api/ref', ['dota2api/ref/abilities.json',
                                   'dota2api/ref/heroes.json',
