@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d45d561e-9d38-4df3-a65e-d78b58193826" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dota2api/src/parse.py" afterPath="$PROJECT_DIR$/dota2api/src/parse.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dota2api/src/response.py" afterPath="$PROJECT_DIR$/dota2api/src/response.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="d45d561e-9d38-4df3-a65e-d78b58193826" name="Default" comment="" />
     <ignored path="dota2api.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
