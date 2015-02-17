@@ -30,6 +30,15 @@ def item_id(response):
     return response
 
 
+def lobby_type(response):
+    """Parse the lobby"""
+    for lobby in lobbies['lobbies']:
+        if lobby['id'] == response['lobby_type']:
+            response[u'lobby_name'] = lobby['name']
+
+    return response
+
+
 def game_mode(response):
     """Parse the game mode"""
     for mode in modes['modes']:
