@@ -2,7 +2,11 @@
 
 
 class BaseError(Exception):
+    """
+    Base error used
+    """
     pass
+
 
 class APIAuthenticationError(BaseError):
     """
@@ -12,8 +16,10 @@ class APIAuthenticationError(BaseError):
     """
     def __init__(self, api_key=None):
         self.msg = "The following API Key is invalid: {0}".format(api_key)
+
     def __str__(self):
         return repr(self.msg)
+
 
 class APITimeoutError(BaseError):
     """
@@ -21,5 +27,6 @@ class APITimeoutError(BaseError):
     """
     def __init__(self,):
         self.msg = "HTTP 503: Please try again later."
+
     def __str__(self):
         return repr(self.msg)

@@ -17,15 +17,15 @@ def item_id(response):
     """Parse the item ids"""
     dict_keys = ['item_0', 'item_1', 'item_2',
                  'item_3', 'item_4', 'item_5']
-    new_keys = ['item_0_name', 'item_1_name', 'item_2_name',
-                'item_3_name', 'item_4_name', 'item_5_name']
+    new_keys = [u'item_0_name', u'item_1_name', u'item_2_name',
+                u'item_3_name', u'item_4_name', u'item_5_name']
 
     for player in response['players']:
         for key, newkey in itertools.izip(dict_keys, new_keys):
             for item in items['items']:
                 if item['id'] == player[key]:
-                    player[unicode(newkey)] = item['name'].replace('_',
-                                                                   ' ').title()
+                    player[newkey] = item['name'].replace('_',
+                                                          ' ').title()
 
     return response
 
