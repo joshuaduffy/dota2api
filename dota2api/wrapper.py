@@ -8,6 +8,7 @@ from src.urls import Urls
 from src.exceptions import APIAuthenticationError, APITimeoutError
 from src.response import Dota2Response, Dota2MatchDetails
 
+
 class Initialise(object):
     """When calling this you need to provide the ``api_key``
     You can also specify a ``language``
