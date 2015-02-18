@@ -48,11 +48,11 @@ Unsupported
 
 
 Documentation
-+++++++++++++
+-------------
 Documentation is available at http://dota2api.readthedocs.org/
 
 Install
-+++++++
+-------
 
 .. code-block:: bash
 
