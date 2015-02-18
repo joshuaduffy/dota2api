@@ -15,6 +15,7 @@ and documentation for the API itself(coming soon).
 Look how easy it is...
 
 .. code-block:: python
+
     >>> from dota2api import wrapper
     >>> api = wrapper.Initialise("API_KEY")
     >>> hist = api.get_match_history(account_id=41231571)
@@ -22,6 +23,7 @@ Look how easy it is...
 Information can also be acessed via a dictionary...
 
 .. code-block:: python
+
     >>> match = api.get_match_details(match_history=1000193456).dict
     >>> match['radiant_win']
     False
@@ -29,7 +31,8 @@ Information can also be acessed via a dictionary...
 Store your API key under the following environment variable to save yourself some finger work.
 
 .. code-block:: bash
-    $ set $D2_API_KEY = "806654CB26BD2D2D6F04DBD953AFF918"
+
+    $  export D2_API_KEY=83247983248793298732
 
 Supported API calls
 +++++++++++++++++++
@@ -57,6 +60,7 @@ Install
 -------
 
 .. code-block:: bash
+
     $ git clone https://github.com/joshuaduffy/dota2api.git
     $ cd dota2api
     $ python setup.py install
