@@ -6,12 +6,11 @@ dota2api: wrapper and parser
 .. image:: https://readthedocs.org/projects/dota2api/badge/?version=latest
     :target: https://readthedocs.org/projects/dota2api/?badge=latest
 
-API wrapper in Python created for interacting and getting data easily from the 
-Dota 2 API from Valve.
+Wrapper and parser in Python created for interacting and getting data easily from Valve's Dota 2 API.
 
-This libary parses all ID's (coming soon) into strings along with turning stuff into python objects
+This libary parses all ID's (coming soon) into strings along with turning stuff into Python objects
 (coming soon). All of this comes with Python 3.0 support (coming soon), a set of complete tests
-(coming soon) and documentation for the API itself(coming soon).
+(coming soon) and complete documentation for the API itself (coming soon).
  
 Look how easy it is...
 
@@ -24,9 +23,7 @@ Look how easy it is...
     >>> match['radiant_win']
     False
 
-Support for
-
-You can even store your API key as an environment variable to save some finger work.
+You can even store your API key as an environment variable instead of passing it through ``Initialise()`` to save some finger work.
 
 .. code-block:: bash
 
