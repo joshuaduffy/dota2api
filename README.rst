@@ -1,5 +1,5 @@
-dota2api: A Dota 2 API wrapper
-==============================
+dota2api: wrapper and parser
+============================
 
 .. image:: https://travis-ci.org/joshuaduffy/dota2api.svg
     :target: https://travis-ci.org/joshuaduffy/dota2api
