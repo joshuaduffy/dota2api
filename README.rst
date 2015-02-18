@@ -1,5 +1,6 @@
-dota2api
-========
+dota2api: A Dota 2 API wrapper
+==============================
+
 .. image:: https://travis-ci.org/joshuaduffy/dota2api.svg
     :target: https://travis-ci.org/joshuaduffy/dota2api
 .. image:: https://readthedocs.org/projects/dota2api/badge/?version=latest
@@ -8,9 +9,9 @@ dota2api
 API wrapper in Python created for interacting and getting data easily from the 
 Dota 2 API from Valve.
 
-This libary parses all ids (coming soon) into strings along with turning stuff into python objects
-(also coming soon). All of this comes with Python 3.0 support (coming soon), a set of complete tests (coming soon)
-and documentation for the API itself(coming soon).
+This libary parses all ID's (coming soon) into strings along with turning stuff into python objects
+(coming soon). All of this comes with Python 3.0 support (coming soon), a set of complete tests
+(coming soon) and documentation for the API itself(coming soon).
  
 Look how easy it is...
 
@@ -19,23 +20,20 @@ Look how easy it is...
     >>> from dota2api import wrapper
     >>> api = wrapper.Initialise("API_KEY")
     >>> hist = api.get_match_history(account_id=41231571)
-
-Information can also be acessed via a dictionary...
-
-.. code-block:: python
-
     >>> match = api.get_match_details(match_history=1000193456).dict
     >>> match['radiant_win']
     False
 
-Store your API key under the following environment variable to save yourself some finger work.
+Support for
+
+You can even store your API key as an environment variable to save some finger work.
 
 .. code-block:: bash
 
     $  export D2_API_KEY=83247983248793298732
 
 Supported API calls
-+++++++++++++++++++
+-------------------
 - get_match_history
 - get_match_details
 - get_player_summaries
@@ -47,17 +45,17 @@ Supported API calls
 - get_game_items
 
 Unsupported
-+++++++++++
+-----------
 - EconomySchema
 - GetMatchHistoryBySequenceNum
 
 
 Documentation
--------------
++++++++++++++
 Documentation is available at http://dota2api.readthedocs.org/
 
 Install
--------
++++++++
 
 .. code-block:: bash
 
