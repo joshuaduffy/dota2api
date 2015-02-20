@@ -75,6 +75,8 @@ with open(load_json_file("heroes.json")) as heroes_json:
     heroes = json.load(heroes_json)
 with open(load_json_file("items.json")) as items_json:
     items = json.load(items_json)
+with open(load_json_file("abilities.json")) as abilities_json:
+    abilities = json.load(regions_json)
 with open(load_json_file("lobbies.json")) as lobbies_json:
     lobbies = json.load(lobbies_json)
 with open(load_json_file("modes.json")) as modes_json:
