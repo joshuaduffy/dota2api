@@ -21,7 +21,7 @@ class Initialise(object):
     :param language: (str, optional) string that defaults to ``en_us`` if
         not set
     """
-    def __init__(self, api_key, language=None):
+    def __init__(self, api_key=None, language=None):
         if os.environ['D2_API_KEY']:
             self.api_key = os.environ['D2_API_KEY']
         elif api_key:
@@ -29,7 +29,7 @@ class Initialise(object):
         else:
             raise src.exceptions.APIAuthenticationError()
 
-        if language == None:
+        if not language:
             self.language = "en_us"
         else:
             self.language = language
