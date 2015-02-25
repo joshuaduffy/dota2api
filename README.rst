@@ -19,7 +19,7 @@ Look how easy it is...
     >>> from dota2api import wrapper
     >>> api = wrapper.Initialise("API_KEY")
     >>> hist = api.get_match_history(account_id=41231571)
-    >>> match = api.get_match_details(match_history=1000193456).dict
+    >>> match = api.get_match_details(match_id=1000193456).dict
     >>> match['radiant_win']
     False
 
