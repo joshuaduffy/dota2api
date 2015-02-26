@@ -10,7 +10,7 @@ Wrapper and parser in Python created for interacting and getting data easily fro
 
 This libary parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
 
-All this comes with, a growing set of tests and some documentation for the API itself.
+This also comes with a growing set of tests and some documentation for the API itself.
  
 Look how easy it is...
 
