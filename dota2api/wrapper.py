@@ -21,8 +21,8 @@ class Initialise(object):
     :param language: (str, optional) string that defaults to ``en_us`` if
         not set
     """
-    def __init__(self, api_key=None, language=None):
-        if os.environ['D2_API_KEY']:
+    def __init__(self, api_key=None, executor=None, language=None):
+        if 'D2_API_KEY' in os.environ:
             self.api_key = os.environ['D2_API_KEY']
         elif api_key:
             self.api_key = api_key
@@ -33,6 +33,12 @@ class Initialise(object):
             self.language = "en_us"
         else:
             self.language = language
+
+        if not executor:
+            self.executor = RequestExecutor()
+        else:
+            self.executor = executor
+
         self.__format = "json"
 
     def get_match_history(self, account_id=None, **kwargs):
@@ -58,7 +64,7 @@ class Initialise(object):
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
         url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
-        req = requests.get(url)
+        req = self.executor.getJson(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['result'], url)
 
@@ -71,7 +77,7 @@ class Initialise(object):
         if 'match_id' not in kwargs:
             kwargs['match_id'] = match_id
         url = self.__build_url(src.urls.GET_MATCH_DETAILS, **kwargs)
-        req = requests.get(url)
+        req = self.executor.getJson(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2MatchDetails(req.json()['result'], url)
 
@@ -182,3 +188,9 @@ class Initialise(object):
         """Save the api key for further user"""
         with open("key.tmp", "w") as savefile:
             savefile.write(self.api_key)
+
+
+class RequestExecutor(object):
+
+    def getJson(self, url, **kwargs):
+        return requests.get(url, **kwargs)
