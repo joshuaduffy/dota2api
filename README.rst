@@ -8,7 +8,7 @@ dota2api: wrapper and parser
 
 Wrapper and parser in Python created for interacting and getting data easily from Valve's Dota 2 API.
 
-This libary parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
+This library parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
 
 This also comes with a growing set of tests and some documentation for the API itself.
  
@@ -16,8 +16,8 @@ Look how easy it is...
 
 .. code-block:: python
 
-    >>> from dota2api import wrapper
-    >>> api = wrapper.Initialise("API_KEY")
+    >>> import dota2api
+    >>> api = dota2api.Initialise("API_KEY")
     >>> hist = api.get_match_history(account_id=41231571)
     >>> match = api.get_match_details(match_history=1000193456).dict
     >>> match['radiant_win']
