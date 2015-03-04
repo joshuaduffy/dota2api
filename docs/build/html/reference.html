@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="dota2api 1 documentation" href="index.html" />
     <link rel="next" title="Contributing" href="contribute.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+    <link rel="prev" title="Parser" href="parser.html" /> 
   </head>
   <body>
     <div class="related">
@@ -41,7 +41,7 @@
           <a href="contribute.html" title="Contributing"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="parser.html" title="Parser"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
@@ -54,10 +54,50 @@
             
   <div class="section" id="library-reference">
 <h1>Library Reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h1>
-<p>Here is the library reference for the <tt class="docutils literal"><span class="pre">wrapper</span></tt> module along with the <tt class="docutils literal"><span class="pre">exceptions</span></tt> used.</p>
+<p>Here is the library reference for the <tt class="docutils literal"><span class="pre">dota2api</span></tt> package, the <tt class="docutils literal"><span class="pre">parse</span></tt> module and the <tt class="docutils literal"><span class="pre">exceptions</span></tt> used.</p>
 <div class="section" id="module-dota2api">
 <span id="dota2api"></span><h2>dota2api<a class="headerlink" href="#module-dota2api" title="Permalink to this headline">¶</a></h2>
 <p>dota2api, a wrapper and parser for the Dota 2 API</p>
+</div>
+<div class="section" id="dota2api-src-parse">
+<h2>dota2api.src.parse<a class="headerlink" href="#dota2api-src-parse" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-dota2api.src.parse"></span><p>parse.py: Parse some of the values returned</p>
+<dl class="function">
+<dt id="dota2api.src.parse.cluster">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">cluster</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the cluster/region</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.game_mode">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">game_mode</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#game_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.game_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the game mode</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.hero_id">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">hero_id</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#hero_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.hero_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the hero id</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.item_id">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">item_id</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#item_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.item_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the item ids</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.load_json_file">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">load_json_file</tt><big>(</big><em>file_name</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#load_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.load_json_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the static data</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.lobby_type">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">lobby_type</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#lobby_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.lobby_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the lobby</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-dota2api.src.exceptions">
 <span id="dota2api-src-exceptions"></span><h2>dota2api.src.exceptions<a class="headerlink" href="#module-dota2api.src.exceptions" title="Permalink to this headline">¶</a></h2>
@@ -101,14 +141,15 @@
   <ul>
 <li><a class="reference internal" href="#">Library Reference</a><ul>
 <li><a class="reference internal" href="#module-dota2api">dota2api</a></li>
+<li><a class="reference internal" href="#dota2api-src-parse">dota2api.src.parse</a></li>
 <li><a class="reference internal" href="#module-dota2api.src.exceptions">dota2api.src.exceptions</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial.html"
-                        title="previous chapter">Tutorial</a></p>
+  <p class="topless"><a href="parser.html"
+                        title="previous chapter">Parser</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="contribute.html"
                         title="next chapter">Contributing</a></p>
@@ -147,7 +188,7 @@
           <a href="contribute.html" title="Contributing"
              >next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="parser.html" title="Parser"
              >previous</a> |</li>
         <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
