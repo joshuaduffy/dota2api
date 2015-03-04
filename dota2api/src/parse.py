@@ -34,7 +34,6 @@ def item_id(response):
                     player[newkey] = item['name'].replace('_',
                                                           ' ').title()
 
-
     return response
 
 
