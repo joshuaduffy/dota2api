@@ -19,7 +19,9 @@ def hero_id(response):
 
 
 def item_id(response):
-    """Parse the item ids"""
+    """Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
+    ``item_2_name`` etc
+    """
     dict_keys = ['item_0', 'item_1', 'item_2',
                  'item_3', 'item_4', 'item_5']
     new_keys = [u'item_0_name', u'item_1_name', u'item_2_name',
@@ -37,7 +39,8 @@ def item_id(response):
 
 
 def lobby_type(response):
-    """Parse the lobby"""
+    """Parse the lobby, will be available as ``lobby_type``
+    """
     for lobby in lobbies['lobbies']:
         if lobby['id'] == response['lobby_type']:
             response[u'lobby_name'] = lobby['name']
@@ -46,7 +49,8 @@ def lobby_type(response):
 
 
 def game_mode(response):
-    """Parse the game mode"""
+    """Parse the lobby, will be available as ``game_mode_name``
+    """
     for mode in modes['modes']:
         if mode['id'] == response['game_mode']:
             response[u'game_mode_name'] = mode['name']
@@ -55,7 +59,8 @@ def game_mode(response):
 
 
 def cluster(response):
-    """Parse the cluster/region"""
+    """Parse the lobby, will be available as ``cluster_name``
+    """
     for reg in regions['regions']:
         if reg['id'] == response['cluster']:
             response[u'cluster_name'] = reg['name']
@@ -64,7 +69,6 @@ def cluster(response):
 
 
 def load_json_file(file_name):
-    """Load the static data"""
     inp_file = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "..",
                                                     "ref",
