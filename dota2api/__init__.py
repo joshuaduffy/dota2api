@@ -26,10 +26,10 @@ class Initialise(object):
         not set
     """
     def __init__(self, api_key=None, language=None):
-        if os.environ['D2_API_KEY']:
-            self.api_key = os.environ['D2_API_KEY']
-        elif api_key:
+        if api_key:
             self.api_key = api_key
+        elif os.environ['D2_API_KEY']:
+            self.api_key = os.environ['D2_API_KEY']
         else:
             raise src.exceptions.APIAuthenticationError()
 
