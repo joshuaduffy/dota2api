@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests relating to the API calls. Code coverage can be deceiving"""
+"""Some tests using multiple calls in proper ways"""
 
 import unittest
 import os
