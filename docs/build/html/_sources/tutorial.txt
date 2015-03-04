@@ -11,6 +11,13 @@ Getting an API Key
 Grab one from `Valve`_.
 
 
+***************
+Storing the Key
+***************
+
+Coming soon.
+
+
 ************
 Basic Usage
 ************
@@ -23,5 +30,6 @@ Common Uses
 **************
 
 Coming soon.
+
 
 .. _`Valve`: https://steamcommunity.com/dev/apikey
