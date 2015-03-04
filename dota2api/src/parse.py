@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""parse.py: Parse some of the values returned"""
+"""Parse some of the values from the API, all can be found in the ``dict`` returned"""
 
 import json
 import os
@@ -9,7 +9,8 @@ import itertools
 
 
 def hero_id(response):
-    """Parse the hero id"""
+    """Parse the lobby, will be available as ``hero_name``
+    """
     for player in response['players']:
         for hero in heroes['heroes']:
             if hero['id'] == player['hero_id']:
@@ -20,7 +21,7 @@ def hero_id(response):
 
 def item_id(response):
     """Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
-    ``item_2_name`` etc
+    ``item_2_name`` and so on
     """
     dict_keys = ['item_0', 'item_1', 'item_2',
                  'item_3', 'item_4', 'item_5']
