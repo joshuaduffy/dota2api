@@ -11,6 +11,7 @@ setup(
     version=dota2api.__version__,
     author=dota2api.__author__,
     author_email="mail@joshuaduffy.org",
+    url="https://github.com/joshuaduffy/dota2api",
     description=dota2api.__doc__,
     license=dota2api.__licence__,
     keywords="dota2 dota api dota2api parser",
