@@ -3,9 +3,9 @@ include *.py
 include *.pip
 include LICENSE
 
-recursive-include dota2api/ref *.json *.py
+recursive-include dota2api/ref *.json
 recursive-include dota2api *.py
-prune build/
-prune dist/
-prune docs/
-prune *.egg-info/
+prune build
+prune dist
+prune docs
+prune *.egg-info
