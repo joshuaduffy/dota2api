@@ -29,27 +29,6 @@ You can even store your API key as an environment variable instead of passing it
 
     $  export D2_API_KEY=83247983248793298732
 
-Supported API calls
--------------------
-- get_match_history
-- get_match_details
-- get_player_summaries
-- get_league_listing
-- get_live_league_games
-- get_team_info_by_team_id
-- get_heroes
-- get_tournament_prize_pool
-- get_game_items
-
-Unsupported
------------
-- EconomySchema
-- GetMatchHistoryBySequenceNum
-
-
-Documentation
--------------
-Documentation is available at http://dota2api.readthedocs.org/
 
 Install
 -------
@@ -68,3 +47,27 @@ Or the old fashioned way...
     $ git clone https://github.com/joshuaduffy/dota2api.git
     $ cd dota2api
     $ python setup.py install
+
+
+Documentation
+-------------
+Documentation is available at http://dota2api.readthedocs.org/
+
+
+Supported API calls
+-------------------
+- get_match_history
+- get_match_details
+- get_player_summaries
+- get_league_listing
+- get_live_league_games
+- get_team_info_by_team_id
+- get_heroes
+- get_tournament_prize_pool
+- get_game_items
+
+
+Unsupported
+-----------
+- EconomySchema
+- GetMatchHistoryBySequenceNum
