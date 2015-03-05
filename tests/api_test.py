@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests relating to the API calls. Code coverage can be deceiving"""
+"""Some tests using multiple calls in proper ways"""
 
 import unittest
 import os
+from dota2api.src.urls import *
 from mock import Mock
 
-from dota2api import wrapper
-from dota2api.src.urls import *
+import dota2api
 from dota2api.src.exceptions import APIAuthenticationError
-from dota2api.wrapper import RequestExecutor
+from dota2api import RequestExecutor
 
 DEFAULT_MATCHES_SIZE = 100
 LANGUAGE_PAR = 'language=en_us'
@@ -60,12 +60,13 @@ class UrlMatcher(object):
 def request_pars(*args):
     return '?' + '&'.join(args)
 
+
 class ApiMatchTests(unittest.TestCase):
     """Tests relating to the Dota 2 API wrapper"""
     def setUp(self):
         """Set up test fixtures"""
         self.executor = RequestExecutor()
-        self.api_test = wrapper.Initialise(os.environ['D2_API_KEY'], self.executor)
+        self.api_test = dota2api.Initialise(os.environ['D2_API_KEY'], self.executor)
 
     def test_get_match_history_with_no_param(self):
         """Test__check_http_err get_match_history"""
@@ -161,7 +162,7 @@ class ApiOtherTests(unittest.TestCase):
     """Tests relating to the other tests."""
     def setUp(self):
         """Set up test fixtures"""
-        self.api_test = wrapper.Initialise(os.environ['D2_API_KEY'])
+        self.api_test = dota2api.Initialise(os.environ['D2_API_KEY'])
 
     def get_league_listing_test(self):
         """Test get_league_listing"""
@@ -208,7 +209,7 @@ class ApiOtherTests(unittest.TestCase):
 
 def invalid_api_key_test():
     """Test invalid_api_key"""
-    api_test = wrapper.Initialise("invalid")
+    api_test = dota2api.Initialise("invalid")
     try:
         api_test.get_match_history()
     except APIAuthenticationError:

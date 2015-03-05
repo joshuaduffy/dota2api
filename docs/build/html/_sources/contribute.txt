@@ -2,7 +2,8 @@
 Contributing
 ############
 
-This document provides help with people who wish to contribute to the project.
+This document provides help with people who wish to contribute to the project. We are open to either improvement or
+bug fixes.
 
 
 **************
@@ -16,4 +17,4 @@ Documentation improvements are always welcome, I am looking for this to be one o
 Bug Reports
 ************
 
-Bug reports are welcome!
+Forks or bug reports are welcome!
