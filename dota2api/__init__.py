@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy"
 __date__ = "29/10/2014"
-__version__ = "0.9.0"
+__version__ = "0.9.1"
 __licence__ = "GPL"
 
 import requests
