@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Dota 2 API wrapper and parser in Python - http://dota2api.readthedocs.org"""
+"""Dota 2 API wrapper and parser in Python"""
 
 __author__ = "Joshua Duffy"
 __date__ = "29/10/2014"
-__version__ = "0.9.1"
+__version__ = "0.9.2"
 __licence__ = "GPL"
 
 import requests
