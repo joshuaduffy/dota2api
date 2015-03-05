@@ -2,20 +2,28 @@
 Library Reference
 #################
 
-Here is the library reference for the ``wrapper`` module along with the ``exceptions`` used.
+Here is the library reference for the ``dota2api`` package, the ``parse`` module and the ``exceptions`` used.
 
 
 ****************
-dota2api.wrapper
+dota2api
 ****************
 
-.. automodule:: dota2api.wrapper
+.. automodule:: dota2api
    :members:
 
 
-*********************
+****************
+dota2api.src.parse
+****************
+
+.. automodule:: dota2api.src.parse
+   :members:
+
+
+***********************
 dota2api.src.exceptions
-*********************
+***********************
 
 .. automodule:: dota2api.src.exceptions
    :members:

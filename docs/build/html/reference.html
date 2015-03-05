@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="dota2api 1 documentation" href="index.html" />
     <link rel="next" title="Contributing" href="contribute.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+    <link rel="prev" title="Parser" href="parser.html" /> 
   </head>
   <body>
     <div class="related">
@@ -41,7 +41,7 @@
           <a href="contribute.html" title="Contributing"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="parser.html" title="Parser"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
@@ -54,14 +54,13 @@
             
   <div class="section" id="library-reference">
 <h1>Library Reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h1>
-<p>Here is the library reference for the <tt class="docutils literal"><span class="pre">wrapper</span></tt> module along with the <tt class="docutils literal"><span class="pre">exceptions</span></tt> used.</p>
-<div class="section" id="module-dota2api.wrapper">
-<span id="dota2api-wrapper"></span><h2>dota2api.wrapper<a class="headerlink" href="#module-dota2api.wrapper" title="Permalink to this headline">¶</a></h2>
-<p>Returns a response object, the exact object returned depends on what API call
-was used</p>
+<p>Here is the library reference for the <tt class="docutils literal"><span class="pre">dota2api</span></tt> package, the <tt class="docutils literal"><span class="pre">parse</span></tt> module and the <tt class="docutils literal"><span class="pre">exceptions</span></tt> used.</p>
+<div class="section" id="module-dota2api">
+<span id="dota2api"></span><h2>dota2api<a class="headerlink" href="#module-dota2api" title="Permalink to this headline">¶</a></h2>
+<p>Dota 2 API wrapper and parser in Python - <a class="reference external" href="http://dota2api.readthedocs.org">http://dota2api.readthedocs.org</a></p>
 <dl class="class">
-<dt id="dota2api.wrapper.Initialise">
-<em class="property">class </em><tt class="descclassname">dota2api.wrapper.</tt><tt class="descname">Initialise</tt><big>(</big><em>api_key</em>, <em>language=None</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise">
+<em class="property">class </em><tt class="descclassname">dota2api.</tt><tt class="descname">Initialise</tt><big>(</big><em>api_key=None</em>, <em>language=None</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise" title="Permalink to this definition">¶</a></dt>
 <dd><p>When calling this you need to provide the <tt class="docutils literal"><span class="pre">api_key</span></tt>
 You can also specify a <tt class="docutils literal"><span class="pre">language</span></tt></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -78,8 +77,8 @@ not set</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_game_items">
-<tt class="descname">get_game_items</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_game_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_game_items" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_game_items">
+<tt class="descname">get_game_items</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_game_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_game_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of in-game items, used to parse ids into localised names</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -92,8 +91,8 @@ not set</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_heroes">
-<tt class="descname">get_heroes</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_heroes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_heroes" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_heroes">
+<tt class="descname">get_heroes</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_heroes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_heroes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of in-game heroes, used to parse ids into localised names</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -106,8 +105,8 @@ not set</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_league_listing">
-<tt class="descname">get_league_listing</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_league_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_league_listing" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_league_listing">
+<tt class="descname">get_league_listing</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_league_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_league_listing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing a list of all ticketed leagues</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -122,8 +121,8 @@ not set</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_live_league_games">
-<tt class="descname">get_live_league_games</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_live_league_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_live_league_games" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_live_league_games">
+<tt class="descname">get_live_league_games</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_live_league_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_live_league_games" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing a list of ticked games in progress</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -136,8 +135,8 @@ not set</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_match_details">
-<tt class="descname">get_match_details</tt><big>(</big><em>match_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_match_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_match_details" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_match_details">
+<tt class="descname">get_match_details</tt><big>(</big><em>match_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_match_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_match_details" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing the details for a dota 2 match</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -152,8 +151,8 @@ not set</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_match_history">
-<tt class="descname">get_match_history</tt><big>(</big><em>account_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_match_history"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_match_history" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_match_history">
+<tt class="descname">get_match_history</tt><big>(</big><em>account_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_match_history"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_match_history" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing a list of the most recent dota matches</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -186,8 +185,8 @@ tournament matches only</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_player_summaries">
-<tt class="descname">get_player_summaries</tt><big>(</big><em>steamids=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_player_summaries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_player_summaries" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_player_summaries">
+<tt class="descname">get_player_summaries</tt><big>(</big><em>steamids=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_player_summaries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_player_summaries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing a player summaries</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -202,8 +201,8 @@ tournament matches only</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_team_info_by_team_id">
-<tt class="descname">get_team_info_by_team_id</tt><big>(</big><em>start_at_team_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_team_info_by_team_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_team_info_by_team_id" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_team_info_by_team_id">
+<tt class="descname">get_team_info_by_team_id</tt><big>(</big><em>start_at_team_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_team_info_by_team_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_team_info_by_team_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing a in-game teams</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -223,8 +222,8 @@ tournament matches only</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="dota2api.wrapper.Initialise.get_tournament_prize_pool">
-<tt class="descname">get_tournament_prize_pool</tt><big>(</big><em>leagueid=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api/wrapper.html#Initialise.get_tournament_prize_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.wrapper.Initialise.get_tournament_prize_pool" title="Permalink to this definition">¶</a></dt>
+<dt id="dota2api.Initialise.get_tournament_prize_pool">
+<tt class="descname">get_tournament_prize_pool</tt><big>(</big><em>leagueid=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/dota2api.html#Initialise.get_tournament_prize_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.Initialise.get_tournament_prize_pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary that includes community funded tournament prize pools</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -241,9 +240,44 @@ tournament matches only</li>
 </dd></dl>
 
 </div>
-<div class="section" id="dota2api-src-exceptions">
-<h2>dota2api.src.exceptions<a class="headerlink" href="#dota2api-src-exceptions" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-dota2api.src.exceptions"></span><p>Not many exceptions exist due to server side validation on the parameters</p>
+<div class="section" id="dota2api-src-parse">
+<h2>dota2api.src.parse<a class="headerlink" href="#dota2api-src-parse" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-dota2api.src.parse"></span><p>Parse some of the values from the API, all can be found in the <tt class="docutils literal"><span class="pre">dict</span></tt> returned</p>
+<dl class="function">
+<dt id="dota2api.src.parse.cluster">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">cluster</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the lobby, will be available as <tt class="docutils literal"><span class="pre">cluster_name</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.game_mode">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">game_mode</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#game_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.game_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the lobby, will be available as <tt class="docutils literal"><span class="pre">game_mode_name</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.hero_id">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">hero_id</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#hero_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.hero_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the lobby, will be available as <tt class="docutils literal"><span class="pre">hero_name</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.item_id">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">item_id</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#item_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.item_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the item ids, will be available as <tt class="docutils literal"><span class="pre">item_0_name</span></tt>, <tt class="docutils literal"><span class="pre">item_1_name</span></tt>,
+<tt class="docutils literal"><span class="pre">item_2_name</span></tt> and so on</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dota2api.src.parse.lobby_type">
+<tt class="descclassname">dota2api.src.parse.</tt><tt class="descname">lobby_type</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/parse.html#lobby_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.parse.lobby_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the lobby, will be available as <tt class="docutils literal"><span class="pre">lobby_type</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dota2api.src.exceptions">
+<span id="dota2api-src-exceptions"></span><h2>dota2api.src.exceptions<a class="headerlink" href="#module-dota2api.src.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Not many exceptions exist due to server side validation on the parameters</p>
 <dl class="exception">
 <dt id="dota2api.src.exceptions.APIAuthenticationError">
 <em class="property">exception </em><tt class="descclassname">dota2api.src.exceptions.</tt><tt class="descname">APIAuthenticationError</tt><big>(</big><em>api_key=None</em><big>)</big><a class="reference internal" href="_modules/dota2api/src/exceptions.html#APIAuthenticationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dota2api.src.exceptions.APIAuthenticationError" title="Permalink to this definition">¶</a></dt>
@@ -276,15 +310,16 @@ tournament matches only</li>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Library Reference</a><ul>
-<li><a class="reference internal" href="#module-dota2api.wrapper">dota2api.wrapper</a></li>
-<li><a class="reference internal" href="#dota2api-src-exceptions">dota2api.src.exceptions</a></li>
+<li><a class="reference internal" href="#module-dota2api">dota2api</a></li>
+<li><a class="reference internal" href="#dota2api-src-parse">dota2api.src.parse</a></li>
+<li><a class="reference internal" href="#module-dota2api.src.exceptions">dota2api.src.exceptions</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial.html"
-                        title="previous chapter">Tutorial</a></p>
+  <p class="topless"><a href="parser.html"
+                        title="previous chapter">Parser</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="contribute.html"
                         title="next chapter">Contributing</a></p>
@@ -323,7 +358,7 @@ tournament matches only</li>
           <a href="contribute.html" title="Contributing"
              >next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="parser.html" title="Parser"
              >previous</a> |</li>
         <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>

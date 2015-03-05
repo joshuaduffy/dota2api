@@ -5,9 +5,6 @@
 
 
 class BaseError(Exception):
-    """
-    Base error used
-    """
     pass
 
 

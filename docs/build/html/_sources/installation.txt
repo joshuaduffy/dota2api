@@ -14,24 +14,9 @@ Pip
 
 Installing via `pip`_ is probably the easiest method:
 
-.. tip::
-
-    Currently removed, TBC!
-
 .. code-block:: bash
 
     $ pip install dota2api
-
-
-************
-From Source
-************
-
-You can also download the latest version from the `repository`_ and run the setup file:
-
-.. code-block:: bash
-
-    $ python setup.py install
 
 
 *************
@@ -43,6 +28,12 @@ You can also download the latest version of the code from the  `repository`_:
 .. code-block:: bash
 
     $ git clone https://github.com/joshuaduffy/dota2api/
+
+Then install manually:
+
+.. code-block:: bash
+
+    $ python setup.py install
 
 
 ***********

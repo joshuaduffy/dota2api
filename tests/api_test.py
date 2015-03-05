@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests relating to the API calls. Code coverage can be deceiving"""
+"""Some tests using multiple calls in proper ways"""
 
 import unittest
 import os
 
-from dota2api import wrapper
+import dota2api
 from dota2api.src.exceptions import APIAuthenticationError
 
 
@@ -14,7 +14,7 @@ class ApiMatchTests(unittest.TestCase):
     """Tests relating to the Dota 2 API wrapper"""
     def setUp(self):
         """Set up test fixtures"""
-        self.api_test = wrapper.Initialise(os.environ['D2_API_KEY'])
+        self.api_test = dota2api.Initialise(os.environ['D2_API_KEY'])
 
     def get_match_history_test(self):
         """Test get_match_history"""
@@ -47,7 +47,7 @@ class ApiOtherTests(unittest.TestCase):
     """Tests relating to the other tests."""
     def setUp(self):
         """Set up test fixtures"""
-        self.api_test = wrapper.Initialise(os.environ['D2_API_KEY'])
+        self.api_test = dota2api.Initialise(os.environ['D2_API_KEY'])
 
     def get_league_listing_test(self):
         """Test get_league_listing"""
@@ -94,7 +94,7 @@ class ApiOtherTests(unittest.TestCase):
 
 def invalid_api_key_test():
     """Test invalid_api_key"""
-    api_test = wrapper.Initialise("invalid")
+    api_test = dota2api.Initialise("invalid")
     try:
         api_test.get_match_history()
     except APIAuthenticationError:
