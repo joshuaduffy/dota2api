@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy"
 __date__ = "29/10/2014"
-__version__ = "0.9.2"
+__version__ = "1.2.1"
 __licence__ = "GPL"
 
 import requests
@@ -187,3 +187,4 @@ class Initialise(object):
             raise src.exceptions.APITimeoutError()
         else:
             return False
+
