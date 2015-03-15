@@ -38,7 +38,7 @@ class Initialise(object):
             self.language = language
 
         if not executor:
-            self.executor = RequestExecutor()
+            self.executor = requests.get
         else:
             self.executor = executor
 
@@ -67,7 +67,7 @@ class Initialise(object):
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
         url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
-        req = self.executor.getJson(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['result'], url)
 
@@ -80,7 +80,7 @@ class Initialise(object):
         if 'match_id' not in kwargs:
             kwargs['match_id'] = match_id
         url = self.__build_url(src.urls.GET_MATCH_DETAILS, **kwargs)
-        req = self.executor.getJson(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2MatchDetails(req.json()['result'], url)
 
@@ -91,7 +91,7 @@ class Initialise(object):
         :return: dictionary of ticketed leagues see ``examples``
         """
         url = self.__build_url(src.urls.GET_LEAGUE_LISTING)
-        req = requests.get(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['result'], url)
 
@@ -101,7 +101,7 @@ class Initialise(object):
         :return: dictionary of live games see ``examples``
         """
         url = self.__build_url(src.urls.GET_LIVE_LEAGUE_GAMES)
-        req = requests.get(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['result'], url)
 
@@ -115,7 +115,8 @@ class Initialise(object):
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
         url = self.__build_url(src.urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
-        req = requests.get(url)
+        print url
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['result'], url)
 
@@ -128,7 +129,7 @@ class Initialise(object):
         if 'steamids' not in kwargs:
             kwargs['steamids'] = steamids
         url = self.__build_url(src.urls.GET_PLAYER_SUMMARIES, **kwargs)
-        req = requests.get(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.Dota2Response(req.json()['response'], url)
 
@@ -186,9 +187,3 @@ class Initialise(object):
             raise src.exceptions.APITimeoutError()
         else:
             return False
-
-
-class RequestExecutor(object):
-
-    def getJson(self, url, **kwargs):
-        return requests.get(url, **kwargs)
