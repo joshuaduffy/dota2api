@@ -115,12 +115,14 @@ class TestRequestExecutor(unittest.TestCase):
         result = request.json()['result']
         self.assertEqual(result['error'], 'No Match ID specified')
 
+
 class Tests(unittest.TestCase):
     def setUp(self):
         pass
 
     def test_one(self):
         assert True
+
 
 def request_pars(*args):
     return '?' + '&'.join(args)
