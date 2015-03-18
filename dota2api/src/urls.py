@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """The base URL and the API calls are defined in this file"""
+
+
 BASE_URL = "https://api.steampowered.com/"
 GET_MATCH_HISTORY = "IDOTA2Match_570/GetMatchHistory/v001/"
 GET_MATCH_DETAILS = "IDOTA2Match_570/GetMatchDetails/v001/"
