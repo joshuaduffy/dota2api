@@ -17,10 +17,10 @@ class UserTests(unittest.TestCase):
 
     def get_history_then_details_test(self):
         """Test get_match_history"""
-        result = self.api_test.get_match_history(player_id=41231571, matches_requested=10).dict
+        result = self.api_test.get_match_history(player_id=41231571, matches_requested=10)
         # Do we default at 10 responses
         self.assertEquals(len(result['matches']), 10)
         # Can we get each match
         for match in result['matches']:
             self.assertEqual(type(self.api_test.get_match_details(
-                              match_id=match['match_id']).dict), type(dict()))
+                              match_id=match['match_id'])), type(dict()))

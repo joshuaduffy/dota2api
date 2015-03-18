@@ -235,43 +235,43 @@ class ApiOtherTests(unittest.TestCase):
     def get_league_listing_test(self):
         """Test get_league_listing"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_league_listing().dict),
+        self.assertEqual(type(self.api_test.get_league_listing()),
                          type(dict()))
 
     def get_live_league_games_test(self):
         """Test get_live_league_games"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_live_league_games().dict),
+        self.assertEqual(type(self.api_test.get_live_league_games()),
                          type(dict()))
 
     def get_team_info_by_team_id_test(self):
         """Test get_team_info_by_team_id"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_team_info_by_team_id().dict),
+        self.assertEqual(type(self.api_test.get_team_info_by_team_id()),
                          type(dict()))
 
     def get_player_summaries_test(self):
         """Test get_player_summaries"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_player_summaries().dict),
+        self.assertEqual(type(self.api_test.get_player_summaries()),
                          type(dict()))
 
     def get_heroes_test(self):
         """Test get_heroes"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_heroes().dict),
+        self.assertEqual(type(self.api_test.get_heroes()),
                          type(dict()))
 
     def get_game_items_test(self):
         """Test get_game_items"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_game_items().dict),
+        self.assertEqual(type(self.api_test.get_game_items()),
                          type(dict()))
 
     def get_tournament_prize_pool_test(self):
         """Test get_tournament_prize_pool"""
         # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_tournament_prize_pool().dict),
+        self.assertEqual(type(self.api_test.get_tournament_prize_pool()),
                          type(dict()))
 
 
