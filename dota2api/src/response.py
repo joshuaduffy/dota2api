@@ -17,7 +17,7 @@ def build(req, url):
         if 'error' in req_resp['result']:
             raise APIError(req_resp['result']['error'])
         if req_resp['result']['status'] != 1:
-            raise APIStatusError(req_resp['result']['statusDetail'])
+            raise APIError(req_resp['result']['statusDetail'])
         resp = Dota2Dict(req_resp['result'])
     elif 'response' in req_resp:
         resp = Dota2Dict(req_resp['response'])
@@ -32,7 +32,7 @@ def build(req, url):
             resp = parse.game_mode(resp)
             resp = parse.cluster(resp)
     except KeyError:
-        pass
+        pass  # Only do the above for matches
 
     resp.url = url
 
