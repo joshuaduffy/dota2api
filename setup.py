@@ -22,7 +22,7 @@ setup(
                                     'lobbies.json',
                                     'modes.json',
                                     'regions.json']},
-    install_requires=['requests'],
+    install_requires=['requests >= 2.2.1'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
