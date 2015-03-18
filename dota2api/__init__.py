@@ -45,6 +45,7 @@ class Initialise(object):
     def get_match_history(self, account_id=None, **kwargs):
         """Returns a dictionary containing a list of the most recent dota matches
 
+        :param account_id: (int, optional)
         :param hero_id: (int, optional)
         :param game_mode: (int, optional) see ``ref/modes.json``
         :param skill: (int, optional) see ``ref/skill.json``
@@ -85,7 +86,6 @@ class Initialise(object):
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
 
-        :param match_id: (int, optional)
         :return: dictionary of ticketed leagues see ``examples``
         """
         url = self.__build_url(src.urls.GET_LEAGUE_LISTING)
@@ -113,7 +113,6 @@ class Initialise(object):
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
         url = self.__build_url(src.urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
-        print url
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return src.response.build(req, url)
