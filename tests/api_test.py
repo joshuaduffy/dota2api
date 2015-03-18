@@ -157,15 +157,15 @@ class ApiMatchTests(unittest.TestCase):
         self.api_test.executor = executor_mock
         self.api_test.get_team_info_by_team_id(123)
 
-    def test_get_player_summaries(self):
-        def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_PLAYER_SUMMARIES, LANGUAGE_PAR, STEAM_ID_PAR,
-                                             'steamids=76561198049003839', 'format=json'))
-            return RequestMock().configure_success()
-
-        self.api_test.executor = executor_mock
-        account_id = 88738111
-        self.api_test.get_player_summaries(convert_to_64_bit(account_id))
+#    def test_get_player_summaries(self):
+#        def executor_mock(url):
+#            self.assertEqual(url, UrlMatcher(BASE_URL + GET_PLAYER_SUMMARIES, LANGUAGE_PAR, STEAM_ID_PAR,
+#                                             'steamids=76561198049003839', 'format=json'))
+#            return RequestMock().configure_success()
+#
+#        self.api_test.executor = executor_mock
+#        account_id = 88738111
+#        self.api_test.get_player_summaries(convert_to_64_bit(account_id))
 
 
 class TestRequestExecutor(unittest.TestCase):

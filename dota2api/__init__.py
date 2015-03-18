@@ -188,13 +188,23 @@ class Initialise(object):
 
 
 def build_response(req, url):
-    resp = src.response.Dota2Dict(req.json())
-    if 'players' in resp['result']:
-        resp = parse.hero_id(resp)
-        resp = parse.item_id(resp)
-        resp = parse.lobby_type(resp)
-        resp = parse.game_mode(resp)
-        resp = parse.cluster(resp)
-    response.url = url
+    req_resp = req.json()
+    if 'result' in req_resp:
+        resp = src.response.Dota2Dict(req_resp['result'])
+    elif 'response' in req_resp:
+        resp = src.response.Dota2Dict(req_resp['response'])
+    else:
+        resp = src.response.Dota2Dict(req_resp)
+    try:
+        if 'players' in resp:
+            resp = parse.hero_id(resp)
+            resp = parse.item_id(resp)
+            resp = parse.lobby_type(resp)
+            resp = parse.game_mode(resp)
+            resp = parse.cluster(resp)
+    except KeyError:
+        pass
 
-    return response
+    resp.url = url
+
+    return resp
