@@ -11,9 +11,7 @@ import requests
 import urllib
 import os
 
-import src.urls
-import src.exceptions
-import src.response
+from src import urls, exceptions, response, parse
 
 
 class Initialise(object):
@@ -190,13 +188,13 @@ class Initialise(object):
 
 
 def build_response(req, url):
-    response = src.response.Dota2Dict(req.json())
-    if 'players' in response['result']:
-        response = src.parse.hero_id(response)
-        response = src.parse.item_id(response)
-        response = src.parse.lobby_type(response)
-        response = src.parse.game_mode(response)
-        response = src.parse.cluster(response)
+    resp = src.response.Dota2Dict(req.json())
+    if 'players' in resp['result']:
+        resp = parse.hero_id(resp)
+        resp = parse.item_id(resp)
+        resp = parse.lobby_type(resp)
+        resp = parse.game_mode(resp)
+        resp = parse.cluster(resp)
     response.url = url
 
     return response
