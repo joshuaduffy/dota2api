@@ -14,8 +14,9 @@ DEFAULT_MATCHES_SIZE = 100
 LANGUAGE_PAR = 'language=en_us'
 STEAM_ID_PAR = 'key=' + os.environ.get('D2_API_KEY')
 
+
 def convert_to_64_bit(number):
-    #should we put this on the api?
+    # Yes we should put this in the API - will be used to parse steam names
     return number + 76561197960265728
 
 
@@ -25,7 +26,7 @@ class RequestMock(object):
         self.status_code = 666
 
     def json(self):
-        return { 'result': 'whatever'}
+        return {'result': 'whatever'}
 
     def configure_success(self):
         self.status_code = 200
@@ -66,10 +67,6 @@ class UrlMatcher(object):
         return True
 
 
-def request_pars(*args):
-    return '?' + '&'.join(args)
-
-
 class ApiMatchTests(unittest.TestCase):
 
     def setUp(self):
@@ -91,7 +88,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_match_history_with_no_param(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR, 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=None',
+                                             STEAM_ID_PAR, 'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -99,7 +97,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_match_history_with_limited_matches(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR, 'format=json', 'matches_requested=1'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=None',
+                                             STEAM_ID_PAR, 'format=json', 'matches_requested=1'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -107,7 +106,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_match_history_from_only_one_player(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR, 'format=json', 'matches_requested=10'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_HISTORY, LANGUAGE_PAR, 'account_id=88585077',
+                                             STEAM_ID_PAR, 'format=json', 'matches_requested=10'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -115,7 +115,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_match_details_test(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_DETAILS, LANGUAGE_PAR, STEAM_ID_PAR, 'match_id=988604774', 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_MATCH_DETAILS, LANGUAGE_PAR, STEAM_ID_PAR,
+                                             'match_id=988604774', 'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -131,7 +132,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_live_league_games(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_LIVE_LEAGUE_GAMES, LANGUAGE_PAR, STEAM_ID_PAR, 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_LIVE_LEAGUE_GAMES, LANGUAGE_PAR, STEAM_ID_PAR,
+                                             'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -139,7 +141,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_team_info_by_team_id(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID, LANGUAGE_PAR, STEAM_ID_PAR, 'start_at_team_id=None', 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID, LANGUAGE_PAR, STEAM_ID_PAR,
+                                             'start_at_team_id=None', 'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -147,7 +150,8 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_team_info_by_team_id_with_parameter(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID, LANGUAGE_PAR, STEAM_ID_PAR, 'start_at_team_id=123', 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID, LANGUAGE_PAR, STEAM_ID_PAR,
+                                             'start_at_team_id=123', 'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
@@ -155,12 +159,14 @@ class ApiMatchTests(unittest.TestCase):
 
     def test_get_player_summaries(self):
         def executor_mock(url):
-            self.assertEqual(url, UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID, LANGUAGE_PAR, STEAM_ID_PAR, 'format=json'))
+            self.assertEqual(url, UrlMatcher(BASE_URL + GET_PLAYER_SUMMARIES, LANGUAGE_PAR, STEAM_ID_PAR,
+                                             'steamids=76561198049003839', 'format=json'))
             return RequestMock().configure_success()
 
         self.api_test.executor = executor_mock
         account_id = 88738111
         self.api_test.get_player_summaries(convert_to_64_bit(account_id))
+
 
 class TestRequestExecutor(unittest.TestCase):
     def setUp(self):
@@ -180,7 +186,8 @@ class TestRequestExecutor(unittest.TestCase):
 
     def test_get_match_history_with_limited_matches(self):
         request = self.executor(
-            BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR, 'format=json', 'matches_requested=1'))
+            BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR, 'format=json',
+                                                        'matches_requested=1'))
 
         self.assertEqual(request.status_code, 200)
 
@@ -189,7 +196,8 @@ class TestRequestExecutor(unittest.TestCase):
 
     def test_get_match_history_from_only_one_player(self):
         request = self.executor(
-            BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR, 'format=json', 'matches_requested=10'))
+            BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR,
+                                                        'format=json', 'matches_requested=10'))
 
         self.assertEqual(request.status_code, 200)
 
@@ -274,3 +282,7 @@ def invalid_api_key_test():
         api_test.get_match_history()
     except APIAuthenticationError:
         assert True
+
+
+def request_pars(*args):
+    return '?' + '&'.join(args)
