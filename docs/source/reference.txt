@@ -2,28 +2,28 @@
 Library Reference
 #################
 
-Here is the library reference for the ``dota2api`` package, the ``parse`` module and the ``exceptions`` used.
+This section covers the ``dota2api`` package, the ``parse`` module and the ``exceptions`` used.
 
 
-****************
+********
 dota2api
-****************
+********
 
 .. automodule:: dota2api
    :members:
 
 
-****************
-dota2api.src.parse
-****************
+******
+Parser
+******
 
 .. automodule:: dota2api.src.parse
    :members:
 
 
-***********************
-dota2api.src.exceptions
-***********************
+**********
+Exceptions
+**********
 
 .. automodule:: dota2api.src.exceptions
    :members:
