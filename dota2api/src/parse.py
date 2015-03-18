@@ -8,7 +8,8 @@ import itertools
 
 
 def hero_id(response):
-    """Parse the lobby, will be available as ``hero_name``
+    """
+    Parse the lobby, will be available as ``hero_name``
     """
     for player in response['players']:
         for hero in heroes['heroes']:
@@ -19,7 +20,8 @@ def hero_id(response):
 
 
 def item_id(response):
-    """Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
+    """
+    Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
     ``item_2_name`` and so on
     """
     dict_keys = ['item_0', 'item_1', 'item_2',
@@ -38,7 +40,8 @@ def item_id(response):
 
 
 def lobby_type(response):
-    """Parse the lobby, will be available as ``lobby_type``
+    """
+    Parse the lobby, will be available as ``lobby_type``
     """
     for lobby in lobbies['lobbies']:
         if lobby['id'] == response['lobby_type']:
@@ -48,7 +51,8 @@ def lobby_type(response):
 
 
 def game_mode(response):
-    """Parse the lobby, will be available as ``game_mode_name``
+    """
+    Parse the lobby, will be available as ``game_mode_name``
     """
     for mode in modes['modes']:
         if mode['id'] == response['game_mode']:
@@ -58,7 +62,8 @@ def game_mode(response):
 
 
 def cluster(response):
-    """Parse the lobby, will be available as ``cluster_name``
+    """
+    Parse the lobby, will be available as ``cluster_name``
     """
     for reg in regions['regions']:
         if reg['id'] == response['cluster']:
