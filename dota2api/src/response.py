@@ -3,6 +3,7 @@
 """Response template, this is used so we can pass the response as an object"""
 
 import parse
+from exceptions import *
 
 
 class Dota2Dict(dict):
@@ -11,12 +12,18 @@ class Dota2Dict(dict):
 
 def build(req, url):
     req_resp = req.json()
+    print req_resp
     if 'result' in req_resp:
+        if 'error' in req_resp['result']:
+            raise APIError(req_resp['result']['error'])
+        if req_resp['result']['status'] != 1:
+            raise APIStatusError(req_resp['result']['statusDetail'])
         resp = Dota2Dict(req_resp['result'])
     elif 'response' in req_resp:
         resp = Dota2Dict(req_resp['response'])
     else:
         resp = Dota2Dict(req_resp)
+
     try:
         if 'players' in resp:
             resp = parse.hero_id(resp)

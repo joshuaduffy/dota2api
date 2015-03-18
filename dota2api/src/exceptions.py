@@ -7,6 +7,28 @@ class BaseError(Exception):
     pass
 
 
+class APIError(BaseError):
+    """
+    Raised when the API response is an error
+    """
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return repr(self.msg)
+
+
+class APIStatusError:
+    """
+    Raised when the status does not equal one
+    """
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return repr(self.msg)
+
+
 class APIAuthenticationError(BaseError):
     """
     Raised when the API key supplied is invalid
