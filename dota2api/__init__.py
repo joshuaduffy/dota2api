@@ -67,7 +67,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a dota 2 match
@@ -80,7 +80,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_MATCH_DETAILS, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
@@ -91,7 +91,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_LEAGUE_LISTING)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
@@ -101,7 +101,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_team_info_by_team_id(self, start_at_team_id=None, **kwargs):
         """Returns a dictionary containing a in-game teams
@@ -116,7 +116,7 @@ class Initialise(object):
         print url
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
@@ -129,7 +129,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
@@ -139,7 +139,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_HEROES)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
@@ -149,7 +149,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_GAME_ITEMS)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def get_tournament_prize_pool(self, leagueid=None, **kwargs):
         """Returns a dictionary that includes community funded tournament prize pools
@@ -162,7 +162,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_TOURNAMENT_PRIZE_POOL)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return build_response(req, url)
+            return src.response.build(req, url)
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
@@ -185,26 +185,3 @@ class Initialise(object):
             raise src.exceptions.APITimeoutError()
         else:
             return False
-
-
-def build_response(req, url):
-    req_resp = req.json()
-    if 'result' in req_resp:
-        resp = src.response.Dota2Dict(req_resp['result'])
-    elif 'response' in req_resp:
-        resp = src.response.Dota2Dict(req_resp['response'])
-    else:
-        resp = src.response.Dota2Dict(req_resp)
-    try:
-        if 'players' in resp:
-            resp = parse.hero_id(resp)
-            resp = parse.item_id(resp)
-            resp = parse.lobby_type(resp)
-            resp = parse.game_mode(resp)
-            resp = parse.cluster(resp)
-    except KeyError:
-        pass
-
-    resp.url = url
-
-    return resp
