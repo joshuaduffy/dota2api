@@ -1,0 +1,111 @@
+#########
+Responses
+#########
+
+This section describes the dictionary structure of each response.
+
+*******************
+get_match_history()
+*******************
+
+Returns a dictionary with a list of ``players`` within.
+
+* ``num_results``
+* ``total_results``
+* ``results_remaining``
+* ``matches``
+* ``match_id``
+* ``match_seq_num``
+* ``start_time``
+* ``lobby_type``
+* ``players``
+
+    * ``account_id``
+    * ``player_slot``
+    * ``hero_id``
+
+*******************
+get_match_details()
+*******************
+
+Returns a dictionary with a list of ``players`` within.
+
+* ``players``
+    * ``account_id``
+    * ``player_slot``
+    * ``hero_id``
+    * ``hero_name``
+    * ``item_0``
+    * ``item_0_name``
+    * ``item_1``
+    * ``item_1_name``
+    * ``item_2``
+    * ``item_2_name``
+    * ``item_3``
+    * ``item_3_name``
+    * ``item_4``
+    * ``item_4_name``
+    * ``item_5``
+    * ``item_5_name``
+    * ``kills``
+    * ``deaths``
+    * ``assists``
+    * ``leaver_status``
+    * ``gold``
+    * ``last_hits``
+    * ``denies``
+    * ``gold_per_min``
+    * ``xp_per_min``
+    * ``gold_spent``
+    * ``hero_damage``
+    * ``tower_damage``
+    * ``hero_healing``
+    * ``level``
+    * ``ability_upgrades``
+
+        * ``ability``
+        * ``time``
+        * ``level``
+
+The following is available if the player has a additional unit (ie Lone Druids Spirit Bear)
+
+    * ``additional_units``
+
+        * ``unitname``
+        * ``item_0``
+        * ``item_1``
+        * ``item_2``
+        * ``item_3``
+        * ``item_4``
+        * ``item_5``
+
+* ``season``
+* ``radiant_win``
+* ``duration``
+* ``start_time``
+* ``match_id``
+* ``match_seq_num``
+* ``tower_status_radiant``
+* ``tower_status_dire``
+* ``barracks_status_radiant``
+* ``barracks_status_radiant``
+* ``cluster``
+* ``cluster_name``
+* ``first_blood_time``
+* ``lobby_type``
+* ``lobby_name``
+* ``human_players``
+* ``leagueid``
+* ``positive_votes``
+* ``positive_votes``
+* ``game_mode``
+* ``game_mode_name``
+
+The following is available for team matches only:
+
+* ``radiant_name``
+* ``radiant_logo``
+* ``radiant_team_complete``
+* ``dire_name``
+* ``dire_logo``
+* ``dire_team_complete``

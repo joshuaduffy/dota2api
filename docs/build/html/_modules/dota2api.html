@@ -53,7 +53,7 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;Joshua Duffy, Evaldo Bratti&quot;</span>
 <span class="n">__date__</span> <span class="o">=</span> <span class="s">&quot;29/10/2014&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;1.2.4&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;1.2.5&quot;</span>
 <span class="n">__licence__</span> <span class="o">=</span> <span class="s">&quot;GPL&quot;</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -110,7 +110,7 @@
 <span class="sd">        :param matches_requested: (int, optional) defaults to ``100``</span>
 <span class="sd">        :param tournament_games_only: (str, optional) limit results to</span>
 <span class="sd">            tournament matches only</span>
-<span class="sd">        :return: dictionary of matches see ``examples``</span>
+<span class="sd">        :return: dictionary of matches``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s">&#39;account_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;account_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">account_id</span>
@@ -123,7 +123,7 @@
         <span class="sd">&quot;&quot;&quot;Returns a dictionary containing the details for a dota 2 match</span>
 
 <span class="sd">        :param match_id: (int, optional)</span>
-<span class="sd">        :return: dictionary of matches see ``examples``</span>
+<span class="sd">        :return: dictionary of matches``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s">&#39;match_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;match_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match_id</span>
@@ -135,7 +135,7 @@
 <div class="viewcode-block" id="Initialise.get_league_listing"><a class="viewcode-back" href="../reference.html#dota2api.Initialise.get_league_listing">[docs]</a>    <span class="k">def</span> <span class="nf">get_league_listing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dictionary containing a list of all ticketed leagues</span>
 
-<span class="sd">        :return: dictionary of ticketed leagues see ``examples``</span>
+<span class="sd">        :return: dictionary of ticketed leagues``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_url</span><span class="p">(</span><span class="n">urls</span><span class="o">.</span><span class="n">GET_LEAGUE_LISTING</span><span class="p">)</span>
         <span class="n">req</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -145,7 +145,7 @@
 <div class="viewcode-block" id="Initialise.get_live_league_games"><a class="viewcode-back" href="../reference.html#dota2api.Initialise.get_live_league_games">[docs]</a>    <span class="k">def</span> <span class="nf">get_live_league_games</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dictionary containing a list of ticked games in progress</span>
 
-<span class="sd">        :return: dictionary of live games see ``examples``</span>
+<span class="sd">        :return: dictionary of live games``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_url</span><span class="p">(</span><span class="n">urls</span><span class="o">.</span><span class="n">GET_LIVE_LEAGUE_GAMES</span><span class="p">)</span>
         <span class="n">req</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -157,7 +157,7 @@
 
 <span class="sd">        :param start_at_team_id: (int, optional)</span>
 <span class="sd">        :param teams_requested: (int, optional)</span>
-<span class="sd">        :return: dictionary of teams see ``examples``</span>
+<span class="sd">        :return: dictionary of teams``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s">&#39;start_at_team_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;start_at_team_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start_at_team_id</span>
@@ -170,7 +170,7 @@
         <span class="sd">&quot;&quot;&quot;Returns a dictionary containing a player summaries</span>
 
 <span class="sd">        :param steamids: (list) list of ``64-bit`` steam ids</span>
-<span class="sd">        :return: dictionary of player summaries see ``examples``</span>
+<span class="sd">        :return: dictionary of player summaries``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s">&#39;steamids&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;steamids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">steamids</span>
@@ -182,7 +182,7 @@
 <div class="viewcode-block" id="Initialise.get_heroes"><a class="viewcode-back" href="../reference.html#dota2api.Initialise.get_heroes">[docs]</a>    <span class="k">def</span> <span class="nf">get_heroes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dictionary of in-game heroes, used to parse ids into localised names</span>
 
-<span class="sd">        :return: dictionary of heroes see ``examples``</span>
+<span class="sd">        :return: dictionary of heroes``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_url</span><span class="p">(</span><span class="n">urls</span><span class="o">.</span><span class="n">GET_HEROES</span><span class="p">)</span>
         <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -192,7 +192,7 @@
 <div class="viewcode-block" id="Initialise.get_game_items"><a class="viewcode-back" href="../reference.html#dota2api.Initialise.get_game_items">[docs]</a>    <span class="k">def</span> <span class="nf">get_game_items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dictionary of in-game items, used to parse ids into localised names</span>
 
-<span class="sd">        :return: dictionary of items see ``examples``</span>
+<span class="sd">        :return: dictionary of items``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_url</span><span class="p">(</span><span class="n">urls</span><span class="o">.</span><span class="n">GET_GAME_ITEMS</span><span class="p">)</span>
         <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -203,7 +203,7 @@
         <span class="sd">&quot;&quot;&quot;Returns a dictionary that includes community funded tournament prize pools</span>
 
 <span class="sd">        :param leagueid: (int, optional)</span>
-<span class="sd">        :return: dictionary of prize pools see ``examples``</span>
+<span class="sd">        :return: dictionary of prize pools``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s">&#39;leagueid&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;leagueid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leagueid</span>
