@@ -131,7 +131,6 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            print req.json()
             return src.response.Dota2Response(req.json()['response'], url)
 
     def get_heroes(self):
