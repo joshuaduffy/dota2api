@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.2.4"
+__version__ = "1.2.5"
 __licence__ = "GPL"
 
 import requests
