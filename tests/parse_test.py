@@ -5,6 +5,7 @@
 
 import unittest
 import os
+from time import sleep
 
 import dota2api
 
@@ -22,5 +23,6 @@ class ParseTests(unittest.TestCase):
         self.assertEquals(len(result['matches']), 10)
         # Can we get each match
         for match in result['matches']:
+            sleep(1)
             self.assertEqual(type(self.api_test.get_match_details(match_id=match['match_id']).dict), type(dict()))
         # Now test the parser
