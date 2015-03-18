@@ -17,11 +17,10 @@ class ParseTests(unittest.TestCase):
 
     def parse_test(self):
         """Do the same as in the UserTest"""
-        result = self.api_test.get_match_history(player_id=41231571,matches_requested=10).dict
-        # Do we default at 100 responses
+        result = self.api_test.get_match_history(player_id=41231571, matches_requested=10).dict
+        # Do we default at 10 responses
         self.assertEquals(len(result['matches']), 10)
         # Can we get each match
         for match in result['matches']:
-            self.assertEqual(type(self.api_test.get_match_details(
-                              match_id=match['match_id']).dict), type(dict()))
+            self.assertEqual(type(self.api_test.get_match_details(match_id=match['match_id']).dict), type(dict()))
         # Now test the parser
