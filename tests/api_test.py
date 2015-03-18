@@ -1,19 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-"""Some tests using multiple calls in proper ways"""
-
-import unittest
 import os
-from dota2api.src.urls import *
+import unittest
 
-import dota2api
-from dota2api.src.exceptions import APIAuthenticationError, APITimeoutError
+from dota2api.src.urls import *
 
 DEFAULT_MATCHES_SIZE = 100
 LANGUAGE_PAR = 'language=en_us'
 STEAM_ID_PAR = 'key=' + os.environ.get('D2_API_KEY')
-
 
 def convert_to_64_bit(number):
     # Yes we should put this in the API - will be used to parse steam names
@@ -24,9 +18,6 @@ class RequestMock(object):
 
     def __init__(self):
         self.status_code = 666
-
-    def json(self):
-        return {'result': 'whatever'}
 
     def configure_success(self):
         self.status_code = 200
@@ -67,6 +58,8 @@ class UrlMatcher(object):
         return True
 
 
+<<<<<<< HEAD
+=======
 class ApiMatchTests(unittest.TestCase):
 
     def setUp(self):
@@ -168,6 +161,7 @@ class ApiMatchTests(unittest.TestCase):
 #        self.api_test.get_player_summaries(convert_to_64_bit(account_id))
 
 
+>>>>>>> master
 class TestRequestExecutor(unittest.TestCase):
     def setUp(self):
         import requests
@@ -226,61 +220,11 @@ class TestRequestExecutor(unittest.TestCase):
         self.assertEqual(result['error'], 'No Match ID specified')
 
 
-class ApiOtherTests(unittest.TestCase):
-    """Tests relating to the other tests."""
+class Tests(unittest.TestCase):
     def setUp(self):
-        """Set up test fixtures"""
-        self.api_test = dota2api.Initialise(os.environ['D2_API_KEY'])
+        pass
 
-    def get_league_listing_test(self):
-        """Test get_league_listing"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_league_listing().dict),
-                         type(dict()))
-
-    def get_live_league_games_test(self):
-        """Test get_live_league_games"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_live_league_games().dict),
-                         type(dict()))
-
-    def get_team_info_by_team_id_test(self):
-        """Test get_team_info_by_team_id"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_team_info_by_team_id().dict),
-                         type(dict()))
-
-    def get_player_summaries_test(self):
-        """Test get_player_summaries"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_player_summaries().dict),
-                         type(dict()))
-
-    def get_heroes_test(self):
-        """Test get_heroes"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_heroes().dict),
-                         type(dict()))
-
-    def get_game_items_test(self):
-        """Test get_game_items"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_game_items().dict),
-                         type(dict()))
-
-    def get_tournament_prize_pool_test(self):
-        """Test get_tournament_prize_pool"""
-        # Is the response a dictionary
-        self.assertEqual(type(self.api_test.get_tournament_prize_pool().dict),
-                         type(dict()))
-
-
-def invalid_api_key_test():
-    """Test invalid_api_key"""
-    api_test = dota2api.Initialise("invalid")
-    try:
-        api_test.get_match_history()
-    except APIAuthenticationError:
+    def test_one(self):
         assert True
 
 

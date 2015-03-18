@@ -8,7 +8,7 @@
     
     <title>Dota 2 API Documentation &mdash; dota2api 1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,54 +26,53 @@
     <link rel="top" title="dota2api 1 documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="N">next</a> |</li>
-        <li><a href="#">dota2api 1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="dota-2-api-documentation">
 <h1>Dota 2 API Documentation<a class="headerlink" href="#dota-2-api-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to the dota2api documentation. The dota2api library is a wrapper around the <a class="reference external" href="https://wiki.teamfortress.com/wiki/WebAPI#Dota_2">Dota 2 API</a> <a class="footnote-reference" href="#id1" id="id2">[1]</a> from <a class="reference external" href="http://www.valvesoftware.com/">Valve Software</a> <a class="footnote-reference" href="#id3" id="id4">[2]</a>.</p>
+<p>Welcome to the dota2api documentation. This Python library is a wrapper for the <a class="reference external" href="https://wiki.teamfortress.com/wiki/WebAPI#Dota_2">Dota 2 API</a> <a class="footnote-reference" href="#id1" id="id2">[1]</a> from <a class="reference external" href="http://www.valvesoftware.com/">Valve Software</a> <a class="footnote-reference" href="#id3" id="id4">[2]</a>.</p>
 <div class="section" id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#pip">Pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#get-the-code">Get The Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#build-from-source">Build from source</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#getting-an-api-key">Getting an API Key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#storing-the-key">Storing the Key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#basic-usage">Basic Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#common-uses">Common Uses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#d2-api-environment-variable">D2_API Environment Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#initialising">Initialising</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#api-calls">API Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#id1">API Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#get-match-history">Get Match History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#get-match-details">Get Match Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#other-api-calls">Other API Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#exceptions">Exceptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parser.html">Parser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-dota2api">dota2api</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#dota2api-src-parse">dota2api.src.parse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-dota2api.src.exceptions">dota2api.src.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#dota2api">dota2api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#parser">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a><ul>
@@ -87,9 +86,9 @@
 <div class="section" id="indices-and-tables">
 <h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 <div class="section" id="references">
@@ -113,7 +112,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
@@ -128,12 +127,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="installation.html"
                         title="next chapter">Installation</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -150,24 +151,21 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="installation.html" title="Installation"
              >next</a> |</li>
-        <li><a href="#">dota2api 1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Joshua Duffy.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

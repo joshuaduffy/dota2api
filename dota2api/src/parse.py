@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-"""Parse some of the values from the API, all can be found in the ``dict`` returned"""
+"""Parse some of the values from the API, all can be found in the ``response`` returned"""
 
 import json
 import os
@@ -75,7 +74,7 @@ def load_json_file(file_name):
                                                     file_name))
     return inp_file
     
-# Load the files into memory as a dict
+# Load the files into memory as a response
 with open(load_json_file("heroes.json")) as heroes_json:
     heroes = json.load(heroes_json)
 with open(load_json_file("items.json")) as items_json:

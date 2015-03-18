@@ -14,5 +14,6 @@ branches:
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements.pip --use-mirrors
+
 # command to run tests, e.g. python setup.py test
 script:  nosetests tests

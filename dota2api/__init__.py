@@ -4,16 +4,14 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 __licence__ = "GPL"
 
 import requests
 import urllib
 import os
 
-import src.urls
-import src.exceptions
-import src.response
+from src import urls, exceptions, response, parse
 
 
 class Initialise(object):
@@ -47,6 +45,7 @@ class Initialise(object):
     def get_match_history(self, account_id=None, **kwargs):
         """Returns a dictionary containing a list of the most recent dota matches
 
+        :param account_id: (int, optional)
         :param hero_id: (int, optional)
         :param game_mode: (int, optional) see ``ref/modes.json``
         :param skill: (int, optional) see ``ref/skill.json``
@@ -69,7 +68,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a dota 2 match
@@ -82,18 +81,17 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_MATCH_DETAILS, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2MatchDetails(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
 
-        :param match_id: (int, optional)
         :return: dictionary of ticketed leagues see ``examples``
         """
         url = self.__build_url(src.urls.GET_LEAGUE_LISTING)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
@@ -103,7 +101,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_team_info_by_team_id(self, start_at_team_id=None, **kwargs):
         """Returns a dictionary containing a in-game teams
@@ -115,10 +113,9 @@ class Initialise(object):
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
         url = self.__build_url(src.urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
-        print url
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
@@ -131,7 +128,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['response'], url)
+            return src.response.build(req, url)
 
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
@@ -141,7 +138,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_HEROES)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
@@ -151,7 +148,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_GAME_ITEMS)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def get_tournament_prize_pool(self, leagueid=None, **kwargs):
         """Returns a dictionary that includes community funded tournament prize pools
@@ -164,7 +161,7 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_TOURNAMENT_PRIZE_POOL)
         req = requests.get(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            return src.response.build(req, url)
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
@@ -187,4 +184,3 @@ class Initialise(object):
             raise src.exceptions.APITimeoutError()
         else:
             return False
-

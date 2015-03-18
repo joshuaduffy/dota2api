@@ -1,11 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """Not many exceptions exist due to server side validation on the parameters"""
 
 
 class BaseError(Exception):
     pass
+
+
+class APIError(BaseError):
+    """
+    Raised when the API response is an error, or the status does not equal one
+    """
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return repr(self.msg)
 
 
 class APIAuthenticationError(BaseError):

@@ -8,7 +8,7 @@
     
     <title>Installation &mdash; dota2api 1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,58 +27,49 @@
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Dota 2 API Documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Dota 2 API Documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>This part of the documentation covers the installation of the library.</p>
+<p>This section covers installation of the library.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Work in a virtual environment!</p>
 </div>
 <div class="section" id="pip">
 <h2>Pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
-<p>Installing via <a class="reference external" href="http://www.pip-installer.org/">pip</a> <a class="footnote-reference" href="#id2" id="id3">[1]</a> is probably the easiest method:</p>
+<p>Installing via <a class="reference external" href="http://www.pip-installer.org/">pip</a> <a class="footnote-reference" href="#id2" id="id3">[1]</a> is the recommended method:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip install dota2api
 </pre></div>
 </div>
 </div>
-<div class="section" id="get-the-code">
-<h2>Get The Code<a class="headerlink" href="#get-the-code" title="Permalink to this headline">¶</a></h2>
-<p>You can also download the latest version of the code from the  <a class="reference external" href="https://github.com/joshuaduffy/dota2api">repository</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/joshuaduffy/dota2api/
+<div class="section" id="build-from-source">
+<h2>Build from source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">¶</a></h2>
+<p>You can also download the latest version of the code from the  <a class="reference external" href="https://github.com/joshuaduffy/dota2api">repository</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a> and install:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/joshuaduffy/dota2api/ <span class="o">&amp;&amp;</span> <span class="nb">cd </span>dota2api/
+<span class="nv">$ </span>python setup.py install
 </pre></div>
 </div>
-<p>Then install manually:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python setup.py install
-</pre></div>
-</div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -98,14 +89,13 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
 <li><a class="reference internal" href="#pip">Pip</a></li>
-<li><a class="reference internal" href="#get-the-code">Get The Code</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#build-from-source">Build from source</a></li>
 </ul>
 </li>
 </ul>
@@ -116,12 +106,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial.html"
                         title="next chapter">Tutorial</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/installation.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -138,27 +130,24 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Dota 2 API Documentation"
              >previous</a> |</li>
-        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Joshua Duffy.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
