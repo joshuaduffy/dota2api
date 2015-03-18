@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dota2api.src.parse &mdash; dota2api 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="dota2api 1 documentation" href="../../../index.html" />
+    <link rel="up" title="dota2api" href="../../dota2api.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">dota2api 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../dota2api.html" accesskey="U">dota2api</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for dota2api.src.parse</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Parse some of the values from the API, all can be found in the ``response`` returned&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+
+<div class="viewcode-block" id="hero_id"><a class="viewcode-back" href="../../../reference.html#dota2api.src.parse.hero_id">[docs]</a><span class="k">def</span> <span class="nf">hero_id</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the lobby, will be available as ``hero_name``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;players&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">hero</span> <span class="ow">in</span> <span class="n">heroes</span><span class="p">[</span><span class="s">&#39;heroes&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">hero</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">[</span><span class="s">&#39;hero_id&#39;</span><span class="p">]:</span>
+                <span class="n">player</span><span class="p">[</span><span class="s">u&#39;hero_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hero</span><span class="p">[</span><span class="s">&#39;localized_name&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<div class="viewcode-block" id="item_id"><a class="viewcode-back" href="../../../reference.html#dota2api.src.parse.item_id">[docs]</a><span class="k">def</span> <span class="nf">item_id</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,</span>
+<span class="sd">    ``item_2_name`` and so on</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dict_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;item_0&#39;</span><span class="p">,</span> <span class="s">&#39;item_1&#39;</span><span class="p">,</span> <span class="s">&#39;item_2&#39;</span><span class="p">,</span>
+                 <span class="s">&#39;item_3&#39;</span><span class="p">,</span> <span class="s">&#39;item_4&#39;</span><span class="p">,</span> <span class="s">&#39;item_5&#39;</span><span class="p">]</span>
+    <span class="n">new_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;item_0_name&#39;</span><span class="p">,</span> <span class="s">u&#39;item_1_name&#39;</span><span class="p">,</span> <span class="s">u&#39;item_2_name&#39;</span><span class="p">,</span>
+                <span class="s">u&#39;item_3_name&#39;</span><span class="p">,</span> <span class="s">u&#39;item_4_name&#39;</span><span class="p">,</span> <span class="s">u&#39;item_5_name&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;players&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">newkey</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">izip</span><span class="p">(</span><span class="n">dict_keys</span><span class="p">,</span> <span class="n">new_keys</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s">&#39;items&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="n">player</span><span class="p">[</span><span class="n">newkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">,</span>
+                                                          <span class="s">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<div class="viewcode-block" id="lobby_type"><a class="viewcode-back" href="../../../reference.html#dota2api.src.parse.lobby_type">[docs]</a><span class="k">def</span> <span class="nf">lobby_type</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the lobby, will be available as ``lobby_type``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">lobby</span> <span class="ow">in</span> <span class="n">lobbies</span><span class="p">[</span><span class="s">&#39;lobbies&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">lobby</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;lobby_type&#39;</span><span class="p">]:</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">u&#39;lobby_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lobby</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<div class="viewcode-block" id="game_mode"><a class="viewcode-back" href="../../../reference.html#dota2api.src.parse.game_mode">[docs]</a><span class="k">def</span> <span class="nf">game_mode</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the lobby, will be available as ``game_mode_name``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">[</span><span class="s">&#39;modes&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">mode</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;game_mode&#39;</span><span class="p">]:</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">u&#39;game_mode_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mode</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<div class="viewcode-block" id="cluster"><a class="viewcode-back" href="../../../reference.html#dota2api.src.parse.cluster">[docs]</a><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the lobby, will be available as ``cluster_name``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">[</span><span class="s">&#39;regions&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">reg</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;cluster&#39;</span><span class="p">]:</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">u&#39;cluster_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<span class="k">def</span> <span class="nf">load_json_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">inp_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s">&quot;..&quot;</span><span class="p">,</span>
+                                                    <span class="s">&quot;ref&quot;</span><span class="p">,</span>
+                                                    <span class="n">file_name</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inp_file</span>
+    
+<span class="c"># Load the files into memory as a response</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;heroes.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">heroes_json</span><span class="p">:</span>
+    <span class="n">heroes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">heroes_json</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;items.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">items_json</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">items_json</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;abilities.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">abilities_json</span><span class="p">:</span>
+    <span class="n">abilities</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">abilities_json</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;lobbies.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">lobbies_json</span><span class="p">:</span>
+    <span class="n">lobbies</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lobbies_json</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;modes.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">modes_json</span><span class="p">:</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">modes_json</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">load_json_file</span><span class="p">(</span><span class="s">&quot;regions.json&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">regions_json</span><span class="p">:</span>
+    <span class="n">regions</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">regions_json</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">dota2api 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../dota2api.html" >dota2api</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, Joshua Duffy.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

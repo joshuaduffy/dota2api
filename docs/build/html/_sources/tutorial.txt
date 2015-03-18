@@ -57,10 +57,6 @@ The responses are then returned in a ``dict``:
     >>> match['radiant_win']
     False
 
-*********
-API Calls
-*********
-
 Parameters can be used to filter the results. They're all listed in the :doc:`Library Reference </reference>`
 
 *****************
@@ -92,7 +88,9 @@ Exceptions
 **********
 
 ``APIError`` will be raised if an error message is returned by the API.
+
 ``APITimeoutError`` will be raised you're making too many requests or the API itself is down.
+
 ``APIAuthenticationError`` will be raised if you're using an invalid API key.
 
 
