@@ -5,6 +5,8 @@
 
 import unittest
 import os
+from time import sleep
+
 
 import dota2api
 
@@ -22,5 +24,6 @@ class UserTests(unittest.TestCase):
         self.assertEquals(len(result['matches']), 10)
         # Can we get each match
         for match in result['matches']:
+            sleep(1)  # To stop the timeout error
             self.assertEqual(type(self.api_test.get_match_details(
                               match_id=match['match_id']).dict), type(dict()))
