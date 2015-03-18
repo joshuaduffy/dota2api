@@ -69,7 +69,9 @@ class Initialise(object):
         url = self.__build_url(src.urls.GET_MATCH_HISTORY, **kwargs)
         req = self.executor(url)
         if not self.__check_http_err(req.status_code):
-            return src.response.Dota2Response(req.json()['result'], url)
+            response = src.response.Dota2Dict(req.json()['result'])
+            response.url = url
+            return response
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a dota 2 match

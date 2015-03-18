@@ -6,6 +6,10 @@
 import parse
 
 
+class Dota2Dict(dict):
+    pass
+
+
 class Dota2Response(object):
     """Generic response"""
     def __init__(self, response, url):
