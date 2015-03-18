@@ -23,4 +23,4 @@ class UserTests(unittest.TestCase):
         # Can we get each match
         for match in result['matches']:
             self.assertEqual(type(self.api_test.get_match_details(
-                              match_id=match['match_id'])), type(dict()))
+                             match_id=match['match_id'])), type(dict()))
