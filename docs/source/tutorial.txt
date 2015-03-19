@@ -41,7 +41,7 @@ If not you'll need to pass it into the constructor:
     >>> api = dota2api.Initialise("45735474375437457457")
 
 *********
-API Calls
+API calls
 *********
 
 The functions are mapped to API calls:
@@ -60,17 +60,17 @@ The responses are then returned in a ``dict``:
 Parameters can be used to filter the results. They're all listed in the :doc:`Library Reference </reference>`
 
 *****************
-Get Match History
+Get match history
 *****************
 
 You can use the ``account_id`` parameter to filter the results for a specific user.
 
 .. code-block:: python
 
-    >>> match = api.get_match_details(account_id=76482434)
+    >>> hist = api.get_match_history(account_id=76482434)
 
 *****************
-Get Match Details
+Get match details
 *****************
 
 .. code-block:: python
@@ -78,7 +78,7 @@ Get Match Details
     >>> match = api.get_match_details(match_id=1000193456)
 
 ***************
-Other API Calls
+Other API calls
 ***************
 
 Listed in the :doc:`Library Reference </reference>`

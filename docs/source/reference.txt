@@ -5,9 +5,9 @@ Library Reference
 This section covers the ``dota2api`` package, the ``parse`` module and the ``exceptions`` used.
 
 
-********
-dota2api
-********
+***
+API
+***
 
 .. automodule:: dota2api
    :members:
