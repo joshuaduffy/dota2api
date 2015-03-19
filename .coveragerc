@@ -1,0 +1,19 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+
+omit =
+    /opt/*
+    */site-packages/*
+    dota2api/ref/*
+    dota2api/src/__init__py
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Don't complain if non-runnable code isn't run:
+    if 0:
+    if __name__ == .__main__.:
+
+[html]
+directory = cover
