@@ -109,3 +109,69 @@ The following is available for team matches only:
 * ``dire_name``
 * ``dire_logo``
 * ``dire_team_complete``
+
+********************
+get_league_listing()
+********************
+
+Returns a dictionary with a list of ``leagues`` within.
+
+* ``leagues``
+    * ``name``
+    * ``leagueid``
+    * ``description``
+    * ``tournament_url``
+
+***********************
+get_live_league_games()
+***********************
+
+Returns a dictionary with a list of ``leagues`` within.
+
+* ``games``
+    * ``players``
+
+        * ``account_id``
+        * ``name``
+        * ``hero_id``
+        * ``team``
+
+    * ``radiant_team``
+
+        * ``team_name``
+        * ``team_id``
+        * ``team_logo``
+        * ``complete``
+
+    * ``dire_team``
+        * ``team_name``
+        * ``team_id``
+        * ``team_logo``
+        * ``complete``
+
+    * ``lobby_id``
+    * ``spectators``
+    * ``tower_state``
+    * ``league_id``
+
+**************************
+get_team_info_by_team_id()
+**************************
+
+* ``teams``
+    * ``team_id``
+    * ``name``
+    * ``tag``
+    * ``time_created``
+    * ``rating``
+    * ``logo``
+    * ``logo_sponsor``
+    * ``country_code``
+    * ``url``
+    * ``games_played_with_current_roster``
+    * ``player_0_account_id``
+    * ``player_1_account_id``
+    * ``player_3_account_id``
+    * ``player_4_account_id``
+    * ``player_5_account_id``
+    * ``admin_account_id``

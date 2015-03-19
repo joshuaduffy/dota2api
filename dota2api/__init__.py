@@ -61,7 +61,7 @@ class Initialise(object):
         :param matches_requested: (int, optional) defaults to ``100``
         :param tournament_games_only: (str, optional) limit results to
             tournament matches only
-        :return: dictionary of matches``
+        :return: dictionary of matches
         """
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
@@ -74,7 +74,7 @@ class Initialise(object):
         """Returns a dictionary containing the details for a dota 2 match
 
         :param match_id: (int, optional)
-        :return: dictionary of matches``
+        :return: dictionary of matches
         """
         if 'match_id' not in kwargs:
             kwargs['match_id'] = match_id
@@ -86,7 +86,7 @@ class Initialise(object):
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
 
-        :return: dictionary of ticketed leagues``
+        :return: dictionary of ticketed leagues
         """
         url = self.__build_url(urls.GET_LEAGUE_LISTING)
         req = self.executor(url)
@@ -96,7 +96,7 @@ class Initialise(object):
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
 
-        :return: dictionary of live games``
+        :return: dictionary of live games
         """
         url = self.__build_url(urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
@@ -108,7 +108,7 @@ class Initialise(object):
 
         :param start_at_team_id: (int, optional)
         :param teams_requested: (int, optional)
-        :return: dictionary of teams``
+        :return: dictionary of teams
         """
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
@@ -121,7 +121,7 @@ class Initialise(object):
         """Returns a dictionary containing a player summaries
 
         :param steamids: (list) list of ``64-bit`` steam ids
-        :return: dictionary of player summaries``
+        :return: dictionary of player summaries
         """
         if 'steamids' not in kwargs:
             kwargs['steamids'] = steamids
@@ -133,7 +133,7 @@ class Initialise(object):
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
 
-        :return: dictionary of heroes``
+        :return: dictionary of heroes
         """
         url = self.__build_url(urls.GET_HEROES)
         req = self.executor(url)
@@ -143,7 +143,7 @@ class Initialise(object):
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
 
-        :return: dictionary of items``
+        :return: dictionary of items
         """
         url = self.__build_url(urls.GET_GAME_ITEMS)
         req = self.executor(url)
@@ -154,7 +154,7 @@ class Initialise(object):
         """Returns a dictionary that includes community funded tournament prize pools
 
         :param leagueid: (int, optional)
-        :return: dictionary of prize pools``
+        :return: dictionary of prize pools
         """
         if 'leagueid' not in kwargs:
             kwargs['leagueid'] = leagueid
