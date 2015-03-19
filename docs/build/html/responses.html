@@ -35,6 +35,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="reference.html" title="Library Reference"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -52,6 +55,18 @@
   <div class="section" id="responses">
 <h1>Responses<a class="headerlink" href="#responses" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the dictionary structure of each response.</p>
+<p>Every response has a number of attributes you can use. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_match_details</span><span class="p">(</span><span class="n">match_id</span><span class="o">=</span><span class="mi">1000193456</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following will return the URL constructed by the library:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span><span class="o">.</span><span class="n">url</span>
+</pre></div>
+</div>
+<p>The following will return the response as raw json:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
 <div class="section" id="get-match-history">
 <h2>get_match_history()<a class="headerlink" href="#get-match-history" title="Permalink to this headline">¶</a></h2>
 <p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">players</span></tt> within.</p>
@@ -357,6 +372,54 @@
 </li>
 </ul>
 </div>
+<div class="section" id="get-heroes">
+<h2>get_heroes()<a class="headerlink" href="#get-heroes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">count</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">status</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">heroes</span></tt></p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">localized_name</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="get-game-items">
+<h2>get_game_items()<a class="headerlink" href="#get-game-items" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">count</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">status</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">items</span></tt></p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">cost</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">localized_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">recipe</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">secret_shop</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">side_shop</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="get-tournament-prize-pool">
+<h2>get_tournament_prize_pool()<a class="headerlink" href="#get-tournament-prize-pool" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">league_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">prizepool</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">status</span></tt></li>
+</ul>
+</div>
 </div>
 
 
@@ -374,6 +437,9 @@
 <li><a class="reference internal" href="#get-live-league-games">get_live_league_games()</a></li>
 <li><a class="reference internal" href="#get-team-info-by-team-id">get_team_info_by_team_id()</a></li>
 <li><a class="reference internal" href="#get-player-summaries">get_player_summaries()</a></li>
+<li><a class="reference internal" href="#get-heroes">get_heroes()</a></li>
+<li><a class="reference internal" href="#get-game-items">get_game_items()</a></li>
+<li><a class="reference internal" href="#get-tournament-prize-pool">get_tournament_prize_pool()</a></li>
 </ul>
 </li>
 </ul>
@@ -412,6 +478,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="reference.html" title="Library Reference"
              >next</a> |</li>

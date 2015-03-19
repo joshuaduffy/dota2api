@@ -218,3 +218,39 @@ Returns a dictionary with a list of ``players`` within.
     * ``realname``
     * ``steamid``
     * ``timecreated``
+
+************
+get_heroes()
+************
+
+* ``count``
+* ``status``
+* ``heroes``
+
+    * ``id``
+    * ``name``
+    * ``localized_name``
+
+****************
+get_game_items()
+****************
+
+* ``count``
+* ``status``
+* ``items``
+
+    * ``id``
+    * ``name``
+    * ``cost``
+    * ``localized_name``
+    * ``recipe``
+    * ``secret_shop``
+    * ``side_shop``
+
+***************************
+get_tournament_prize_pool()
+***************************
+
+* ``league_id``
+* ``prizepool``
+* ``status``

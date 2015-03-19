@@ -4,6 +4,24 @@ Responses
 
 This section describes the dictionary structure of each response.
 
+Every response has a number of attributes you can use. For example:
+
+.. code-block:: python
+
+    >>> match = api.get_match_details(match_id=1000193456)
+
+The following will return the URL constructed by the library:
+
+.. code-block:: python
+
+    >>> match.url
+
+The following will return the response as raw json:
+
+.. code-block:: python
+
+    >>> match.json
+
 *******************
 get_match_history()
 *******************
@@ -200,3 +218,39 @@ Returns a dictionary with a list of ``players`` within.
     * ``realname``
     * ``steamid``
     * ``timecreated``
+
+************
+get_heroes()
+************
+
+* ``count``
+* ``status``
+* ``heroes``
+
+    * ``id``
+    * ``name``
+    * ``localized_name``
+
+****************
+get_game_items()
+****************
+
+* ``count``
+* ``status``
+* ``items``
+
+    * ``id``
+    * ``name``
+    * ``cost``
+    * ``localized_name``
+    * ``recipe``
+    * ``secret_shop``
+    * ``side_shop``
+
+***************************
+get_tournament_prize_pool()
+***************************
+
+* ``league_id``
+* ``prizepool``
+* ``status``
