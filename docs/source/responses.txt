@@ -67,7 +67,7 @@ Returns a dictionary with a list of ``players`` within.
         * ``time``
         * ``level``
 
-    * ``additional_units`` Only available if the player has a additional unit (ie Lone Druids Spirit Bear)
+    * ``additional_units`` - Only available if the player has a additional unit (ie Lone Druids Spirit Bear)
 
         * ``unitname``
         * ``item_0``
@@ -99,7 +99,7 @@ Returns a dictionary with a list of ``players`` within.
 * ``game_mode``
 * ``game_mode_name``
 
-The following is available for team matches only:
+The following are available for team matches only:
 
 * ``radiant_name``
 * ``radiant_logo``

@@ -8,7 +8,7 @@
     
     <title>Tutorial &mdash; dota2api 1 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,30 +27,27 @@
     <link rel="next" title="Responses" href="responses.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="responses.html" title="Responses"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
@@ -61,7 +58,7 @@
 </div>
 <div class="section" id="d2-api-environment-variable">
 <h2>D2_API Environment Variable<a class="headerlink" href="#d2-api-environment-variable" title="Permalink to this headline">¶</a></h2>
-<p>You can set the <code class="docutils literal"><span class="pre">D2_API_KEY</span></code> environment variable to save entering it all the time.</p>
+<p>You can set the <tt class="docutils literal"><span class="pre">D2_API_KEY</span></tt> environment variable to save entering it all the time.</p>
 <p>For example, in Linux:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span> <span class="nb">export </span><span class="nv">D2_API_KEY</span><span class="o">=</span>83247983248793298732
 </pre></div>
@@ -86,7 +83,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_match_details</span><span class="p">(</span><span class="n">match_id</span><span class="o">=</span><span class="mi">1000193456</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The responses are then returned in a <code class="docutils literal"><span class="pre">dict</span></code>:</p>
+<p>The responses are then returned in a <tt class="docutils literal"><span class="pre">dict</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span><span class="p">[</span><span class="s">&#39;radiant_win&#39;</span><span class="p">]</span>
 <span class="go">False</span>
 </pre></div>
@@ -95,7 +92,7 @@
 </div>
 <div class="section" id="get-match-history">
 <h2>Get Match History<a class="headerlink" href="#get-match-history" title="Permalink to this headline">¶</a></h2>
-<p>You can use the <code class="docutils literal"><span class="pre">account_id</span></code> parameter to filter the results for a specific user.</p>
+<p>You can use the <tt class="docutils literal"><span class="pre">account_id</span></tt> parameter to filter the results for a specific user.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">match</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_match_details</span><span class="p">(</span><span class="n">account_id</span><span class="o">=</span><span class="mi">76482434</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -112,9 +109,9 @@
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">APIError</span></code> will be raised if an error message is returned by the API.</p>
-<p><code class="docutils literal"><span class="pre">APITimeoutError</span></code> will be raised you&#8217;re making too many requests or the API itself is down.</p>
-<p><code class="docutils literal"><span class="pre">APIAuthenticationError</span></code> will be raised if you&#8217;re using an invalid API key.</p>
+<p><tt class="docutils literal"><span class="pre">APIError</span></tt> will be raised if an error message is returned by the API.</p>
+<p><tt class="docutils literal"><span class="pre">APITimeoutError</span></tt> will be raised you&#8217;re making too many requests or the API itself is down.</p>
+<p><tt class="docutils literal"><span class="pre">APIAuthenticationError</span></tt> will be raised if you&#8217;re using an invalid API key.</p>
 </div>
 </div>
 
@@ -122,7 +119,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -145,14 +142,12 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="responses.html"
                         title="next chapter">Responses</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/tutorial.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -169,27 +164,24 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="responses.html" title="Responses"
              >next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, Joshua Duffy.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

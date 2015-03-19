@@ -8,7 +8,7 @@
     
     <title>Responses &mdash; dota2api 1 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,60 +27,57 @@
     <link rel="next" title="Library Reference" href="reference.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="reference.html" title="Library Reference"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="responses">
 <h1>Responses<a class="headerlink" href="#responses" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the dictionary structure of each response.</p>
 <div class="section" id="get-match-history">
 <h2>get_match_history()<a class="headerlink" href="#get-match-history" title="Permalink to this headline">¶</a></h2>
-<p>Returns a dictionary with a list of <code class="docutils literal"><span class="pre">players</span></code> within.</p>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">players</span></tt> within.</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">num_results</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">num_results</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">total_results</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">total_results</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">results_remaining</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">results_remaining</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">matches</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">matches</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">match_id</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_id</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">match_seq_num</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_seq_num</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">start_time</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">start_time</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">lobby_type</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_type</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">players</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">players</span></tt></p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">account_id</span></code></li>
-<li><code class="docutils literal"><span class="pre">player_slot</span></code></li>
-<li><code class="docutils literal"><span class="pre">hero_id</span></code></li>
+<li><tt class="docutils literal"><span class="pre">account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_slot</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">hero_id</span></tt></li>
 </ul>
 </div></blockquote>
 </li>
@@ -88,77 +85,90 @@
 </div>
 <div class="section" id="get-match-details">
 <h2>get_match_details()<a class="headerlink" href="#get-match-details" title="Permalink to this headline">¶</a></h2>
-<p>Returns a dictionary with a list of <code class="docutils literal"><span class="pre">players</span></code> within.</p>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">players</span></tt> within.</p>
 <ul>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">players</span></code></dt>
+<dt><tt class="docutils literal"><span class="pre">players</span></tt></dt>
 <dd><ul class="first last">
-<li><p class="first"><code class="docutils literal"><span class="pre">account_id</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">account_id</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">player_slot</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">player_slot</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">hero_id</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_id</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">hero_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_0</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_0</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_0_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_0_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_1</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_1</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_1_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_1_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_2</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_2</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_2_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_2_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_3</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_3</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_3_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_3_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_4</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_4</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_4_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_4_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_5</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_5</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">item_5_name</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_5_name</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">kills</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">kills</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">deaths</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">deaths</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">assists</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">assists</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">leaver_status</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">leaver_status</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">gold</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">last_hits</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">last_hits</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">denies</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">denies</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">gold_per_min</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold_per_min</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">xp_per_min</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">xp_per_min</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">gold_spent</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold_spent</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">hero_damage</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_damage</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">tower_damage</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_damage</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">hero_healing</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_healing</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">level</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">level</span></tt></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">ability_upgrades</span></code></p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">ability_upgrades</span></tt></p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">ability</span></code></li>
-<li><code class="docutils literal"><span class="pre">time</span></code></li>
-<li><code class="docutils literal"><span class="pre">level</span></code></li>
+<li><tt class="docutils literal"><span class="pre">ability</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">time</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">level</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">additional_units</span></tt> - Only available if the player has a additional unit (ie Lone Druids Spirit Bear)</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">unitname</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_0</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_2</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_3</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_4</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_5</span></tt></li>
 </ul>
 </div></blockquote>
 </li>
@@ -166,56 +176,185 @@
 </dd>
 </dl>
 </li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">season</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">radiant_win</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">duration</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">start_time</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_id</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_seq_num</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_status_dire</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">barracks_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">barracks_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">cluster</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">cluster_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">first_blood_time</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_type</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">human_players</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">leagueid</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">positive_votes</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">positive_votes</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">game_mode</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">game_mode_name</span></tt></p>
+</li>
 </ul>
-<p>The following is available if the player has a additional unit (ie Lone Druids Spirit Bear)</p>
-<blockquote>
-<div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">additional_units</span></code></p>
+<p>The following are available for team matches only:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">radiant_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">radiant_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">radiant_team_complete</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_team_complete</span></tt></li>
+</ul>
+</div>
+<div class="section" id="get-league-listing">
+<h2>get_league_listing()<a class="headerlink" href="#get-league-listing" title="Permalink to this headline">¶</a></h2>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">leagues</span></tt> within.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">leagues</span></tt></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">leagueid</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">description</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tournament_url</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="get-live-league-games">
+<h2>get_live_league_games()<a class="headerlink" href="#get-live-league-games" title="Permalink to this headline">¶</a></h2>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">leagues</span></tt> within.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">games</span></tt></dt>
+<dd><ul class="first last">
+<li><p class="first"><tt class="docutils literal"><span class="pre">players</span></tt></p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">unitname</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_0</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_1</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_2</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_3</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_4</span></code></li>
-<li><code class="docutils literal"><span class="pre">item_5</span></code></li>
+<li><tt class="docutils literal"><span class="pre">account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">hero_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">team</span></tt></li>
 </ul>
 </div></blockquote>
 </li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">radiant_team</span></tt></p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">team_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">team_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">team_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">complete</span></tt></li>
 </ul>
 </div></blockquote>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">season</span></code></li>
-<li><code class="docutils literal"><span class="pre">radiant_win</span></code></li>
-<li><code class="docutils literal"><span class="pre">duration</span></code></li>
-<li><code class="docutils literal"><span class="pre">start_time</span></code></li>
-<li><code class="docutils literal"><span class="pre">match_id</span></code></li>
-<li><code class="docutils literal"><span class="pre">match_seq_num</span></code></li>
-<li><code class="docutils literal"><span class="pre">tower_status_radiant</span></code></li>
-<li><code class="docutils literal"><span class="pre">tower_status_dire</span></code></li>
-<li><code class="docutils literal"><span class="pre">barracks_status_radiant</span></code></li>
-<li><code class="docutils literal"><span class="pre">barracks_status_radiant</span></code></li>
-<li><code class="docutils literal"><span class="pre">cluster</span></code></li>
-<li><code class="docutils literal"><span class="pre">cluster_name</span></code></li>
-<li><code class="docutils literal"><span class="pre">first_blood_time</span></code></li>
-<li><code class="docutils literal"><span class="pre">lobby_type</span></code></li>
-<li><code class="docutils literal"><span class="pre">lobby_name</span></code></li>
-<li><code class="docutils literal"><span class="pre">human_players</span></code></li>
-<li><code class="docutils literal"><span class="pre">leagueid</span></code></li>
-<li><code class="docutils literal"><span class="pre">positive_votes</span></code></li>
-<li><code class="docutils literal"><span class="pre">positive_votes</span></code></li>
-<li><code class="docutils literal"><span class="pre">game_mode</span></code></li>
-<li><code class="docutils literal"><span class="pre">game_mode_name</span></code></li>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">dire_team</span></tt></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">team_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">team_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">team_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">complete</span></tt></li>
 </ul>
-<p>The following is available for team matches only:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">radiant_name</span></code></li>
-<li><code class="docutils literal"><span class="pre">radiant_logo</span></code></li>
-<li><code class="docutils literal"><span class="pre">radiant_team_complete</span></code></li>
-<li><code class="docutils literal"><span class="pre">dire_name</span></code></li>
-<li><code class="docutils literal"><span class="pre">dire_logo</span></code></li>
-<li><code class="docutils literal"><span class="pre">dire_team_complete</span></code></li>
+</dd>
+</dl>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_id</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">spectators</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_state</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">league_id</span></tt></p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="get-team-info-by-team-id">
+<h2>get_team_info_by_team_id()<a class="headerlink" href="#get-team-info-by-team-id" title="Permalink to this headline">¶</a></h2>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">teams</span></tt> within.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">teams</span></tt></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">team_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">time_created</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">rating</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">logo_sponsor</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">country_code</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">url</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">games_played_with_current_roster</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_0_account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_1_account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_3_account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_4_account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">player_5_account_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">admin_account_id</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="get-player-summaries">
+<h2>get_player_summaries()<a class="headerlink" href="#get-player-summaries" title="Permalink to this headline">¶</a></h2>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">players</span></tt> within.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">players</span></tt></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">avatarfull</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">avatarmedium</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">commentpermission</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">communityvisibilitystate</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">lastlogoff</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">loccityid</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">loccountrycode</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">locstatecode</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">personaname</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">personastate</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">personastateflags</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">primaryclanid</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">profilestate</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">profileurl</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">realname</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">steamid</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">timecreated</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
@@ -224,13 +363,17 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Responses</a><ul>
 <li><a class="reference internal" href="#get-match-history">get_match_history()</a></li>
 <li><a class="reference internal" href="#get-match-details">get_match_details()</a></li>
+<li><a class="reference internal" href="#get-league-listing">get_league_listing()</a></li>
+<li><a class="reference internal" href="#get-live-league-games">get_live_league_games()</a></li>
+<li><a class="reference internal" href="#get-team-info-by-team-id">get_team_info_by_team_id()</a></li>
+<li><a class="reference internal" href="#get-player-summaries">get_player_summaries()</a></li>
 </ul>
 </li>
 </ul>
@@ -241,14 +384,12 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="reference.html"
                         title="next chapter">Library Reference</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/responses.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/responses.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -265,27 +406,24 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="reference.html" title="Library Reference"
              >next</a> |</li>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dota2api 1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, Joshua Duffy.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
