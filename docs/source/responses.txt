@@ -156,6 +156,8 @@ Returns a dictionary with a list of ``leagues`` within.
 get_team_info_by_team_id()
 **************************
 
+Returns a dictionary with a list of ``teams`` within.
+
 * ``teams``
     * ``team_id``
     * ``name``
@@ -173,3 +175,28 @@ get_team_info_by_team_id()
     * ``player_4_account_id``
     * ``player_5_account_id``
     * ``admin_account_id``
+
+**********************
+get_player_summaries()
+**********************
+
+Returns a dictionary with a list of ``players`` within.
+
+* ``players``
+    * ``avatarfull``
+    * ``avatarmedium``
+    * ``commentpermission``
+    * ``communityvisibilitystate``
+    * ``lastlogoff``
+    * ``loccityid``
+    * ``loccountrycode``
+    * ``locstatecode``
+    * ``personaname``
+    * ``personastate``
+    * ``personastateflags``
+    * ``primaryclanid``
+    * ``profilestate``
+    * ``profileurl``
+    * ``realname``
+    * ``steamid``
+    * ``timecreated``
