@@ -19,10 +19,9 @@ class Initialise(object):
     You can also specify a ``language``
 
     :param api_key: (str) string with the ``api key``
-    :param language: (str, optional) string that defaults to ``en_us`` if
-        not set
+    :param logging: (bool, optional) set this to True for logging output
     """
-    def __init__(self, api_key=None, executor=None, language=None):
+    def __init__(self, api_key=None, executor=None, language=None, logging=None):
         if 'D2_API_KEY' in os.environ:
             self.api_key = os.environ['D2_API_KEY']
         elif api_key:
@@ -40,10 +39,15 @@ class Initialise(object):
         else:
             self.executor = executor
 
+        if logging:
+            import logging
+            logging.basicConfig(level=logging.NOTSET)  # Will log all
+            self.logger = logging.getLogger(__name__)
+
         self.__format = "json"
 
     def get_match_history(self, account_id=None, **kwargs):
-        """Returns a dictionary containing a list of the most recent dota matches
+        """Returns a dictionary containing a list of the most recent Dota matches
 
         :param account_id: (int, optional)
         :param hero_id: (int, optional)
@@ -67,11 +71,13 @@ class Initialise(object):
             kwargs['account_id'] = account_id
         url = self.__build_url(urls.GET_MATCH_HISTORY, **kwargs)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
     def get_match_details(self, match_id=None, **kwargs):
-        """Returns a dictionary containing the details for a dota 2 match
+        """Returns a dictionary containing the details for a Dota 2 match
 
         :param match_id: (int, optional)
         :return: dictionary of matches
@@ -80,6 +86,8 @@ class Initialise(object):
             kwargs['match_id'] = match_id
         url = self.__build_url(urls.GET_MATCH_DETAILS, **kwargs)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -90,6 +98,8 @@ class Initialise(object):
         """
         url = self.__build_url(urls.GET_LEAGUE_LISTING)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -100,6 +110,8 @@ class Initialise(object):
         """
         url = self.__build_url(urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -114,6 +126,8 @@ class Initialise(object):
             kwargs['start_at_team_id'] = start_at_team_id
         url = self.__build_url(urls.GET_TEAM_INFO_BY_TEAM_ID, **kwargs)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -127,6 +141,8 @@ class Initialise(object):
             kwargs['steamids'] = steamids
         url = self.__build_url(urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -137,6 +153,8 @@ class Initialise(object):
         """
         url = self.__build_url(urls.GET_HEROES)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -147,6 +165,8 @@ class Initialise(object):
         """
         url = self.__build_url(urls.GET_GAME_ITEMS)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -160,6 +180,8 @@ class Initialise(object):
             kwargs['leagueid'] = leagueid
         url = self.__build_url(urls.GET_TOURNAMENT_PRIZE_POOL, **kwargs)
         req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
