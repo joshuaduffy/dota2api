@@ -10,9 +10,9 @@ Getting an API Key
 
 Get one from `Valve`_.
 
-***************************
-D2_API Environment Variable
-***************************
+*******************************
+D2_API_KEY environment variable
+*******************************
 
 You can set the ``D2_API_KEY`` environment variable to save entering it all the time.
 
