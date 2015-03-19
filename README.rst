@@ -1,6 +1,10 @@
 dota2api: wrapper and parser
 ============================
 
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/joshuaduffy/dota2api
+   :target: https://gitter.im/joshuaduffy/dota2api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 .. image:: https://travis-ci.org/joshuaduffy/dota2api.svg
     :target: https://travis-ci.org/joshuaduffy/dota2api
 .. image:: https://readthedocs.org/projects/dota2api/badge/?version=latest
