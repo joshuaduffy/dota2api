@@ -245,13 +245,5 @@ class TestBuildDota2Dict(unittest.TestCase):
         self.assertRaises(exceptions.APIError, response.build, request, url)
 
 
-class Tests(unittest.TestCase):
-    def setUp(self):
-        pass
-
-    def test_one(self):
-        assert True
-
-
 def request_pars(*args):
     return '?' + '&'.join(args)
