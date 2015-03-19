@@ -136,7 +136,7 @@ class Initialise(object):
         :return: dictionary of heroes``
         """
         url = self.__build_url(urls.GET_HEROES)
-        req = requests.get(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -146,7 +146,7 @@ class Initialise(object):
         :return: dictionary of items``
         """
         url = self.__build_url(urls.GET_GAME_ITEMS)
-        req = requests.get(url)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
@@ -158,8 +158,8 @@ class Initialise(object):
         """
         if 'leagueid' not in kwargs:
             kwargs['leagueid'] = leagueid
-        url = self.__build_url(urls.GET_TOURNAMENT_PRIZE_POOL)
-        req = requests.get(url)
+        url = self.__build_url(urls.GET_TOURNAMENT_PRIZE_POOL, **kwargs)
+        req = self.executor(url)
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
