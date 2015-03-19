@@ -16,7 +16,7 @@ class APITest(unittest.TestCase):
         del os.environ['D2_API_KEY']
         self.api = dota2api.Initialise(self.api_key)
         match = self.api.get_match_details(match_id=988604774)
-        self.assertEqual(type(Dota2Dict), match)
+        self.assertEqual(type(Dota2Dict()), match)
         self.assertRaises(APIAuthenticationError(), dota2api.Initialise())
         # Put the key back
         os.environ['D2_API_KEY'] = str(self.api_key)
