@@ -12,7 +12,6 @@ class Dota2Dict(dict):
 
 def build(req, url):
     req_resp = req.json()
-    print req_resp
     if 'result' in req_resp:
         if 'error' in req_resp['result']:
             raise APIError(req_resp['result']['error'])
