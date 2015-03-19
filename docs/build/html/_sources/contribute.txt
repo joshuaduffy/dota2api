@@ -18,6 +18,6 @@ Documentation improvements are always welcome, I'm hoping this will be a useful 
 Bug reports
 ***********
 
-Forks or bug reports are welcome! If you spot any errors please open an issue on `GitHub`_
+Forks or bug reports are welcome! If you spot any errors in the code or documentation please open an issue on `GitHub`_.
 
 .. _`GitHub`: https://github.com/joshuaduffy/dota2api/issues

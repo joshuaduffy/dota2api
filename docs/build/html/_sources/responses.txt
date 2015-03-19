@@ -67,7 +67,7 @@ Returns a dictionary with a list of ``players`` within.
         * ``time``
         * ``level``
 
-    * ``additional_units`` - Only available if the player has a additional unit (ie Lone Druids Spirit Bear)
+    * ``additional_units`` - Only available if the player has a additional unit (ie Lone Druids Spirit Bear).
 
         * ``unitname``
         * ``item_0``
