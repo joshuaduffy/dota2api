@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.2.6"
+__version__ = "1.2.6.1"
 __licence__ = "GPL"
 
 import requests
@@ -43,6 +43,8 @@ class Initialise(object):
             import logging
             logging.basicConfig(level=logging.NOTSET)  # Will log all
             self.logger = logging.getLogger(__name__)
+        else:
+            self.logger = None
 
         self.__format = "json"
 
