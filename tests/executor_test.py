@@ -197,7 +197,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 
     def test_get_match_history_with_no_param(self):
         url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR,
-                                                            'format=json')
+                                                          'format=json')
         request = self.executor(url)
 
         self.assertEqual(request.status_code, 200)
@@ -209,7 +209,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 
     def test_get_match_history_with_limited_matches(self):
         url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR,
-                                                                 'format=json', 'matches_requested=1')
+                                                          'format=json', 'matches_requested=1')
         request = self.executor(url)
 
         self.assertEqual(request.status_code, 200)
@@ -218,7 +218,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 
     def test_get_match_history_from_only_one_player(self):
         url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR,
-                                                                 'format=json', 'matches_requested=10')
+                                                          'format=json', 'matches_requested=10')
         request = self.executor(url)
 
         self.assertEqual(request.status_code, 200)
@@ -252,7 +252,6 @@ class Tests(unittest.TestCase):
     def test_one(self):
         assert True
 
+
 def request_pars(*args):
     return '?' + '&'.join(args)
-
-

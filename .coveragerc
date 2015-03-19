@@ -6,7 +6,9 @@ omit =
     /opt/*
     */site-packages/*
     dota2api/ref/*
-    dota2api/src/__init__py
+    dota2api/src/__init__.py
+    tests/*
+    setup.py
 
 [report]
 # Regexes for lines to exclude from consideration
