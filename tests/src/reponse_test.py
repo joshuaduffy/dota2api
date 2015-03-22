@@ -58,3 +58,42 @@ class TestBuildDota2Dict(unittest.TestCase):
 
         self.assertEqual(request.status_code, 200)
         self.assertRaises(APIError, response.build, request, url)
+
+    def test_parse_hero_names_in_response(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['players'][0]['hero_name'], "Nature's Prophet")
+        self.assertEqual(build['players'][1]['hero_name'], "Naga Siren")
+        self.assertEqual(build['players'][2]['hero_name'], "Death Prophet")
+        self.assertEqual(build['players'][3]['hero_name'], "Weaver")
+        self.assertEqual(build['players'][4]['hero_name'], "Undying")
+        self.assertEqual(build['players'][5]['hero_name'], "Ember Spirit")
+        self.assertEqual(build['players'][6]['hero_name'], "Pudge")
+        self.assertEqual(build['players'][7]['hero_name'], "Meepo")
+        self.assertEqual(build['players'][8]['hero_name'], "Lich")
+        self.assertEqual(build['players'][9]['hero_name'], "Kunkka")
+
+    def test_parse_items_names_in_response(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['players'][0]['item_0_name'], "Phase Boots")
+        self.assertEqual(build['players'][0]['item_1_name'], "Invis Sword") #invis sword? rip Lothar's Edge :D
+        self.assertEqual(build['players'][0]['item_2_name'], "Dagon 5")
+        self.assertEqual(build['players'][0]['item_3_name'], "Hand Of Midas")
+        self.assertEqual(build['players'][0]['item_4_name'], "Tp Scroll")
+        self.assertEqual(build['players'][0]['item_5_name'], "Empty")
+
+    def test_parse_lobby_name_in_response(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['lobby_name'], "Public matchmaking")
+
+    def test_parse_lobby_name_in_response(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['game_mode_name'], "All pick")
+
+    def test_parse_lobby_name_in_response(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['cluster_name'], "Europe West")

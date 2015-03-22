@@ -9,64 +9,6 @@ from dota2api.src import exceptions
 from tests.utils import *
 
 
-class RequestMock(object):
-    def __init__(self, url_matcher=None):
-        self.status_code = 666
-        self.url_matcher = url_matcher
-        self.called = False
-
-    def configure_success(self):
-        self.status_code = 200
-        return self
-
-    def configure_authentication_error(self):
-        self.status_code = 403
-        return self
-
-    def configure_timeout_error(self):
-        self.status_code = 503
-        return self
-
-    def json(self):
-        return {'result': {}}
-
-    def __call__(self, url):
-        if self.url_matcher:
-            self.url_matcher.compare(url)
-        self.called = True
-        return self
-
-    def assert_called(self):
-        if not self.called:
-            raise AssertionError("The url was not called")
-
-
-class UrlMatcher(object):
-    def __init__(self, base_url, *args):
-        self.args = args
-        self.base_url = base_url
-
-    def compare(self, url):
-        if type(url) != str:
-            raise AssertionError(str(url) + ' should be a string')
-
-        if not url.startswith(self.base_url):
-            raise AssertionError(url + ' does not start with ' + self.base_url)
-
-        all_args = str(url).split('?')[1]
-        splitted_args = all_args.split("&")
-
-        for arg in self.args:
-            if arg in splitted_args:
-                splitted_args.remove(arg)
-            else:
-                raise AssertionError('The parameter ' + arg + ' is not in the url ' + url)
-
-        if splitted_args:
-            raise AssertionError("Args left: " + str(splitted_args))
-        return True
-
-
 class UrlsMatchTests(unittest.TestCase):
     def setUp(self):
         self.api = Initialise(os.environ['D2_API_KEY'])
