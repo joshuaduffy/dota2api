@@ -37,7 +37,7 @@ class RequestMock(object):
     def json(self):
         if self.json_result:
             return self.json_result
-        return {'result': {'players': 1}}
+        return {'result': {}}
 
     def configure_single_match_result(self):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
