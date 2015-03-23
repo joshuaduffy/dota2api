@@ -22,10 +22,10 @@ class Initialise(object):
     :param logging: (bool, optional) set this to True for logging output
     """
     def __init__(self, api_key=None, executor=None, language=None, logging=None):
-        if 'D2_API_KEY' in os.environ:
-            self.api_key = os.environ['D2_API_KEY']
-        elif api_key:
+        if api_key:
             self.api_key = api_key
+        elif 'D2_API_KEY' in os.environ:
+            self.api_key = os.environ['D2_API_KEY']
         else:
             raise exceptions.APIAuthenticationError()
 
