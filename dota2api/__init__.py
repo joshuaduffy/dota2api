@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.2.6.1"
+__version__ = "1.2.6.2"
 __licence__ = "GPL"
 
 import requests
@@ -67,7 +67,7 @@ class Initialise(object):
         :param matches_requested: (int, optional) defaults to ``100``
         :param tournament_games_only: (str, optional) limit results to
             tournament matches only
-        :return: dictionary of matches
+        :return: dictionary of matches, see :doc:`responses </responses>`
         """
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
@@ -78,11 +78,28 @@ class Initialise(object):
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
+    def get_match_history_by_seq_num(self, start_at_match_seq_num=None, **kwargs):
+        """Returns a dictionary containing a list of Dota matches in the order they were recorded
+
+        :param start_at_match_seq_num: (int, optional) start at matches equal to or
+            older than this match id
+        :param matches_requested: (int, optional) defaults to ``100``
+        :return: dictionary of matches, see :doc:`responses </responses>`
+        """
+        if 'start_at_match_seq_num' not in kwargs:
+            kwargs['start_at_match_seq_num'] = start_at_match_seq_num
+        url = self.__build_url(urls.GET_MATCH_HISTORY_BY_SEQ_NUM, **kwargs)
+        req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
+        if not self.__check_http_err(req.status_code):
+            return response.build(req, url)
+
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a Dota 2 match
 
         :param match_id: (int, optional)
-        :return: dictionary of matches
+        :return: dictionary of matches, see :doc:`responses </responses>`
         """
         if 'match_id' not in kwargs:
             kwargs['match_id'] = match_id
@@ -96,7 +113,7 @@ class Initialise(object):
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
 
-        :return: dictionary of ticketed leagues
+        :return: dictionary of ticketed leagues, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_LEAGUE_LISTING)
         req = self.executor(url)
@@ -108,7 +125,7 @@ class Initialise(object):
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
 
-        :return: dictionary of live games
+        :return: dictionary of live games, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
@@ -122,7 +139,7 @@ class Initialise(object):
 
         :param start_at_team_id: (int, optional)
         :param teams_requested: (int, optional)
-        :return: dictionary of teams
+        :return: dictionary of teams, see :doc:`responses </responses>`
         """
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
@@ -137,7 +154,7 @@ class Initialise(object):
         """Returns a dictionary containing a player summaries
 
         :param steamids: (list) list of ``64-bit`` steam ids
-        :return: dictionary of player summaries
+        :return: dictionary of player summaries, see :doc:`responses </responses>`
         """
         if 'steamids' not in kwargs:
             kwargs['steamids'] = steamids
@@ -151,7 +168,7 @@ class Initialise(object):
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
 
-        :return: dictionary of heroes
+        :return: dictionary of heroes, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_HEROES)
         req = self.executor(url)
@@ -163,7 +180,7 @@ class Initialise(object):
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
 
-        :return: dictionary of items
+        :return: dictionary of items, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_GAME_ITEMS)
         req = self.executor(url)
@@ -176,7 +193,7 @@ class Initialise(object):
         """Returns a dictionary that includes community funded tournament prize pools
 
         :param leagueid: (int, optional)
-        :return: dictionary of prize pools
+        :return: dictionary of prize pools, see :doc:`responses </responses>`
         """
         if 'leagueid' not in kwargs:
             kwargs['leagueid'] = leagueid

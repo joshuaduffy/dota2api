@@ -5,6 +5,7 @@
 
 BASE_URL = "https://api.steampowered.com/"
 GET_MATCH_HISTORY = "IDOTA2Match_570/GetMatchHistory/v001/"
+GET_MATCH_HISTORY_BY_SEQ_NUM = "IDOTA2Match_570/GetMatchHistoryBySequenceNum/v0001/"
 GET_MATCH_DETAILS = "IDOTA2Match_570/GetMatchDetails/v001/"
 GET_LEAGUE_LISTING = "IDOTA2Match_570/GetLeagueListing/v0001/"
 GET_LIVE_LEAGUE_GAMES = "IDOTA2Match_570/GetLiveLeagueGames/v0001/"
