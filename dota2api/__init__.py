@@ -10,6 +10,7 @@ __licence__ = "GPL"
 import requests
 import urllib
 import os
+import json
 
 from src import urls, exceptions, response, parse
 
@@ -201,6 +202,20 @@ class Initialise(object):
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
+
+    def update_game_items(self):
+        """
+        Update the item reference data via the API
+        """
+        with open(parse.load_json_file("items.json"), 'w') as items_json:
+            json.dump(self.get_game_items().json, items_json)
+
+    def update_heroes(self):
+        """
+        Update the hero reference data via the API
+        """
+        with open(parse.load_json_file("heroes.json"), 'w') as heroes_json:
+            json.dump(self.get_heroes().json, heroes_json)
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
