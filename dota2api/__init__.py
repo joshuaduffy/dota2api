@@ -208,3 +208,7 @@ class Initialise(object):
             raise exceptions.APITimeoutError()
         else:
             return False
+
+
+def convert_to_64_bit(number):
+    return number + 76561197960265728
