@@ -40,9 +40,7 @@ class Initialise(object):
             self.executor = executor
 
         if logging:
-            import logging
-            logging.basicConfig(level=logging.NOTSET)  # Will log all
-            self.logger = logging.getLogger(__name__)
+            self.logger = setup_logger()
         else:
             self.logger = None
 
@@ -229,3 +227,9 @@ class Initialise(object):
 
 def convert_to_64_bit(number):
     return number + 76561197960265728
+
+
+def setup_logger():
+    import logging
+    logging.basicConfig(level=logging.NOTSET)  # Will log all
+    return logging.getLogger(__name__)
