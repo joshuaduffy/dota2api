@@ -98,6 +98,155 @@
 </li>
 </ul>
 </div>
+<div class="section" id="get-match-history-by-seq-num">
+<h2>get_match_history_by_seq_num()<a class="headerlink" href="#get-match-history-by-seq-num" title="Permalink to this headline">¶</a></h2>
+<p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">matches</span></tt> within.</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">status</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">matches</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">players</span></tt></p>
+<blockquote>
+<div><ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">account_id</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">player_slot</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_id</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_0</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_0_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_1</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_1_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_2</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_2_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_3</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_3_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_4</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_4_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_5</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">item_5_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">kills</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">deaths</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">assists</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">leaver_status</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">last_hits</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">denies</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold_per_min</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">xp_per_min</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">gold_spent</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_damage</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_damage</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">hero_healing</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">level</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">ability_upgrades</span></tt></p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">ability</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">time</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">level</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">additional_units</span></tt> - Only available if the player has a additional unit (ie Lone Druids Spirit Bear).</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">unitname</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_0</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_2</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_3</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_4</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">item_5</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">season</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">radiant_win</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">duration</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">start_time</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_id</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">match_seq_num</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tower_status_dire</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">barracks_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">barracks_status_radiant</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">cluster</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">cluster_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">first_blood_time</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_type</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lobby_name</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">human_players</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">leagueid</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">positive_votes</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">positive_votes</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">game_mode</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">game_mode_name</span></tt></p>
+</li>
+</ul>
+<p>The following are available for team matches only:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">radiant_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">radiant_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">radiant_team_complete</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_logo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dire_team_complete</span></tt></li>
+</ul>
+</div>
 <div class="section" id="get-match-details">
 <h2>get_match_details()<a class="headerlink" href="#get-match-details" title="Permalink to this headline">¶</a></h2>
 <p>Returns a dictionary with a list of <tt class="docutils literal"><span class="pre">players</span></tt> within.</p>
@@ -432,6 +581,7 @@
   <ul>
 <li><a class="reference internal" href="#">Responses</a><ul>
 <li><a class="reference internal" href="#get-match-history">get_match_history()</a></li>
+<li><a class="reference internal" href="#get-match-history-by-seq-num">get_match_history_by_seq_num()</a></li>
 <li><a class="reference internal" href="#get-match-details">get_match_details()</a></li>
 <li><a class="reference internal" href="#get-league-listing">get_league_listing()</a></li>
 <li><a class="reference internal" href="#get-live-league-games">get_live_league_games()</a></li>

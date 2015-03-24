@@ -61,6 +61,7 @@ Documentation is available at http://dota2api.readthedocs.org/
 Supported API calls
 -------------------
 - get_match_history
+- get_match_history_by_seq_num
 - get_match_details
 - get_player_summaries
 - get_league_listing
@@ -74,7 +75,6 @@ Supported API calls
 Unsupported
 -----------
 - EconomySchema
-- GetMatchHistoryBySequenceNum
 
 Run the tests
 -------------
