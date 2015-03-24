@@ -11,16 +11,18 @@ from tests.utils import *
 
 class UrlsMatchTests(unittest.TestCase):
     def setUp(self):
-        self.api = Initialise(os.environ['D2_API_KEY'])
+        self.api = Initialise(logging=True)
 
     def test_api_authentication_error(self):
         self.api.executor = RequestMock().configure_authentication_error()
         self.assertRaises(exceptions.APIAuthenticationError, self.api.get_match_history)
+
         self.api.executor.assert_called()
 
     def test_api_timeout_error(self):
         self.api.executor = RequestMock().configure_timeout_error()
         self.assertRaises(exceptions.APITimeoutError, self.api.get_match_history)
+
         self.api.executor.assert_called()
 
     def test_get_match_history_with_no_param(self):
@@ -32,7 +34,6 @@ class UrlsMatchTests(unittest.TestCase):
 
         self.api.executor = RequestMock(matcher).configure_success()
         self.api.get_match_history()
-
         self.api.executor.assert_called()
 
     def test_get_match_history_with_limited_matches(self):
@@ -41,7 +42,6 @@ class UrlsMatchTests(unittest.TestCase):
 
         self.api.executor = RequestMock(matcher).configure_success()
         self.api.get_match_history(matches_requested=1)
-
         self.api.executor.assert_called()
 
     def test_get_match_history_from_only_one_player(self):
@@ -50,6 +50,17 @@ class UrlsMatchTests(unittest.TestCase):
 
         self.api.executor = RequestMock(matcher).configure_success()
         self.api.get_match_history(account_id=88585077, matches_requested=10)
+        self.api.executor.assert_called()
+
+    def test_get_match_history_by_seq_num(self):
+        matcher = UrlMatcher(BASE_URL + GET_MATCH_HISTORY_BY_SEQ_NUM,
+                             LANGUAGE_PAR,
+                             'start_at_match_seq_num=988604774',
+                             STEAM_ID_PAR,
+                             'format=json')
+
+        self.api.executor = RequestMock(matcher).configure_success()
+        self.api.get_match_history_by_seq_num(start_at_match_seq_num=988604774)
         self.api.executor.assert_called()
 
     def test_get_match_details_test(self):
