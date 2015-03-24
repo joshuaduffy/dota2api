@@ -42,8 +42,8 @@ class RequestMock(object):
     def configure_single_match_result(self):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
         join = os.path.join(abs_dir, "ref", "single_match_result.json")
-        with open(join) as modes_json:
-            self.json_result = json.load(modes_json)
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
         return self
 
     def __call__(self, url):
