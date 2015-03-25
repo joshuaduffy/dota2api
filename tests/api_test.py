@@ -37,5 +37,7 @@ class APITest(unittest.TestCase):
 
     def wrong_api_key_test(self):
             # Test the wrong API key
-            self.assertRaises(APIAuthenticationError,
-                              dota2api.Initialise("sdfsdfsdf").get_match_history())
+            try:
+                dota2api.Initialise("sdfsdfsdf").get_match_history()
+            except APIAuthenticationError:
+                assert True
