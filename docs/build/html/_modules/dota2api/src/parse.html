@@ -83,8 +83,7 @@
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">newkey</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">izip</span><span class="p">(</span><span class="n">dict_keys</span><span class="p">,</span> <span class="n">new_keys</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s">&#39;items&#39;</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-                    <span class="n">player</span><span class="p">[</span><span class="n">newkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">,</span>
-                                                          <span class="s">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+                    <span class="n">player</span><span class="p">[</span><span class="n">newkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;localized_name&#39;</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">response</span>
 
