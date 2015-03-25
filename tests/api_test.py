@@ -41,3 +41,17 @@ class APITest(unittest.TestCase):
                 dota2api.Initialise("sdfsdfsdf").get_match_history()
             except APIAuthenticationError:
                 assert True
+
+    def update_heroes_test(self):
+        self.api.update_heroes()
+        try:
+            self.api.get_match_details(988604774)
+        except:
+            self.fail("JSON Heroes update failed!")
+
+    def update_game_items_test(self):
+        self.api.update_game_items()
+        try:
+            self.api.get_match_details(988604774)
+        except:
+            self.fail("JSON Items update failed!")

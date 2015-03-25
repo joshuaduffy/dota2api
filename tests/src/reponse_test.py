@@ -77,11 +77,10 @@ class TestBuildDota2Dict(unittest.TestCase):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
         self.assertEqual(build['players'][0]['item_0_name'], "Phase Boots")
-        self.assertEqual(build['players'][0]['item_1_name'], "Invis Sword") #invis sword? rip Lothar's Edge :D
-        self.assertEqual(build['players'][0]['item_2_name'], "Dagon 5")
-        self.assertEqual(build['players'][0]['item_3_name'], "Hand Of Midas")
-        self.assertEqual(build['players'][0]['item_4_name'], "Tp Scroll")
-        self.assertEqual(build['players'][0]['item_5_name'], "Empty")
+        self.assertEqual(build['players'][0]['item_1_name'], "Shadow Blade")  # I think the API did a whoopsie
+        self.assertEqual(build['players'][0]['item_2_name'], "Dagon")
+        self.assertEqual(build['players'][0]['item_3_name'], "Hand of Midas")
+        self.assertEqual(build['players'][0]['item_4_name'], "Town Portal Scroll")
 
     def test_parse_lobby_name_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')

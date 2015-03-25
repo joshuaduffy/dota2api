@@ -33,8 +33,7 @@ def item_id(response):
         for key, newkey in itertools.izip(dict_keys, new_keys):
             for item in items['items']:
                 if item['id'] == player[key]:
-                    player[newkey] = item['name'].replace('_',
-                                                          ' ').title()
+                    player[newkey] = item['localized_name']
 
     return response
 

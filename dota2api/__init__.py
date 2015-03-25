@@ -41,7 +41,7 @@ class Initialise(object):
             self.executor = executor
 
         if logging:
-            self.logger = setup_logger()
+            self.logger = _setup_logger()
         else:
             self.logger = None
 
@@ -207,15 +207,13 @@ class Initialise(object):
         """
         Update the item reference data via the API
         """
-        with open(parse.load_json_file("items.json"), 'w') as items_json:
-            json.dump(self.get_game_items().json, items_json)
+        _save_dict_to_file(self.get_game_items(), "items.json")
 
     def update_heroes(self):
         """
         Update the hero reference data via the API
         """
-        with open(parse.load_json_file("heroes.json"), 'w') as heroes_json:
-            json.dump(self.get_heroes().json, heroes_json)
+        _save_dict_to_file(self.get_heroes(), "heroes.json")
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
@@ -244,7 +242,13 @@ def convert_to_64_bit(number):
     return number + 76561197960265728
 
 
-def setup_logger():
+def _setup_logger():
     import logging
     logging.basicConfig(level=logging.NOTSET)  # Will log all
     return logging.getLogger(__name__)
+
+
+def _save_dict_to_file(json_dict, file_name):
+    out_file = open(parse.load_json_file(file_name), "w")
+    json.dump(json_dict, out_file, indent=4)
+    out_file.close()
