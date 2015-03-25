@@ -10,6 +10,7 @@ __licence__ = "GPL"
 import requests
 import urllib
 import os
+import json
 
 from src import urls, exceptions, response, parse
 
@@ -40,7 +41,7 @@ class Initialise(object):
             self.executor = executor
 
         if logging:
-            self.logger = setup_logger()
+            self.logger = _setup_logger()
         else:
             self.logger = None
 
@@ -202,6 +203,18 @@ class Initialise(object):
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
+    def update_game_items(self):
+        """
+        Update the item reference data via the API
+        """
+        _save_dict_to_file(self.get_game_items(), "items.json")
+
+    def update_heroes(self):
+        """
+        Update the hero reference data via the API
+        """
+        _save_dict_to_file(self.get_heroes(), "heroes.json")
+
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""
         kwargs['key'] = self.api_key
@@ -229,7 +242,13 @@ def convert_to_64_bit(number):
     return number + 76561197960265728
 
 
-def setup_logger():
+def _setup_logger():
     import logging
     logging.basicConfig(level=logging.NOTSET)  # Will log all
     return logging.getLogger(__name__)
+
+
+def _save_dict_to_file(json_dict, file_name):
+    out_file = open(parse.load_json_file(file_name), "w")
+    json.dump(json_dict, out_file, indent=4)
+    out_file.close()
