@@ -4,8 +4,36 @@
 
 import json
 import os
-import itertools
 from exceptions import APIError
+
+
+class HistoryMatches(object):
+    def __init__(self, **kwargs):
+        self.num_results = kwargs['num_results']
+        self.total_results = kwargs['total_results']
+        self.results_remaining = kwargs['results_remaining']
+        self.matches = [HistoryMatch(**match) for match in kwargs['matches']]
+
+
+class HistoryMatch(object):
+    def __init__(self, **kwargs):
+        self.match_id = kwargs['match_id']
+        self.match_seq_num = kwargs['match_seq_num']
+        self.start_time = kwargs['start_time']
+        self.lobby_type = kwargs['lobby_type']
+        self.lobby_name = lobby_name(self.lobby_type)
+        self.radiant_team_id = kwargs['radiant_team_id']
+        self.dire_team_id = kwargs['dire_team_id']
+
+        self.players = [HistoryPlayer(**player) for player in kwargs['players']]
+
+
+class HistoryPlayer(object):
+    def __init__(self, **kwargs):
+        self.account_id = kwargs['account_id']
+        self.player_slot = kwargs['player_slot']
+        self.hero_id = kwargs['hero_id']
+        self.hero_name = hero_name(self.hero_id)
 
 
 class Match(object):
@@ -29,7 +57,7 @@ class Match(object):
         self.positive_votes = kwargs['positive_votes']
         self.negative_votes = kwargs['negative_votes']
         self.game_mode = kwargs['game_mode']
-        self.game_mode_name = game_mode(self.game_mode)
+        self.game_mode_name = game_mode_name(self.game_mode)
 
         self.players = [Player(**player_kwargs) for player_kwargs in kwargs['players']]
 
@@ -91,6 +119,9 @@ def parse_result(result):
     if 'match_id' in result and 'radiant_win' in result:
         return Match(**result)
 
+    if 'matches' in result:
+        return HistoryMatches(**result)
+    
     raise APIError("There are no parser available for the result")
 
 
@@ -120,7 +151,7 @@ def lobby_name(lobby_id):
     return [lobby['name'] for lobby in lobbies['lobbies'] if lobby['id'] == lobby_id][0]
 
 
-def game_mode(mode_id):
+def game_mode_name(mode_id):
     """
     Parse the lobby, will be available as ``game_mode_name``
     """

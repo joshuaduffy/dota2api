@@ -46,6 +46,13 @@ class RequestMock(object):
             self.json_result = json.load(match_json)
         return self
 
+    def configure_match_history(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "match_history_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
     def __call__(self, url):
         print url
         if self.url_matcher:

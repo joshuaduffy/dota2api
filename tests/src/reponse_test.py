@@ -1,7 +1,8 @@
 import unittest
+import dota2api
 from dota2api.src.urls import *
 from tests.utils import *
-from dota2api.src import response
+from dota2api.src import response, parse
 from dota2api.src.exceptions import *
 import requests
 
@@ -13,6 +14,7 @@ class TestBuildDota2Dict(unittest.TestCase):
     def test_get_match_history_with_no_param(self):
         url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=None', STEAM_ID_PAR,
                                                           'format=json')
+        print url
         request = self.executor(url)
 
         self.assertEqual(request.status_code, 200)
@@ -34,6 +36,7 @@ class TestBuildDota2Dict(unittest.TestCase):
     def test_get_match_history_from_only_one_player(self):
         url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR,
                                                           'format=json', 'matches_requested=10')
+        print url
         request = self.executor(url)
 
         self.assertEqual(request.status_code, 200)
@@ -58,6 +61,12 @@ class TestBuildDota2Dict(unittest.TestCase):
 
         self.assertEqual(request.status_code, 200)
         self.assertRaises(APIError, response.build, request, url)
+
+
+class MatchParserTest(unittest.TestCase):
+    def test_root_is_match(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+        self.assertEqual(parse.Match, type(build))
 
     def test_parse_hero_names_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
@@ -99,3 +108,29 @@ class TestBuildDota2Dict(unittest.TestCase):
         self.assertEqual(build.cluster_name, "Europe West")
 
 
+class BaseMatchParser(unittest.TestCase):
+    def setUp(self):
+        self.parsed = response.build(RequestMock().configure_match_history(), 'SomeUrl')
+
+    def test_the_root_is_history(self):
+        self.assertEqual(parse.HistoryMatches, type(self.parsed))
+
+    def test_match_history_parser(self):
+        self.assertEqual(self.parsed.num_results, 10)
+        self.assertEqual(self.parsed.total_results, 500)
+        self.assertEqual(self.parsed.results_remaining, 490)
+        self.assertEqual(len(self.parsed.matches), 10)
+
+    def test_base_match_parser(self):
+        self.assertEqual(self.parsed.matches[0].match_id, 1356101552)
+        self.assertEqual(self.parsed.matches[0].match_seq_num, 1216063230)
+        self.assertEqual(self.parsed.matches[0].start_time, 1427552454)
+        self.assertEqual(self.parsed.matches[0].lobby_type, 7)
+        self.assertEqual(self.parsed.matches[0].lobby_name, 'Ranked')
+        self.assertEqual(self.parsed.matches[0].radiant_team_id, 0)
+        self.assertEqual(self.parsed.matches[0].dire_team_id, 0)
+
+    def test_base_player_parser(self):
+        self.assertEqual(self.parsed.matches[0].players[0].account_id, 140250400)
+        self.assertEqual(self.parsed.matches[0].players[0].hero_id, 22)
+        self.assertEqual(self.parsed.matches[0].players[0].hero_name, 'Zeus')
