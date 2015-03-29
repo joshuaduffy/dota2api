@@ -20,13 +20,16 @@ class Match(object):
         self.barracks_status_radiant = kwargs['barracks_status_radiant']
         self.barracks_status_dire = kwargs['barracks_status_dire']
         self.cluster = kwargs['cluster']
+        self.cluster_name = cluster_name(self.cluster)
         self.first_blood_time = kwargs['first_blood_time']
         self.lobby_type = kwargs['lobby_type']
+        self.lobby_name = lobby_name(self.lobby_type)
         self.human_players = kwargs['human_players']
         self.leagueid = kwargs['leagueid']
         self.positive_votes = kwargs['positive_votes']
         self.negative_votes = kwargs['negative_votes']
         self.game_mode = kwargs['game_mode']
+        self.game_mode_name = game_mode(self.game_mode)
 
         self.players = [Player(**player_kwargs) for player_kwargs in kwargs['players']]
 
@@ -35,14 +38,28 @@ class Player(object):
     def __init__(self, **kwargs):
         self.account_id = kwargs["account_id"]
         self.player_slot = kwargs["player_slot"]
+
         self.hero_id = kwargs["hero_id"]
-        self.hero_name = hero_name_from_hero_id(self.hero_id)
+        self.hero_name = hero_name(self.hero_id)
+
         self.item_0 = kwargs["item_0"]
+        self.item_0_name = item_name(self.item_0)
+
         self.item_1 = kwargs["item_1"]
+        self.item_1_name = item_name(self.item_1)
+
         self.item_2 = kwargs["item_2"]
+        self.item_2_name = item_name(self.item_2)
+
         self.item_3 = kwargs["item_3"]
+        self.item_3_name = item_name(self.item_3)
+
         self.item_4 = kwargs["item_4"]
+        self.item_4_name = item_name(self.item_4)
+
         self.item_5 = kwargs["item_5"]
+        self.item_5_name = item_name(self.item_5)
+
         self.kills = kwargs["kills"]
         self.deaths = kwargs["deaths"]
         self.assists = kwargs["assists"]
@@ -77,63 +94,44 @@ def parse_result(result):
     raise APIError("There are no parser available for the result")
 
 
-def hero_name_from_hero_id(hero_id):
+def hero_name(hero_id):
     """
     Parse the lobby, will be available as ``hero_name``
     """
     return [hero['localized_name'] for hero in heroes['heroes'] if hero['id'] == hero_id][0]
 
 
-def item_id(response):
+def item_name(item_id):
     """
     Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
     ``item_2_name`` and so on
     """
-    dict_keys = ['item_0', 'item_1', 'item_2',
-                 'item_3', 'item_4', 'item_5']
-    new_keys = [u'item_0_name', u'item_1_name', u'item_2_name',
-                u'item_3_name', u'item_4_name', u'item_5_name']
-
-    for player in response['players']:
-        for key, newkey in itertools.izip(dict_keys, new_keys):
-            for item in items['items']:
-                if item['id'] == player[key]:
-                    player[newkey] = item['localized_name']
-
-    return response
+    name = [item['localized_name'] for item in items['items'] if item['id'] == item_id]
+    if name:
+        return name[0]
+    else:
+        return ''
 
 
-def lobby_type(response):
+def lobby_name(lobby_id):
     """
     Parse the lobby, will be available as ``lobby_type``
     """
-    for lobby in lobbies['lobbies']:
-        if lobby['id'] == response['lobby_type']:
-            response[u'lobby_name'] = lobby['name']
-
-    return response
+    return [lobby['name'] for lobby in lobbies['lobbies'] if lobby['id'] == lobby_id][0]
 
 
-def game_mode(response):
+def game_mode(mode_id):
     """
     Parse the lobby, will be available as ``game_mode_name``
     """
-    for mode in modes['modes']:
-        if mode['id'] == response['game_mode']:
-            response[u'game_mode_name'] = mode['name']
-
-    return response
+    return [mode['name'] for mode in modes['modes'] if mode['id'] == mode_id][0]
 
 
-def cluster(response):
+def cluster_name(region_id):
     """
     Parse the lobby, will be available as ``cluster_name``
     """
-    for reg in regions['regions']:
-        if reg['id'] == response['cluster']:
-            response[u'cluster_name'] = reg['name']
-
-    return response
+    return [region['name'] for region in regions['regions'] if region['id'] == region_id][0]
 
 
 def load_json_file(file_name):

@@ -76,25 +76,26 @@ class TestBuildDota2Dict(unittest.TestCase):
     def test_parse_items_names_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
-        self.assertEqual(build['players'][0]['item_0_name'], "Phase Boots")
-        self.assertEqual(build['players'][0]['item_1_name'], "Shadow Blade")  # I think the API did a whoopsie
-        self.assertEqual(build['players'][0]['item_2_name'], "Dagon")
-        self.assertEqual(build['players'][0]['item_3_name'], "Hand of Midas")
-        self.assertEqual(build['players'][0]['item_4_name'], "Town Portal Scroll")
+        self.assertEqual(build.players[0].item_0_name, "Phase Boots")
+        self.assertEqual(build.players[0].item_1_name, "Shadow Blade")
+        self.assertEqual(build.players[0].item_2_name, "Dagon")
+        self.assertEqual(build.players[0].item_3_name, "Hand of Midas")
+        self.assertEqual(build.players[0].item_4_name, "Town Portal Scroll")
+        self.assertEqual(build.players[0].item_5_name, "")
 
     def test_parse_lobby_name_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
-        self.assertEqual(build['lobby_name'], "Public matchmaking")
+        self.assertEqual(build.lobby_name, u"Public matchmaking")
 
-    def test_parse_lobby_name_in_response(self):
+    def test_parse_game_mode_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
-        self.assertEqual(build['game_mode_name'], "All pick")
+        self.assertEqual(build.game_mode_name, u"All Pick")
 
-    def test_parse_lobby_name_in_response(self):
+    def test_parse_cluster_name_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
-        self.assertEqual(build['cluster_name'], "Europe West")
+        self.assertEqual(build.cluster_name, "Europe West")
 
 
