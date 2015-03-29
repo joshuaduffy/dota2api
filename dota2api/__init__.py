@@ -46,6 +46,7 @@ class Initialise(object):
             self.logger = None
 
         self.__format = "json"
+        self.parser = response.build
 
     def get_match_history(self, account_id=None, **kwargs):
         """Returns a dictionary containing a list of the most recent Dota matches
@@ -75,7 +76,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_match_history_by_seq_num(self, start_at_match_seq_num=None, **kwargs):
         """Returns a dictionary containing a list of Dota matches in the order they were recorded
@@ -92,7 +93,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a Dota 2 match
@@ -107,7 +108,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
@@ -119,7 +120,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
@@ -131,7 +132,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_team_info_by_team_id(self, start_at_team_id=None, **kwargs):
         """Returns a dictionary containing a in-game teams
@@ -147,7 +148,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
@@ -162,7 +163,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
@@ -174,7 +175,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_game_items(self):
         """Returns a dictionary of in-game items, used to parse ids into localised names
@@ -186,7 +187,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def get_tournament_prize_pool(self, leagueid=None, **kwargs):
         """Returns a dictionary that includes community funded tournament prize pools
@@ -201,7 +202,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return self.parser(req, url)
 
     def update_game_items(self):
         """

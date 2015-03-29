@@ -12,6 +12,7 @@ from tests.utils import *
 class UrlsMatchTests(unittest.TestCase):
     def setUp(self):
         self.api = Initialise(logging=True)
+        self.api.parser = lambda *args: None
 
     def test_api_authentication_error(self):
         self.api.executor = RequestMock().configure_authentication_error()

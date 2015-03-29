@@ -5,16 +5,16 @@ import os
 import json
 
 import dota2api
-from dota2api.src.response import Dota2Dict
 from dota2api.src.exceptions import *
 from utils import RequestMock
+from dota2api.src.parse import *
 
 
 class APITest(unittest.TestCase):
     def setUp(self):
         self.api = dota2api.Initialise()
 
-    def no_environment_variable_set_test(self):
+    def test_no_environment_variable_set_test(self):
         # Pass the API key as a positional argument
         self.api_key = os.environ['D2_API_KEY']
         api = dota2api.Initialise(self.api_key)
@@ -23,11 +23,11 @@ class APITest(unittest.TestCase):
         mock = RequestMock()
         stored_match = mock.configure_single_match_result().json_result
         # Check the response is the same as the stored one
-        self.assertEqual(stored_match['result']['match_id'], match['match_id'])
+        self.assertEqual(stored_match['result']['match_id'], match.match_id)
         # Check it is our custom dict type
-        self.assertEqual(type(Dota2Dict()), type(match))
+        self.assertEqual(Match, type(match))
 
-    def json_loads_test(self):
+    def test_json_loads_test(self):
             # Test json function loads json
             match = self.api.get_match_details(match_id=988604774)
             try:
@@ -35,21 +35,21 @@ class APITest(unittest.TestCase):
             except ValueError:
                 self.fail("JSON does not load!")
 
-    def wrong_api_key_test(self):
+    def test_wrong_api_key_test(self):
             # Test the wrong API key
             try:
                 dota2api.Initialise("sdfsdfsdf").get_match_history()
             except APIAuthenticationError:
                 assert True
 
-    def update_heroes_test(self):
+    def test_update_heroes_test(self):
         self.api.update_heroes()
         try:
             self.api.get_match_details(988604774)
         except:
             self.fail("JSON Heroes update failed!")
 
-    def update_game_items_test(self):
+    def test_update_game_items_test(self):
         self.api.update_game_items()
         try:
             self.api.get_match_details(988604774)
