@@ -6,11 +6,6 @@ import json
 import parse
 from exceptions import *
 
-
-class Dota2Dict(dict):
-    pass
-
-
 def build(req, url):
     req_resp = req.json()
     if 'result' in req_resp:
@@ -22,23 +17,14 @@ def build(req, url):
                     raise APIError(req_resp['result']['statusDetail'])
                 except KeyError:
                     pass
-        resp = Dota2Dict(req_resp['result'])
+        resp = req_resp['result']
     elif 'response' in req_resp:
-        resp = Dota2Dict(req_resp['response'])
+        resp = req_resp['response']
     else:
-        resp = Dota2Dict(req_resp)
+        resp = req_resp
 
-    try:
-        if 'players' in resp:
-            resp = parse.hero_id(resp)
-            resp = parse.item_id(resp)
-            resp = parse.lobby_type(resp)
-            resp = parse.game_mode(resp)
-            resp = parse.cluster(resp)
-    except KeyError:
-        pass  # Only do the above for matches
+    parsed = parse.parse_result(resp)
+    parsed.url = url
+    parsed.json = json.dumps(resp, ensure_ascii=False)
 
-    resp.url = url
-    resp.json = json.dumps(resp, ensure_ascii=False)
-
-    return resp
+    return parsed

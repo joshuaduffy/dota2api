@@ -62,16 +62,16 @@ class TestBuildDota2Dict(unittest.TestCase):
     def test_parse_hero_names_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
-        self.assertEqual(build['players'][0]['hero_name'], "Nature's Prophet")
-        self.assertEqual(build['players'][1]['hero_name'], "Naga Siren")
-        self.assertEqual(build['players'][2]['hero_name'], "Death Prophet")
-        self.assertEqual(build['players'][3]['hero_name'], "Weaver")
-        self.assertEqual(build['players'][4]['hero_name'], "Undying")
-        self.assertEqual(build['players'][5]['hero_name'], "Ember Spirit")
-        self.assertEqual(build['players'][6]['hero_name'], "Pudge")
-        self.assertEqual(build['players'][7]['hero_name'], "Meepo")
-        self.assertEqual(build['players'][8]['hero_name'], "Lich")
-        self.assertEqual(build['players'][9]['hero_name'], "Kunkka")
+        self.assertEqual(build.players[0].hero_name, "Nature's Prophet")
+        self.assertEqual(build.players[1].hero_name, "Naga Siren")
+        self.assertEqual(build.players[2].hero_name, "Death Prophet")
+        self.assertEqual(build.players[3].hero_name, "Weaver")
+        self.assertEqual(build.players[4].hero_name, "Undying")
+        self.assertEqual(build.players[5].hero_name, "Ember Spirit")
+        self.assertEqual(build.players[6].hero_name, "Pudge")
+        self.assertEqual(build.players[7].hero_name, "Meepo")
+        self.assertEqual(build.players[8].hero_name, "Lich")
+        self.assertEqual(build.players[9].hero_name, "Kunkka")
 
     def test_parse_items_names_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
@@ -96,3 +96,5 @@ class TestBuildDota2Dict(unittest.TestCase):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
         self.assertEqual(build['cluster_name'], "Europe West")
+
+
