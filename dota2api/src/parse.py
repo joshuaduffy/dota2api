@@ -9,9 +9,9 @@ from exceptions import APIError
 
 class HistoryMatches(object):
     def __init__(self, **kwargs):
-        self.num_results = kwargs['num_results']
-        self.total_results = kwargs['total_results']
-        self.results_remaining = kwargs['results_remaining']
+        self.num_results = kwargs.get('num_results')
+        self.total_results = kwargs.get('total_results')
+        self.results_remaining = kwargs.get('results_remaining')
         self.matches = [HistoryMatch(**match) for match in kwargs['matches']]
 
 
@@ -22,15 +22,15 @@ class HistoryMatch(object):
         self.start_time = kwargs['start_time']
         self.lobby_type = kwargs['lobby_type']
         self.lobby_name = lobby_name(self.lobby_type)
-        self.radiant_team_id = kwargs['radiant_team_id']
-        self.dire_team_id = kwargs['dire_team_id']
+        self.radiant_team_id = kwargs.get('radiant_team_id')
+        self.dire_team_id = kwargs.get('dire_team_id')
 
         self.players = [HistoryPlayer(**player) for player in kwargs['players']]
 
 
 class HistoryPlayer(object):
     def __init__(self, **kwargs):
-        self.account_id = kwargs['account_id']
+        self.account_id = kwargs.get('account_id')
         self.player_slot = kwargs['player_slot']
         self.hero_id = kwargs['hero_id']
         self.hero_name = hero_name(self.hero_id)
@@ -129,7 +129,13 @@ def hero_name(hero_id):
     """
     Parse the lobby, will be available as ``hero_name``
     """
-    return [hero['localized_name'] for hero in heroes['heroes'] if hero['id'] == hero_id][0]
+    #print 'parsing hero' + str(hero_id)
+
+    name = [hero['localized_name'] for hero in heroes['heroes'] if hero['id'] == hero_id]
+    if name:
+        return name[0]
+    else:
+        return ''
 
 
 def item_name(item_id):
@@ -137,6 +143,7 @@ def item_name(item_id):
     Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
     ``item_2_name`` and so on
     """
+    #print 'parsing item' + str(item_id)
     name = [item['localized_name'] for item in items['items'] if item['id'] == item_id]
     if name:
         return name[0]

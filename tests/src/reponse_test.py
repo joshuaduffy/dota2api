@@ -106,31 +106,3 @@ class MatchParserTest(unittest.TestCase):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
         self.assertEqual(build.cluster_name, "Europe West")
-
-
-class BaseMatchParser(unittest.TestCase):
-    def setUp(self):
-        self.parsed = response.build(RequestMock().configure_match_history(), 'SomeUrl')
-
-    def test_the_root_is_history(self):
-        self.assertEqual(parse.HistoryMatches, type(self.parsed))
-
-    def test_match_history_parser(self):
-        self.assertEqual(self.parsed.num_results, 10)
-        self.assertEqual(self.parsed.total_results, 500)
-        self.assertEqual(self.parsed.results_remaining, 490)
-        self.assertEqual(len(self.parsed.matches), 10)
-
-    def test_base_match_parser(self):
-        self.assertEqual(self.parsed.matches[0].match_id, 1356101552)
-        self.assertEqual(self.parsed.matches[0].match_seq_num, 1216063230)
-        self.assertEqual(self.parsed.matches[0].start_time, 1427552454)
-        self.assertEqual(self.parsed.matches[0].lobby_type, 7)
-        self.assertEqual(self.parsed.matches[0].lobby_name, 'Ranked')
-        self.assertEqual(self.parsed.matches[0].radiant_team_id, 0)
-        self.assertEqual(self.parsed.matches[0].dire_team_id, 0)
-
-    def test_base_player_parser(self):
-        self.assertEqual(self.parsed.matches[0].players[0].account_id, 140250400)
-        self.assertEqual(self.parsed.matches[0].players[0].hero_id, 22)
-        self.assertEqual(self.parsed.matches[0].players[0].hero_name, 'Zeus')

@@ -46,9 +46,16 @@ class RequestMock(object):
             self.json_result = json.load(match_json)
         return self
 
-    def configure_match_history(self):
+    def configure_get_match_history_result(self):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
-        join = os.path.join(abs_dir, "ref", "match_history_result.json")
+        join = os.path.join(abs_dir, "ref", "get_match_history_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_match_history_by_sequence_num_result(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_match_history_by_sequence_num_result.json")
         with open(join) as match_json:
             self.json_result = json.load(match_json)
         return self
