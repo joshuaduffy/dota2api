@@ -70,42 +70,51 @@ class Player(object):
         self.hero_id = kwargs["hero_id"]
         self.hero_name = hero_name(self.hero_id)
 
-        self.item_0 = kwargs["item_0"]
-        self.item_0_name = item_name(self.item_0)
-
-        self.item_1 = kwargs["item_1"]
-        self.item_1_name = item_name(self.item_1)
-
-        self.item_2 = kwargs["item_2"]
-        self.item_2_name = item_name(self.item_2)
-
-        self.item_3 = kwargs["item_3"]
-        self.item_3_name = item_name(self.item_3)
-
-        self.item_4 = kwargs["item_4"]
-        self.item_4_name = item_name(self.item_4)
-
-        self.item_5 = kwargs["item_5"]
-        self.item_5_name = item_name(self.item_5)
+        self.items = []
+        self.items.append(self.load_item(0, **kwargs))
+        self.items.append(self.load_item(1, **kwargs))
+        self.items.append(self.load_item(2, **kwargs))
+        self.items.append(self.load_item(3, **kwargs))
+        self.items.append(self.load_item(4, **kwargs))
+        self.items.append(self.load_item(5, **kwargs))
 
         self.kills = kwargs["kills"]
-        self.deaths = kwargs["deaths"]
+        self.deaths = kwargs.get("deaths", kwargs.get('death'))
         self.assists = kwargs["assists"]
-        self.leaver_status = kwargs["leaver_status"]
+        self.leaver_status = kwargs.get("leaver_status")
 
         self.gold = kwargs["gold"]
         self.last_hits = kwargs["last_hits"]
         self.denies = kwargs["denies"]
         self.gold_per_min = kwargs["gold_per_min"]
         self.xp_per_min = kwargs["xp_per_min"]
-        self.gold_spent = kwargs["gold_spent"]
-        self.hero_damage = kwargs["hero_damage"]
-        self.tower_damage = kwargs["tower_damage"]
-        self.hero_healing = kwargs["hero_healing"]
+        self.gold_spent = kwargs.get("gold_spent")
+        self.hero_damage = kwargs.get("hero_damage")
+        self.tower_damage = kwargs.get("tower_damage")
+        self.hero_healing = kwargs.get("hero_healing")
         self.level = kwargs["level"]
 
+        #live player status
+        self.ultimate_state = kwargs.get('ultimate_state')
+        self.ultimate_cooldown = kwargs.get('ultimate_cooldown')
+        self.respawn_timer = kwargs.get('respawn_timer')
+        self.position_x = kwargs.get('position_x')
+        self.position_y = kwargs.get('position_y')
+        self.net_worth = kwargs.get('net_worth')
+
         self.ability_upgrades = [AbilityUpgrade(**ability_upgrade_kwargs) for ability_upgrade_kwargs in
-                                 kwargs["ability_upgrades"]]
+                                 kwargs.get("ability_upgrades", [])]
+
+        self.abilities = [AbilityLevel(**ability_kwargs) for ability_kwargs in kwargs.get('abilities', [])]
+
+    def load_item(self, index, **kwargs):
+        live_game_item_index = "item" + str(index)
+        match_history_item_index = "item_" + str(index)
+
+        item_id = kwargs.get(match_history_item_index, kwargs.get(live_game_item_index))
+        return item_id, item_name(item_id)
+
+
 
 
 class AbilityUpgrade(object):
@@ -115,13 +124,94 @@ class AbilityUpgrade(object):
         self.level = kwargs['level']
 
 
+class LeagueListing(list):
+    def __init__(self, **kwargs):
+        map(self.append, [League(**league_kwargs) for league_kwargs in kwargs['leagues']])
+
+
+class League(object):
+    def __init__(self, **kwargs):
+        self.leagueid = kwargs.get('leagueid')
+        self.name = kwargs.get('name')
+        self.tournament_url = kwargs.get('tournament_url')
+        self.description = kwargs.get('description')
+        self.itemdef = kwargs.get('itemdef')
+
+
+class LiveLeagueGames(list):
+    def __init__(self, **kwargs):
+        map(self.append, [LiveLeagueGame(**live_game_kwargs) for live_game_kwargs in kwargs['games']])
+
+
+class LiveLeagueGame(object):
+    def __init__(self, **kwargs):
+        if 'radiant_team' in kwargs:
+            self.radiant_team = LiveGameTeam(**kwargs.get('radiant_team'))
+        if 'dire_team' in kwargs:
+            self.dire_team = LiveGameTeam(**kwargs.get('dire_team'))
+        self.lobby_id = kwargs.get('lobby_id')
+        self.match_id = kwargs.get('match_id')
+        self.spectators = kwargs.get('spectators')
+        self.league_id = kwargs.get('league_id')
+        self.stream_delay_s = kwargs.get('stream_delay_s')
+        self.radiant_series_wins = kwargs.get('radiant_series_wins')
+        self.dire_series_wins = kwargs.get('dire_series_wins')
+        self.series_type = kwargs.get('series_type')
+        self.league_tier = kwargs.get('league_tier')
+        self.scoreboard = LiveGameScoreboard(**kwargs.get('scoreboard'))
+        #should we load player list on the top of the result?
+        #there are almost the same information on the scoreboard
+
+
+class LiveGameScoreboard(object):
+    def __init__(self, **kwargs):
+        self.duration = kwargs.get('duration')
+        self.roshan_respawn_timer = kwargs.get('roshan_respawn_timer')
+        self.radiant = LiveGameTeamScoreboard(**kwargs.get('radiant'))
+        self.dire = LiveGameTeamScoreboard(**kwargs.get('dire'))
+
+
+class LiveGameTeamScoreboard(object):
+    def __init__(self, **kwargs):
+        self.score = kwargs.get('score')
+        self.tower_state = kwargs.get('tower_state')
+        self.barracks_state = kwargs.get('barracks_state')
+        self.picks = [(args.get('hero_id'), hero_name(args.get('hero_id'))) for args in kwargs.get('picks', [])]
+        self.bans = [(args.get('hero_id'), hero_name(args.get('hero_id'))) for args in kwargs.get('bans', [])]
+        #here we have a problem, the abilities lvls when the result is from the live game
+        #are different json objects with the same names, when it gets converted
+        #to python dicts, only the last result stands, and I think it would be great to
+        #have this information in the Player object, instead of another list on LiveGameTeamScoreboard
+        self.players = [Player(**player_args) for player_args in kwargs.get('players')]
+
+
+class LiveGameTeam(object):
+    def __init__(self, **kwargs):
+        self.team_name = kwargs.get('team_name')
+        self.team_id = kwargs.get('team_id')
+        self.team_logo = kwargs.get('team_logo')
+        self.complete = kwargs.get('complete')
+
+
+class AbilityLevel(object):
+    def __init__(self, **kwargs):
+        self.ability_id = kwargs.get('ability_id')
+        self.ability_level = kwargs.get('ability_level')
+
+
 def parse_result(result):
     if 'match_id' in result and 'radiant_win' in result:
         return Match(**result)
 
     if 'matches' in result:
         return HistoryMatches(**result)
-    
+
+    if 'leagues' in result:
+        return LeagueListing(**result)
+
+    if 'games' in result:
+        return LiveLeagueGames(**result)
+
     raise APIError("There are no parser available for the result")
 
 

@@ -41,7 +41,7 @@ class RequestMock(object):
 
     def configure_single_match_result(self):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
-        join = os.path.join(abs_dir, "ref", "single_match_result.json")
+        join = os.path.join(abs_dir, "ref", "get_match_details_result.json")
         with open(join) as match_json:
             self.json_result = json.load(match_json)
         return self
@@ -56,6 +56,20 @@ class RequestMock(object):
     def configure_get_match_history_by_sequence_num_result(self):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
         join = os.path.join(abs_dir, "ref", "get_match_history_by_sequence_num_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_league_listing_result(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_league_listing_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_live_league_games_result(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_live_league_games_result.json")
         with open(join) as match_json:
             self.json_result = json.load(match_json)
         return self
