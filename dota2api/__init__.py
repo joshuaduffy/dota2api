@@ -208,13 +208,13 @@ class Initialise(object):
         """
         Update the item reference data via the API
         """
-        _save_dict_to_file(self.get_game_items(), "items.json")
+        _save_dict_to_file(self.get_game_items().resp, "items.json")
 
     def update_heroes(self):
         """
         Update the hero reference data via the API
         """
-        _save_dict_to_file(self.get_heroes(), "heroes.json")
+        _save_dict_to_file(self.get_heroes().resp, "heroes.json")
 
     def __build_url(self, api_call, **kwargs):
         """Builds the api query"""

@@ -94,7 +94,7 @@ class Player(object):
         self.hero_healing = kwargs.get("hero_healing")
         self.level = kwargs["level"]
 
-        #live player status
+        # live player status
         self.ultimate_state = kwargs.get('ultimate_state')
         self.ultimate_cooldown = kwargs.get('ultimate_cooldown')
         self.respawn_timer = kwargs.get('respawn_timer')
@@ -113,8 +113,6 @@ class Player(object):
 
         item_id = kwargs.get(match_history_item_index, kwargs.get(live_game_item_index))
         return item_id, item_name(item_id)
-
-
 
 
 class AbilityUpgrade(object):
@@ -159,7 +157,7 @@ class LiveLeagueGame(object):
         self.series_type = kwargs.get('series_type')
         self.league_tier = kwargs.get('league_tier')
         self.scoreboard = LiveGameScoreboard(**kwargs.get('scoreboard'))
-        #should we load player list on the top of the result?
+        # should we load player list on the top of the result?
         #there are almost the same information on the scoreboard
 
 
@@ -178,7 +176,7 @@ class LiveGameTeamScoreboard(object):
         self.barracks_state = kwargs.get('barracks_state')
         self.picks = [(args.get('hero_id'), hero_name(args.get('hero_id'))) for args in kwargs.get('picks', [])]
         self.bans = [(args.get('hero_id'), hero_name(args.get('hero_id'))) for args in kwargs.get('bans', [])]
-        #here we have a problem, the abilities lvls when the result is from the live game
+        # here we have a problem, the abilities lvls when the result is from the live game
         #are different json objects with the same names, when it gets converted
         #to python dicts, only the last result stands, and I think it would be great to
         #have this information in the Player object, instead of another list on LiveGameTeamScoreboard
@@ -199,6 +197,89 @@ class AbilityLevel(object):
         self.ability_level = kwargs.get('ability_level')
 
 
+class Teams(list):
+    def __init__(self, **kwargs):
+        map(self.append, [Team(**team_args) for team_args in kwargs['teams']])
+
+
+class Team(object):
+    def __init__(self, **kwargs):
+        self.team_id = kwargs.get('team_id')
+        self.name = kwargs.get('name')
+        self.tag = kwargs.get('tag')
+        self.time_created = kwargs.get('time_created')
+        self.rating = kwargs.get('rating')
+        self.logo = kwargs.get('logo')
+        self.logo_sponsor = kwargs.get('logo_sponsor')
+        self.country_code = kwargs.get('country_code')
+        self.url = kwargs.get('url')
+        self.games_played_with_current_roster = kwargs.get('games_played_with_current_roster')
+        self.player_0_account_id = kwargs.get('player_0_account_id')
+        self.player_1_account_id = kwargs.get('player_1_account_id')
+        self.player_2_account_id = kwargs.get('player_2_account_id')
+        self.player_3_account_id = kwargs.get('player_3_account_id')
+        self.player_4_account_id = kwargs.get('player_4_account_id')
+        self.player_5_account_id = kwargs.get('player_5_account_id')
+        self.player_6_account_id = kwargs.get('player_6_account_id')
+        self.admin_account_id = kwargs.get('admin_account_id')
+
+
+class PlayerSummaries(list):
+    def __init__(self, **kwargs):
+        map(self.append, [PlayerSummary(**summary_kwargs) for summary_kwargs in kwargs['players']])
+
+
+class PlayerSummary(object):
+    def __init__(self, **kwargs):
+        self.steamid = kwargs.get('steamid')
+        self.communityvisibilitystate = kwargs.get('communityvisibilitystate')
+        self.profilestate = kwargs.get('profilestate')
+        self.personaname = kwargs.get('personaname')
+        self.lastlogoff = kwargs.get('lastlogoff')
+        self.profileurl = kwargs.get('profileurl')
+        self.avatar = kwargs.get('avatar')
+        self.avatarmedium = kwargs.get('avatarmedium')
+        self.avatarfull = kwargs.get('avatarfull')
+        self.personastate = kwargs.get('personastate')
+        self.primaryclanid = kwargs.get('primaryclanid')
+        self.timecreated = kwargs.get('timecreated')
+        self.personastateflags = kwargs.get('personastateflags')
+
+
+class Heroes(list):
+    def __init__(self, **kwargs):
+        map(self.append, [Hero(**hero_kwargs) for hero_kwargs in kwargs['heroes']])
+
+
+class Hero(object):
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('name')
+        self.id = kwargs.get('id')
+        self.localized_name = kwargs.get('localized_name')
+
+
+class Items(list):
+    def __init__(self, **kwargs):
+        map(self.append, [Item(**item_kwargs) for item_kwargs in kwargs['items']])
+
+
+class Item(object):
+    def __init__(self, **kwargs):
+        self.id = kwargs.get('id')
+        self.name = kwargs.get('name')
+        self.cost = kwargs.get('cost')
+        self.secret_shop = kwargs.get('secret_shop')
+        self.side_shop = kwargs.get('side_shop')
+        self.recipe = kwargs.get('recipe')
+        self.localized_name = kwargs.get('localized_name')
+
+
+class TournamentPrizePool(object):
+    def __init__(self, **kwargs):
+        self.prize_pool = kwargs.get('prize_pool')
+        self.league_id = kwargs.get('league_id')
+
+
 def parse_result(result):
     if 'match_id' in result and 'radiant_win' in result:
         return Match(**result)
@@ -212,6 +293,21 @@ def parse_result(result):
     if 'games' in result:
         return LiveLeagueGames(**result)
 
+    if 'teams' in result:
+        return Teams(**result)
+
+    if 'players' in result:
+        return PlayerSummaries(**result)
+
+    if 'heroes' in result:
+        return Heroes(**result)
+
+    if 'items' in result:
+        return Items(**result)
+
+    if 'prize_pool' in result:
+        return TournamentPrizePool(**result)
+
     raise APIError("There are no parser available for the result")
 
 
@@ -219,7 +315,7 @@ def hero_name(hero_id):
     """
     Parse the lobby, will be available as ``hero_name``
     """
-    #print 'parsing hero' + str(hero_id)
+    # print 'parsing hero' + str(hero_id)
 
     name = [hero['localized_name'] for hero in heroes['heroes'] if hero['id'] == hero_id]
     if name:
@@ -233,7 +329,7 @@ def item_name(item_id):
     Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
     ``item_2_name`` and so on
     """
-    #print 'parsing item' + str(item_id)
+    # print 'parsing item' + str(item_id)
     name = [item['localized_name'] for item in items['items'] if item['id'] == item_id]
     if name:
         return name[0]
@@ -265,10 +361,10 @@ def cluster_name(region_id):
 def load_json_file(file_name):
     inp_file = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "..",
-                                                    "ref",
-                                                    file_name))
+        "ref",
+        file_name))
     return inp_file
-    
+
 # Load the files into memory as a response
 with open(load_json_file("heroes.json")) as heroes_json:
     heroes = json.load(heroes_json)

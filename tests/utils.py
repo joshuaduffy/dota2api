@@ -74,6 +74,13 @@ class RequestMock(object):
             self.json_result = json.load(match_json)
         return self
 
+    def configure_get_team_info_by_team_id(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_team_info_by_team_id_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
     def __call__(self, url):
         print url
         if self.url_matcher:
@@ -84,6 +91,34 @@ class RequestMock(object):
     def assert_called(self):
         if not self.called:
             raise AssertionError("The url was not called")
+
+    def configure_get_player_summaries(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_player_summaries_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_heroes(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_heroes_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_game_items(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_game_items_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
+
+    def configure_get_tournament_prize_pool(self):
+        abs_dir = os.path.abspath(os.path.dirname(__file__))
+        join = os.path.join(abs_dir, "ref", "get_tournament_prize_pool_result.json")
+        with open(join) as match_json:
+            self.json_result = json.load(match_json)
+        return self
 
 
 class UrlMatcher(object):

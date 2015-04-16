@@ -1,4 +1,3 @@
-
 from unittest import TestCase
 import dota2api
 import utils
@@ -12,17 +11,17 @@ class APITest(TestCase):
 
     def test_get_match_history_test(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_MATCH_HISTORY,
-                     utils.LANGUAGE_PAR,
-                     'account_id=None',
-                     utils.STEAM_ID_PAR,
-                     'format=json')
+                                   utils.LANGUAGE_PAR,
+                                   'account_id=None',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
         self.executor.url_matcher = matcher
         self.executor.configure_get_match_history_result()
 
         history = self.api.get_match_history()
 
         self.api.executor.assert_called()
-        
+
         self.assertEqual(history.num_results, 10)
         self.assertEqual(history.total_results, 500)
         self.assertEqual(history.results_remaining, 490)
@@ -42,10 +41,10 @@ class APITest(TestCase):
 
     def test_get_match_history_by_sequence_num(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_MATCH_HISTORY_BY_SEQ_NUM,
-                     utils.LANGUAGE_PAR,
-                     'start_at_match_seq_num=None',
-                     utils.STEAM_ID_PAR,
-                     'format=json')
+                                   utils.LANGUAGE_PAR,
+                                   'start_at_match_seq_num=None',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
 
         self.executor.url_matcher = matcher
         self.executor.configure_get_match_history_by_sequence_num_result()
@@ -70,10 +69,10 @@ class APITest(TestCase):
 
     def test_get_match_details(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_MATCH_DETAILS,
-                     utils.LANGUAGE_PAR,
-                     'match_id=123',
-                     utils.STEAM_ID_PAR,
-                     'format=json')
+                                   utils.LANGUAGE_PAR,
+                                   'match_id=123',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
 
         self.executor.url_matcher = matcher
         self.executor.configure_single_match_result()
@@ -108,9 +107,9 @@ class APITest(TestCase):
 
     def test_get_league_listing(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_LEAGUE_LISTING,
-                     utils.LANGUAGE_PAR,
-                     utils.STEAM_ID_PAR,
-                     'format=json')
+                                   utils.LANGUAGE_PAR,
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
 
         self.executor.url_matcher = matcher
         self.executor.configure_get_league_listing_result()
@@ -124,14 +123,15 @@ class APITest(TestCase):
         self.assertEqual(history[0].leagueid, 1212)
         self.assertEqual(history[0].name, 'Dota 2 Just For Fun')
         self.assertEqual(history[0].tournament_url, 'https://binarybeast.com/xDOTA21404228/')
-        self.assertEqual(history[0].description, '64 of the best Brazilian amateur teams compete to become the winner of the first Dota 2 Just For Fun tournament. ')
+        self.assertEqual(history[0].description,
+                         '64 of the best Brazilian amateur teams compete to become the winner of the first Dota 2 Just For Fun tournament. ')
         self.assertEqual(history[0].itemdef, 10541)
 
     def test_get_live_league_games(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_LIVE_LEAGUE_GAMES,
-                     utils.LANGUAGE_PAR,
-                     utils.STEAM_ID_PAR,
-                     'format=json')
+                                   utils.LANGUAGE_PAR,
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
 
         self.executor.url_matcher = matcher
         self.executor.configure_get_live_league_games_result()
@@ -165,3 +165,125 @@ class APITest(TestCase):
 
         self.assertEqual(history[0].scoreboard.radiant.players[0].respawn_timer, 0)
 
+    def test_get_team_info_by_team_id(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID,
+                                   utils.LANGUAGE_PAR,
+                                   'start_at_team_id=1778397',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_team_info_by_team_id()
+
+        history = self.api.get_team_info_by_team_id(1778397)
+
+        self.executor.assert_called()
+
+        self.assertEqual(len(history), 100)
+        self.assertEqual(history[0].team_id, 1778397)
+        self.assertEqual(history[0].name, 'Athletic`S')
+        self.assertEqual(history[0].tag, 'A`S')
+        self.assertEqual(history[0].time_created, 1406576259)
+        self.assertEqual(history[0].rating, 'inactive')
+        self.assertEqual(history[0].logo, 25098200687093967)
+        self.assertEqual(history[0].logo_sponsor, 0)
+        self.assertEqual(history[0].url, '')
+        self.assertEqual(history[0].games_played_with_current_roster, 0)
+        self.assertEqual(history[0].player_0_account_id, 45983302)
+        self.assertEqual(history[0].player_1_account_id, 89990613)
+        self.assertEqual(history[0].player_2_account_id, 93972394)
+        self.assertEqual(history[0].player_3_account_id, 128939846)
+        self.assertEqual(history[0].player_4_account_id, None)
+        self.assertEqual(history[0].player_5_account_id, None)
+        self.assertEqual(history[0].player_4_account_id, None)
+        self.assertEqual(history[0].player_6_account_id, None)
+        self.assertEqual(history[0].admin_account_id, 45983302)
+
+    def test_get_player_summaries(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_PLAYER_SUMMARIES,
+                                   utils.LANGUAGE_PAR,
+                                   'steamids=76561198049003839',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_player_summaries()
+
+        history = self.api.get_player_summaries(dota2api.convert_to_64_bit(88738111))
+
+        self.executor.assert_called()
+
+        self.assertEqual(len(history), 1)
+        self.assertEqual(history[0].steamid, '76561198049003839')
+        self.assertEqual(history[0].communityvisibilitystate, 3)
+        self.assertEqual(history[0].profilestate, 1)
+        self.assertEqual(history[0].personaname, 'Bogs')
+        self.assertEqual(history[0].lastlogoff, 1429074263)
+        self.assertEqual(history[0].profileurl, 'http://steamcommunity.com/profiles/76561198049003839/')
+        self.assertEqual(history[0].avatar,
+                         'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59.jpg')
+        self.assertEqual(history[0].avatarmedium,
+                         'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59_medium.jpg')
+        self.assertEqual(history[0].avatarfull,
+                         'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59_full.jpg')
+        self.assertEqual(history[0].personastate, 0)
+        self.assertEqual(history[0].primaryclanid, '103582791432815637')
+        self.assertEqual(history[0].timecreated, 1316303056)
+        self.assertEqual(history[0].personastateflags, 0)
+
+    def test_get_heroes(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_HEROES,
+                                   utils.LANGUAGE_PAR,
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_heroes()
+
+        history = self.api.get_heroes()
+
+        self.executor.assert_called()
+
+        self.assertEqual(len(history), 110)
+        self.assertEqual(history[0].name, 'npc_dota_hero_antimage')
+        self.assertEqual(history[0].id, 1)
+        self.assertEqual(history[0].localized_name, 'Anti-Mage')
+
+    def test_get_game_items(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_GAME_ITEMS,
+                                   utils.LANGUAGE_PAR,
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_game_items()
+
+        history = self.api.get_game_items()
+
+        self.executor.assert_called()
+
+        self.assertEqual(len(history), 237)
+        self.assertEqual(history[0].id, 1)
+        self.assertEqual(history[0].name, 'item_blink')
+        self.assertEqual(history[0].cost, 2250)
+        self.assertEqual(history[0].secret_shop, 0)
+        self.assertEqual(history[0].side_shop, 1)
+        self.assertEqual(history[0].recipe, 0)
+        self.assertEqual(history[0].localized_name, 'Blink Dagger')
+
+    def test_get_tournament_prize_pool(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_TOURNAMENT_PRIZE_POOL,
+                                   utils.LANGUAGE_PAR,
+                                   'leagueid=1778397',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_tournament_prize_pool()
+
+        history = self.api.get_tournament_prize_pool(1778397)
+
+        self.executor.assert_called()
+
+        self.assertEqual(history.prize_pool, 0)
+        self.assertEqual(history.league_id, 1778397)

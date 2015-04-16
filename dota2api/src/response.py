@@ -6,6 +6,7 @@ import json
 import parse
 from exceptions import *
 
+
 def build(req, url):
     req_resp = req.json()
     if 'result' in req_resp:
@@ -26,5 +27,6 @@ def build(req, url):
     parsed = parse.parse_result(resp)
     parsed.url = url
     parsed.json = json.dumps(resp, ensure_ascii=False)
+    parsed.resp = resp
 
     return parsed
