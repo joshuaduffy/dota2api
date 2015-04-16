@@ -24,7 +24,7 @@ Look how easy it is...
     >>> api = dota2api.Initialise("API_KEY")
     >>> hist = api.get_match_history(account_id=41231571)
     >>> match = api.get_match_details(match_id=1000193456)
-    >>> match['radiant_win']
+    >>> match.radiant_win
     False
 
 You can even store your API key as an environment variable instead of passing it through ``Initialise()`` to save some finger work.
