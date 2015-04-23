@@ -154,7 +154,7 @@ class APITest(TestCase):
 
         self.assertEqual(len(history), 931)
 
-        self.assertEqual(history[0].leagueid, 1212)
+        self.assertEqual(history[0].league_id, 1212)
         self.assertEqual(history[0].name, 'Dota 2 Just For Fun')
         self.assertEqual(history[0].tournament_url, 'https://binarybeast.com/xDOTA21404228/')
         self.assertEqual(history[0].description,
@@ -251,22 +251,22 @@ class APITest(TestCase):
         self.executor.assert_called()
 
         self.assertEqual(len(history), 1)
-        self.assertEqual(history[0].steamid, '76561198049003839')
-        self.assertEqual(history[0].communityvisibilitystate, 3)
-        self.assertEqual(history[0].profilestate, 1)
-        self.assertEqual(history[0].personaname, 'Bogs')
-        self.assertEqual(history[0].lastlogoff, 1429074263)
-        self.assertEqual(history[0].profileurl, 'http://steamcommunity.com/profiles/76561198049003839/')
-        self.assertEqual(history[0].avatar,
+        self.assertEqual(history[0].steam_id, '76561198049003839')
+        self.assertEqual(history[0].community_visibility_state, 3)
+        self.assertEqual(history[0].profile_state, 1)
+        self.assertEqual(history[0].persona_name, 'Bogs')
+        self.assertEqual(history[0].last_logoff, 1429074263)
+        self.assertEqual(history[0].profile_url, 'http://steamcommunity.com/profiles/76561198049003839/')
+        self.assertEqual(history[0].url_avatar,
                          'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59.jpg')
-        self.assertEqual(history[0].avatarmedium,
+        self.assertEqual(history[0].url_avatar_medium,
                          'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59_medium.jpg')
-        self.assertEqual(history[0].avatarfull,
+        self.assertEqual(history[0].url_avatar_full,
                          'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28d9341fc54980fb28946201944ddab438a27a59_full.jpg')
-        self.assertEqual(history[0].personastate, 0)
-        self.assertEqual(history[0].primaryclanid, '103582791432815637')
-        self.assertEqual(history[0].timecreated, 1316303056)
-        self.assertEqual(history[0].personastateflags, 0)
+        self.assertEqual(history[0].persona_state, 0)
+        self.assertEqual(history[0].primary_clan_id, '103582791432815637')
+        self.assertEqual(history[0].time_created, 1316303056)
+        self.assertEqual(history[0].persona_state_flags, 0)
 
     def test_get_heroes(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_HEROES,

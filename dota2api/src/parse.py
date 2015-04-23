@@ -58,7 +58,7 @@ class Match(object):
         self.lobby_type = kwargs['lobby_type']
         self.lobby_name = lobby_name(self.lobby_type)
         self.human_players = kwargs['human_players']
-        self.leagueid = kwargs['leagueid']
+        self.league_id = kwargs['leagueid']
         self.positive_votes = kwargs['positive_votes']
         self.negative_votes = kwargs['negative_votes']
         self.game_mode = kwargs['game_mode']
@@ -168,14 +168,14 @@ class LeagueListing(list):
 
 class League(object):
     def __init__(self, **kwargs):
-        self.leagueid = kwargs.get('leagueid')
+        self.league_id = kwargs.get('leagueid')
         self.name = kwargs.get('name')
         self.tournament_url = kwargs.get('tournament_url')
         self.description = kwargs.get('description')
         self.itemdef = kwargs.get('itemdef')
 
     def __repr__(self):
-        return 'League id: {} name: {}'.format(self.leagueid, self.name)
+        return 'League id: {} name: {}'.format(self.league_id, self.name)
 
 
 class LiveLeagueGames(list):
@@ -291,22 +291,22 @@ class PlayerSummaries(list):
 
 class PlayerSummary(object):
     def __init__(self, **kwargs):
-        self.steamid = kwargs.get('steamid')
-        self.communityvisibilitystate = kwargs.get('communityvisibilitystate')
-        self.profilestate = kwargs.get('profilestate')
-        self.personaname = kwargs.get('personaname')
-        self.lastlogoff = kwargs.get('lastlogoff')
-        self.profileurl = kwargs.get('profileurl')
-        self.avatar = kwargs.get('avatar')
-        self.avatarmedium = kwargs.get('avatarmedium')
-        self.avatarfull = kwargs.get('avatarfull')
-        self.personastate = kwargs.get('personastate')
-        self.primaryclanid = kwargs.get('primaryclanid')
-        self.timecreated = kwargs.get('timecreated')
-        self.personastateflags = kwargs.get('personastateflags')
+        self.steam_id = kwargs.get('steamid')
+        self.community_visibility_state = kwargs.get('communityvisibilitystate')
+        self.profile_state = kwargs.get('profilestate')
+        self.persona_name = kwargs.get('personaname')
+        self.last_logoff = kwargs.get('lastlogoff')
+        self.profile_url = kwargs.get('profileurl')
+        self.url_avatar = kwargs.get('avatar')
+        self.url_avatar_medium = kwargs.get('avatarmedium')
+        self.url_avatar_full = kwargs.get('avatarfull')
+        self.persona_state = kwargs.get('personastate')
+        self.primary_clan_id = kwargs.get('primaryclanid')
+        self.time_created = kwargs.get('timecreated')
+        self.persona_state_flags = kwargs.get('personastateflags')
 
     def __repr__(self):
-        return 'Player steam_id: {} name: {}'.format(self.steamid, self.personaname)
+        return 'Player steam_id: {} name: {}'.format(self.steam_id, self.persona_name)
 
 class Heroes(list):
     def __init__(self, **kwargs):
