@@ -66,7 +66,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 class MatchParserTest(unittest.TestCase):
     def test_root_is_match(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
-        self.assertEqual(parse.Match, type(build))
+        self.assertEqual(parse.DetailMatch, type(build))
 
     def test_parse_hero_names_in_response(self):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')

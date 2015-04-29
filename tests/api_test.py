@@ -25,7 +25,7 @@ class APITest(unittest.TestCase):
         # Check the response is the same as the stored one
         self.assertEqual(stored_match['result']['match_id'], match.match_id)
         # Check it is our custom dict type
-        self.assertEqual(Match, type(match))
+        self.assertEqual(DetailMatch, type(match))
 
     def test_json_loads_test(self):
             # Test json function loads json

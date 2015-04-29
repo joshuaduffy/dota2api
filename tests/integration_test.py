@@ -3,6 +3,7 @@ import dota2api
 import utils
 from dota2api.src.urls import *
 from dota2api.src.exceptions import *
+from dota2api.src.parse import *
 
 
 class APITest(TestCase):
@@ -35,10 +36,14 @@ class APITest(TestCase):
 
         self.api.executor.assert_called()
 
+        self.assertEqual(type(history), HistoryMatches)
+
         self.assertEqual(history.num_results, 10)
         self.assertEqual(history.total_results, 500)
         self.assertEqual(history.results_remaining, 490)
         self.assertEqual(len(history.matches), 10)
+
+        self.assertEqual(type(history.matches[0]), HistoryMatch)
 
         self.assertEqual(history.matches[0].match_id, 1356101552)
         self.assertEqual(history.matches[0].match_seq_num, 1216063230)
@@ -48,14 +53,19 @@ class APITest(TestCase):
         self.assertEqual(history.matches[0].radiant_team_id, 0)
         self.assertEqual(history.matches[0].dire_team_id, 0)
 
+        self.assertEqual(type(history.matches[0].players[0]), HistoryPlayer)
         self.assertEqual(history.matches[0].players[0].account_id, 140250400)
         self.assertEqual(history.matches[0].players[0].hero.id, 22)
         self.assertEqual(history.matches[0].players[0].hero.localized_name, 'Zeus')
         self.assertEqual(history.matches[0].players[0].hero.name, 'npc_dota_hero_zuus')
-        self.assertEqual(history.matches[0].players[0].hero.url_full_portrait, 'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_full.png')
-        self.assertEqual(history.matches[0].players[0].hero.url_large_portrait, 'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_lg.png')
-        self.assertEqual(history.matches[0].players[0].hero.url_small_portrait, 'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_sb.png')
-        self.assertEqual(history.matches[0].players[0].hero.url_vertical_portrait, 'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_vert.jpg')
+        self.assertEqual(history.matches[0].players[0].hero.url_full_portrait,
+                         'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_full.png')
+        self.assertEqual(history.matches[0].players[0].hero.url_large_portrait,
+                         'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_lg.png')
+        self.assertEqual(history.matches[0].players[0].hero.url_small_portrait,
+                         'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_sb.png')
+        self.assertEqual(history.matches[0].players[0].hero.url_vertical_portrait,
+                         'http://cdn.dota2.com/apps/dota2/images/heroes/zuus_vert.jpg')
 
     def test_get_match_history_by_sequence_num(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_MATCH_HISTORY_BY_SEQ_NUM,
@@ -71,8 +81,10 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), HistoryMatches)
         self.assertEqual(len(history.matches), 100)
 
+        self.assertEqual(type(history.matches[0]), HistoryMatch)
         self.assertEqual(history.matches[0].match_id, 496)
         self.assertEqual(history.matches[0].match_seq_num, 240)
         self.assertEqual(history.matches[0].start_time, 1299121489)
@@ -80,6 +92,8 @@ class APITest(TestCase):
         self.assertEqual(history.matches[0].lobby_name, 'Public matchmaking')
         self.assertEqual(history.matches[0].radiant_team_id, None)
         self.assertEqual(history.matches[0].dire_team_id, None)
+
+        self.assertEqual(type(history.matches[0].players[0]), HistoryPlayer)
 
         self.assertEqual(history.matches[0].players[0].account_id, 4294967295)
         self.assertEqual(history.matches[0].players[0].hero.id, 18)
@@ -99,6 +113,30 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), DetailMatch)
+        self.assertEqual(history.lobby_name, u"Public matchmaking")
+        self.assertEqual(history.game_mode_name, u"All Pick")
+        self.assertEqual(history.cluster_name, "Europe West")
+
+        self.assertEqual(type(history.players[0]), DetailMatchPlayer)
+        self.assertEqual(history.players[0].account_id, 129704923)
+        self.assertEqual(history.players[0].player_slot, 0)
+        self.assertEqual(history.players[0].kills, 9)
+        self.assertEqual(history.players[0].deaths, 8)
+        self.assertEqual(history.players[0].assists, 8)
+        self.assertEqual(history.players[0].leaver_status, False)
+        self.assertEqual(history.players[0].last_hits, 137)
+        self.assertEqual(history.players[0].denies, 1)
+        self.assertEqual(history.players[0].gold_per_min, 526)
+        self.assertEqual(history.players[0].xp_per_min, 591)
+        self.assertEqual(history.players[0].gold_spent, 14820)
+        self.assertEqual(history.players[0].hero_damage, 15504)
+        self.assertEqual(history.players[0].tower_damage, 216)
+        self.assertEqual(history.players[0].hero_healing, 0)
+        self.assertEqual(history.players[0].level, 19)
+        self.assertEqual(history.players[0].hero_damage, 15504)
+
+        self.assertEqual(type(history.players[0].hero), Hero)
         self.assertEqual(history.players[0].hero.localized_name, "Nature's Prophet")
         self.assertEqual(history.players[1].hero.localized_name, "Naga Siren")
         self.assertEqual(history.players[2].hero.localized_name, "Death Prophet")
@@ -110,6 +148,7 @@ class APITest(TestCase):
         self.assertEqual(history.players[8].hero.localized_name, "Lich")
         self.assertEqual(history.players[9].hero.localized_name, "Kunkka")
 
+        self.assertEqual(type(history.players[0].items[0]), Item)
         self.assertEqual(history.players[0].items[0].id, 50)
         self.assertEqual(history.players[0].items[0].localized_name, 'Phase Boots')
         self.assertEqual(history.players[0].items[1].id, 152)
@@ -123,6 +162,7 @@ class APITest(TestCase):
         self.assertEqual(history.players[0].items[5].id, 0)
         self.assertEqual(history.players[0].items[5].localized_name, '')
 
+        self.assertEqual(type(history.players[0].ability_upgrades[0]), AbilityUpgrade)
         self.assertEqual(history.players[0].ability_upgrades[0].ability, 5247)
         self.assertEqual(history.players[0].ability_upgrades[0].ability_name, 'furion_force_of_nature')
         self.assertEqual(history.players[0].ability_upgrades[0].level, 1)
@@ -132,12 +172,6 @@ class APITest(TestCase):
         self.assertEqual(history.players[1].ability_upgrades[1].ability_name, 'naga_siren_rip_tide')
         self.assertEqual(history.players[1].ability_upgrades[1].level, 2)
         self.assertEqual(history.players[1].ability_upgrades[1].time, 339)
-
-        self.assertEqual(history.lobby_name, u"Public matchmaking")
-
-        self.assertEqual(history.game_mode_name, u"All Pick")
-
-        self.assertEqual(history.cluster_name, "Europe West")
 
     def test_get_league_listing(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_LEAGUE_LISTING,
@@ -152,8 +186,10 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), LeagueListing)
         self.assertEqual(len(history), 931)
 
+        self.assertEqual(type(history[0]), League)
         self.assertEqual(history[0].league_id, 1212)
         self.assertEqual(history[0].name, 'Dota 2 Just For Fun')
         self.assertEqual(history[0].tournament_url, 'https://binarybeast.com/xDOTA21404228/')
@@ -174,33 +210,63 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), LiveLeagueGames)
         self.assertEqual(len(history), 5)
+
+        self.assertEqual(type(history[0]), LiveLeagueGame)
+        self.assertEqual(type(history[0].radiant_team), LiveLeagueGameTeam)
         self.assertEqual(history[0].radiant_team.team_name, 'Stroy Bat')
         self.assertEqual(history[0].radiant_team.team_id, 1734383)
         self.assertEqual(history[0].radiant_team.team_logo, 46500877983858209)
         self.assertEqual(history[0].radiant_team.complete, False)
 
+        self.assertEqual(type(history[0].scoreboard), LiveLeagueGameScoreboard)
         self.assertEqual(history[0].scoreboard.roshan_respawn_timer, 0)
         self.assertEqual(history[0].scoreboard.duration, 2335.81787109375)
 
+        self.assertEqual(type(history[0].scoreboard.radiant), LiveLeagueGameTeamScoreboard)
+        self.assertEqual(history[0].scoreboard.radiant.score, 19)
+        self.assertEqual(history[0].scoreboard.radiant.tower_state, 1796)
+        self.assertEqual(history[0].scoreboard.radiant.barracks_state, 51)
+
+        self.assertEqual(type(history[0].scoreboard.radiant.picks[0]), Hero)
         self.assertEqual(history[0].scoreboard.radiant.picks[0].id, 95)
         self.assertEqual(history[0].scoreboard.radiant.picks[0].localized_name, 'Troll Warlord')
 
+        self.assertEqual(type(history[0].scoreboard.radiant.bans[0]), Hero)
         self.assertEqual(history[0].scoreboard.radiant.bans[0].id, 17)
         self.assertEqual(history[0].scoreboard.radiant.bans[0].localized_name, 'Storm Spirit')
 
+        self.assertEqual(type(history[0].scoreboard.radiant.players[0]), LiveLeagueGamePlayer)
         self.assertEqual(history[0].scoreboard.radiant.players[0].player_slot, 1)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].account_id, 193496070)
+
+        self.assertEqual(type(history[0].scoreboard.radiant.players[0].hero), Hero)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].hero.id, 84)
+
+        self.assertEqual(history[0].scoreboard.radiant.players[0].kills, 3)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].deaths, 5)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].assists, 9)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].last_hits, 61)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].denies, 5)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].gold, 366)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].level, 16)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].gold_per_min, 255)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].xp_per_min, 381)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].ultimate_state, 3)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].ultimate_cooldown, 0)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].respawn_timer, 0)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].position_x, -5192.20263671875)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].position_y, -4190.29638671875)
+        self.assertEqual(history[0].scoreboard.radiant.players[0].net_worth, 7166)
+
+        self.assertEqual(type(history[0].scoreboard.radiant.players[0].items[0]), Item)
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[0].id, 0)
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[0].localized_name, '')
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[1].id, 60)
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[1].localized_name, 'Point Booster')
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[2].id, 46)
         self.assertEqual(history[0].scoreboard.radiant.players[0].items[2].localized_name, 'Town Portal Scroll')
-
-        self.assertEqual(history[0].scoreboard.radiant.players[0].respawn_timer, 0)
-        self.assertEqual(history[0].scoreboard.radiant.players[0].net_worth, 7166)
-
-        self.assertEqual(history[0].scoreboard.radiant.players[0].respawn_timer, 0)
 
     def test_get_team_info_by_team_id(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_TEAM_INFO_BY_TEAM_ID,
@@ -216,7 +282,10 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), Teams)
         self.assertEqual(len(history), 100)
+
+        self.assertEqual(type(history[0]), Team)
         self.assertEqual(history[0].team_id, 1778397)
         self.assertEqual(history[0].name, 'Athletic`S')
         self.assertEqual(history[0].tag, 'A`S')
@@ -250,7 +319,10 @@ class APITest(TestCase):
 
         self.executor.assert_called()
 
+        self.assertEqual(type(history), PlayerSummaries)
         self.assertEqual(len(history), 1)
+
+        self.assertEqual(type(history[0]), PlayerSummary)
         self.assertEqual(history[0].steam_id, '76561198049003839')
         self.assertEqual(history[0].community_visibility_state, 3)
         self.assertEqual(history[0].profile_state, 1)
@@ -303,9 +375,9 @@ class APITest(TestCase):
         self.assertEqual(history[0].id, 1)
         self.assertEqual(history[0].name, 'item_blink')
         self.assertEqual(history[0].cost, 2250)
-        self.assertEqual(history[0].secret_shop, 0)
-        self.assertEqual(history[0].side_shop, 1)
-        self.assertEqual(history[0].recipe, 0)
+        self.assertEqual(history[0].is_recipe, False)
+        self.assertEqual(history[0].in_side_shop, True)
+        self.assertEqual(history[0].in_secret_shop, False)
         self.assertEqual(history[0].localized_name, 'Blink Dagger')
         self.assertEqual(history[0].url_image, 'http://cdn.dota2.com/apps/dota2/images/items/blink_lg.png')
 
