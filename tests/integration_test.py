@@ -117,6 +117,7 @@ class APITest(TestCase):
         self.assertEqual(history.lobby_name, u"Public matchmaking")
         self.assertEqual(history.game_mode_name, u"All Pick")
         self.assertEqual(history.cluster_name, "Europe West")
+        self.assertEqual(history.is_radiant_win, False)
 
         self.assertEqual(type(history.players[0]), DetailMatchPlayer)
         self.assertEqual(history.players[0].account_id, 129704923)

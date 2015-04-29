@@ -43,7 +43,7 @@ class HistoryPlayer(object):
 
 class DetailMatch(object):
     def __init__(self, **kwargs):
-        self.radiant_win = kwargs["radiant_win"]
+        self.is_radiant_win = bool(kwargs["radiant_win"])
         self.duration = kwargs["duration"]
         self.start_time = kwargs["start_time"]
         self.match_id = kwargs["match_id"]
