@@ -1,5 +1,5 @@
 from unittest import TestCase
-import dota2api
+from dota2api.api import *
 import utils
 from dota2api.src.urls import *
 from dota2api.src.exceptions import *
@@ -9,7 +9,7 @@ from dota2api.src.parse import *
 class APITest(TestCase):
     def setUp(self):
         self.executor = utils.RequestMock()
-        self.api = dota2api.Initialise(executor=self.executor)
+        self.api = Initialise(executor=self.executor)
 
     def test_api_authentication_error(self):
         self.executor.configure_authentication_error()
@@ -316,7 +316,7 @@ class APITest(TestCase):
         self.executor.url_matcher = matcher
         self.executor.configure_get_player_summaries()
 
-        history = self.api.get_player_summaries(dota2api.convert_to_64_bit(88738111))
+        history = self.api.get_player_summaries(convert_to_64_bit(88738111))
 
         self.executor.assert_called()
 
