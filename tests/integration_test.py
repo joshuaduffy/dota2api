@@ -398,3 +398,22 @@ class APITest(TestCase):
 
         self.assertEqual(history.prize_pool, 0)
         self.assertEqual(history.league_id, 1778397)
+
+    def test_get_match_details_ranked(self):
+        matcher = utils.UrlMatcher(BASE_URL + GET_MATCH_DETAILS,
+                                   utils.LANGUAGE_PAR,
+                                   'match_id=321',
+                                   utils.STEAM_ID_PAR,
+                                   'format=json')
+
+        self.executor.url_matcher = matcher
+        self.executor.configure_get_match_details_ranked()
+
+        history = self.api.get_match_details(321)
+
+        self.executor.assert_called()
+
+        self.assertEqual(history.game_mode, 22)
+        self.assertEqual(history.game_mode_name, "All Pick")
+        self.assertEqual(history.lobby_type, 7)
+        self.assertEqual(history.lobby_name, "Ranked")

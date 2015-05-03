@@ -79,6 +79,9 @@ class RequestMock(object):
     def configure_get_tournament_prize_pool(self):
         self._load_json_file("get_tournament_prize_pool_result.json")
 
+    def configure_get_match_details_ranked(self):
+        self._load_json_file("get_match_details_ranked_result.json")
+
     def _load_json_file(self, json_file_name):
         abs_dir = os.path.abspath(os.path.dirname(__file__))
         join = os.path.join(abs_dir, "ref", json_file_name)
