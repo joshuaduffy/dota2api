@@ -87,6 +87,10 @@
         {
             "id": 21,
             "name": "1 vs 1 Solo Mid"
+        },
+        {
+            "id": 22,
+            "name": "All Pick"
         }
     ]
 }
