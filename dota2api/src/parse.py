@@ -401,7 +401,11 @@ def parse_result(result):
 
 
 def ability_name(ability_id):
-    return [ability['name'] for ability in abilities['abilities'] if ability['id'] == str(ability_id)][0]
+    ability = [ability['name'] for ability in abilities['abilities'] if ability['id'] == str(ability_id)]
+    if ability:
+        return ability[0]
+    else:
+        raise APIError("It was not possible to parse ability id: {}".format(ability_id))
 
 
 def hero_map(hero_id):
