@@ -405,7 +405,9 @@ def ability_name(ability_id):
     if ability:
         return ability[0]
     else:
-        raise APIError("It was not possible to parse ability id: {}".format(ability_id))
+        import logging
+        logging.warning("It was not possible to parse ability id: {}".format(ability_id))
+        return "UNKNOW"
 
 
 def hero_map(hero_id):
