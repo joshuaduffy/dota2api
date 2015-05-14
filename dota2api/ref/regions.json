@@ -1,6 +1,10 @@
 {
     "regions": [
         {
+            "id" : 0,
+            "name" : "Unknow"
+        },
+        {
             "id" : 111,
             "name" : "US West"
         },

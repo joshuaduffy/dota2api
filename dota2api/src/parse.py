@@ -70,20 +70,28 @@ class DetailMatch(object):
         return 'Match match_id: {}'.format(self.match_id)
 
 
+def _load_item(index, **kwargs):
+    live_game_item_index = "item" + str(index)
+    match_history_item_index = "item_" + str(index)
+
+    item_id = kwargs.get(match_history_item_index, kwargs.get(live_game_item_index))
+    return Item(item_id)
+
+
 class BasePlayer(object):
     def __init__(self, **kwargs):
-        self.account_id = kwargs["account_id"]
+        self.account_id = kwargs.get("account_id", -1)
         self.player_slot = kwargs["player_slot"]
 
         self.hero = Hero(kwargs["hero_id"])
 
         self.items = []
-        self.items.append(self._load_item(0, **kwargs))
-        self.items.append(self._load_item(1, **kwargs))
-        self.items.append(self._load_item(2, **kwargs))
-        self.items.append(self._load_item(3, **kwargs))
-        self.items.append(self._load_item(4, **kwargs))
-        self.items.append(self._load_item(5, **kwargs))
+        self.items.append(_load_item(0, **kwargs))
+        self.items.append(_load_item(1, **kwargs))
+        self.items.append(_load_item(2, **kwargs))
+        self.items.append(_load_item(3, **kwargs))
+        self.items.append(_load_item(4, **kwargs))
+        self.items.append(_load_item(5, **kwargs))
 
         self.kills = kwargs["kills"]
         self.deaths = kwargs.get("deaths", kwargs.get('death'))
@@ -100,13 +108,6 @@ class BasePlayer(object):
         self.tower_damage = kwargs.get("tower_damage")
         self.hero_healing = kwargs.get("hero_healing")
         self.level = kwargs["level"]
-
-    def _load_item(self, index, **kwargs):
-        live_game_item_index = "item" + str(index)
-        match_history_item_index = "item_" + str(index)
-
-        item_id = kwargs.get(match_history_item_index, kwargs.get(live_game_item_index))
-        return Item(item_id)
 
     def __repr__(self):
         return 'Player account_id: {}'.format(self.account_id)
@@ -125,11 +126,25 @@ class LiveLeagueGamePlayer(BasePlayer):
         # self.abilities = [AbilityLevel(**ability_kwargs) for ability_kwargs in kwargs.get('abilities', [])]
 
 
+class AdditionalUnit(object):
+    def __init__(self, **kwargs):
+        self.unit_name = kwargs['unitname']
+        self.items = []
+        self.items.append(_load_item(0, **kwargs))
+        self.items.append(_load_item(1, **kwargs))
+        self.items.append(_load_item(2, **kwargs))
+        self.items.append(_load_item(3, **kwargs))
+        self.items.append(_load_item(4, **kwargs))
+        self.items.append(_load_item(5, **kwargs))
+
+
 class DetailMatchPlayer(BasePlayer):
     def __init__(self, **kwargs):
         BasePlayer.__init__(self, **kwargs)
         self.ability_upgrades = [AbilityUpgrade(**ability_upgrade_kwargs) for ability_upgrade_kwargs in
                                  kwargs.get("ability_upgrades", [])]
+        self.additional_units = [AdditionalUnit(**additional_unit) for additional_unit in
+                                 kwargs.get('additional_units', [])]
 
 
 """
@@ -249,7 +264,7 @@ class LiveLeagueGameTeamScoreboard(object):
         # here we have a problem, the abilities lvls when the result is from the live game
         # are different json objects with the same names, when it gets converted
         # to python dicts, only the last result stands, and I think it would be great to
-        #have this information in the Player object, instead of another list on LiveGameTeamScoreboard
+        # have this information in the Player object, instead of another list on LiveGameTeamScoreboard
         self.players = [LiveLeagueGamePlayer(**player_args) for player_args in kwargs.get('players')]
 
     def __repr__(self):
@@ -406,6 +421,7 @@ def ability_name(ability_id):
         return ability[0]
     else:
         import logging
+
         logging.warning("It was not possible to parse ability id: {}".format(ability_id))
         return "UNKNOW"
 
@@ -427,7 +443,6 @@ def item_map(item_id):
     Parse the item ids, will be available as ``item_0_name``, ``item_1_name``,
     ``item_2_name`` and so on
     """
-    # print 'parsing item' + str(item_id)
     item_maps = [item for item in items['items'] if item['id'] == item_id]
     if item_maps:
         return item_maps[0]
