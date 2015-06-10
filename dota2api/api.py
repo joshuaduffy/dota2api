@@ -238,8 +238,9 @@ def convert_to_64_bit(number):
 
 def _setup_logger():
     import logging
-    logging.basicConfig(level=logging.NOTSET)  # Will log all
-    return logging.getLogger(__name__)
+    logger = logging.getLogger('dota2api')
+    logger.basicConfig(level=logging.NOTSET)
+    return logger
 
 
 def _save_dict_to_file(json_dict, file_name):

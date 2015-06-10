@@ -3,7 +3,11 @@ from dota2api.api import *
 import utils
 from dota2api.src.urls import *
 from dota2api.src.exceptions import *
-from dota2api.src.parse import *
+from dota2api.obj.league import *
+from dota2api.obj.history import *
+from dota2api.obj.item import *
+from dota2api.obj.detail import *
+from dota2api.obj.player import *
 
 
 class APITest(TestCase):
@@ -125,7 +129,9 @@ class APITest(TestCase):
         self.assertEqual(history.players[0].kills, 12)
         self.assertEqual(history.players[0].deaths, 7)
         self.assertEqual(history.players[0].assists, 14)
-        self.assertEqual(history.players[0].leaver_status, False)
+        self.assertEqual(history.players[0].leaver_status.id, 0)
+        self.assertEqual(history.players[0].leaver_status.name, 'NONE')
+        self.assertEqual(history.players[0].leaver_status.description, 'finished match, no abandon')
         self.assertEqual(history.players[0].last_hits, 241)
         self.assertEqual(history.players[0].denies, 1)
         self.assertEqual(history.players[0].gold_per_min, 572)
