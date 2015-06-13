@@ -66,8 +66,8 @@ All responses have 3 default attributes:
 - resp: the response returned from request
  
 #### get_match_history(account_id, **kwargs):
-**optionals** hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only
-**returns** HistoryMatches
+**optionals** hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only   
+**returns** HistoryMatches   
  
    - num_results
    - total_results
@@ -86,7 +86,7 @@ All responses have 3 default attributes:
          - hero: Hero object
 
 #### get_match_history_by_seq_num(start_at_match_seq_num,  **kwargs):
-**optionals** start_at_match_seq_num, matches_requested
+**optionals** start_at_match_seq_num, matches_requested   
 **returns** list[HistoryMatch]
 
 #### get_match_details(match_id, **kwargs):
