@@ -60,7 +60,7 @@ class Initialise(object):
         :param matches_requested: (int, optional) defaults to ``100``
         :param tournament_games_only: (str, optional) limit results to
             tournament matches only
-        :return: list of HistoryMatch, see :doc:`responses </responses>`
+        :return: HistoryMatches, see :doc:`responses </responses>`
         """
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id

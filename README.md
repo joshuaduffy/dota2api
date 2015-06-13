@@ -66,14 +66,13 @@ All responses have 3 default attributes:
 - resp: the response returned from request
  
 #### get_match_history(account_id, **kwargs):
-optionals: hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only  
-
-returns: list[HistoryMatch]
+optionals: hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only
+returns: HistoryMatches
  
    - num_results
    - total_results
    - results_remaining
-   - matches: list of HistoryMatch
+   - matches: list[HistoryMatch]
       - match_id
       - match_seq_num
       - start_time
@@ -81,7 +80,7 @@ returns: list[HistoryMatch]
       - lobby_name
       - radiant_team_id
       - dire_team_id
-      - players: list of HistoryPlayer
+      - players: list[HistoryPlayer]
          - account_id
          - player_slot
          - hero: Hero object
@@ -112,7 +111,7 @@ returns: DetailMatch
   - negative_votes
   - game_mode
   - game_mode_name
-  - players: list of DetailMatchPlayer's
+  - players: list[DetailMatchPlayer]
     - account_id
     - player_slot
     - hero: Hero
@@ -286,3 +285,9 @@ To install them do the following:
 .. code-block:: bash
 
     $ pip install nose nose-cov
+
+TODO
+---------
+- Parse abilities from live league games
+  - http://dev.dota2.com/showthread.php?t=156783
+
