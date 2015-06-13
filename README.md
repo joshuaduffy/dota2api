@@ -66,8 +66,8 @@ All responses have 3 default attributes:
 - resp: the response returned from request
  
 #### get_match_history(account_id, **kwargs):
-optionals: hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only
-returns: HistoryMatches
+**optionals** hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only
+**returns** HistoryMatches
  
    - num_results
    - total_results
@@ -86,11 +86,11 @@ returns: HistoryMatches
          - hero: Hero object
 
 #### get_match_history_by_seq_num(start_at_match_seq_num,  **kwargs):
-optionals: start_at_match_seq_num, matches_requested  
-returns: list[HistoryMatch]
+**optionals** start_at_match_seq_num, matches_requested
+**returns** list[HistoryMatch]
 
 #### get_match_details(match_id, **kwargs):
-returns: DetailMatch
+**returns** DetailMatch
   - is_radiant_win
   - duration
   - start_time
@@ -143,7 +143,7 @@ returns: DetailMatch
       - items: list of Item's
 
 #### get_player_summaries(*steamids, **kwargs):
-returns: list[PlayerSummary]
+**returns** list[PlayerSummary]
 - steam_id
 - community_visibility_state
 - profile_state
@@ -160,7 +160,7 @@ returns: list[PlayerSummary]
 
 
 #### get_league_listing()
-returns: list[League]
+**returns** list[League]
 - league_id
 - name
 - tournament_url
@@ -168,7 +168,7 @@ returns: list[League]
 - itemdef
 
 #### get_live_league_games()
-returns: list[LiveLeagueGame]
+**returns** list[LiveLeagueGame]
 - radiant_team: LiveLeagueGameTeam
   - team_name
   - team_id
@@ -222,8 +222,8 @@ returns: list[LiveLeagueGame]
 
 
 #### get_team_info_by_team_id()
-optionals: start_at_team_id, teams_requested  
-return: list[Team]
+**optionals** start_at_team_id, teams_requested
+**return** list[Team]
 - team_id
 - name
 - tag
@@ -244,7 +244,7 @@ return: list[Team]
 - admin_account_id
 
 #### get_heroes()
-return: list[Hero]
+**return** list[Hero]
 - localized_name
 - name
 - url_small_portrait
@@ -253,12 +253,12 @@ return: list[Hero]
 - url_vertical_portrait
 
 #### get_tournament_prize_pool(leagueid, **kwargs):
-return: TournamentPrizePool
+**return** TournamentPrizePool
 - prize_pool
 - league_id
 
 #### get_game_items()
-return: list[Item]
+**return** list[Item]
 - localized_name
 - name
 - is_recipe
