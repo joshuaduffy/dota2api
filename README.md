@@ -4,10 +4,6 @@ dota2api: wrapper and parser
 [![Travis](https://travis-ci.org/joshuaduffy/dota2api.svg)](https://travis-ci.org/joshuaduffy/dota2api)
 [![Read the docs](https://readthedocs.org/projects/dota2api/badge/?version=latest)](https://readthedocs.org/projects/dota2api/?badge=latest)
 
-
-.. image::
-    :target:
-
 Wrapper and parser in Python created for interacting and getting data easily from Valve's Dota 2 API.
 
 This library parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
@@ -15,8 +11,6 @@ This library parses some ID's into the dictionary keys like ``hero_name`` and so
 This also comes with a growing set of tests and some documentation for the API itself.
  
 Look how easy it is...
-
-.. code-block:: python
 
     >>> import dota2api
     >>> api = dota2api.Initialise("API_KEY")
@@ -26,8 +20,6 @@ Look how easy it is...
     False
 
 You can even store your API key as an environment variable instead of passing it through ``Initialise()`` to save some finger work.
-
-.. code-block:: bash
 
     $  export D2_API_KEY=83247983248793298732
 
