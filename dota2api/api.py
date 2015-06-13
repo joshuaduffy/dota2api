@@ -60,7 +60,7 @@ class Initialise(object):
         :param matches_requested: (int, optional) defaults to ``100``
         :param tournament_games_only: (str, optional) limit results to
             tournament matches only
-        :return: dictionary of matches, see :doc:`responses </responses>`
+        :return: list of HistoryMatch, see :doc:`responses </responses>`
         """
         if 'account_id' not in kwargs:
             kwargs['account_id'] = account_id
@@ -77,7 +77,7 @@ class Initialise(object):
         :param start_at_match_seq_num: (int, optional) start at matches equal to or
             older than this match id
         :param matches_requested: (int, optional) defaults to ``100``
-        :return: dictionary of matches, see :doc:`responses </responses>`
+        :return: list of HistoryMatch, see :doc:`responses </responses>`
         """
         if 'start_at_match_seq_num' not in kwargs:
             kwargs['start_at_match_seq_num'] = start_at_match_seq_num
@@ -118,7 +118,7 @@ class Initialise(object):
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
 
-        :return: dictionary of live games, see :doc:`responses </responses>`
+        :return: list of LiveLeagueGame, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_LIVE_LEAGUE_GAMES)
         req = self.executor(url)
@@ -132,7 +132,7 @@ class Initialise(object):
 
         :param start_at_team_id: (int, optional)
         :param teams_requested: (int, optional)
-        :return: dictionary of teams, see :doc:`responses </responses>`
+        :return: list of Team, see :doc:`responses </responses>`
         """
         if 'start_at_team_id' not in kwargs:
             kwargs['start_at_team_id'] = start_at_team_id
@@ -147,7 +147,7 @@ class Initialise(object):
         """Returns a dictionary containing a player summaries
 
         :param steamids: (list) list of ``64-bit`` steam ids
-        :return: dictionary of player summaries, see :doc:`responses </responses>`
+        :return: list of PlayerSummary, see :doc:`responses </responses>`
         """
         base64_ids = [convert_to_64_bit(id) for id in steamids]
 
@@ -164,7 +164,7 @@ class Initialise(object):
     def get_heroes(self):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
 
-        :return: dictionary of heroes, see :doc:`responses </responses>`
+        :return: list of Hero, see :doc:`responses </responses>`
         """
         url = self.__build_url(urls.GET_HEROES)
         req = self.executor(url)

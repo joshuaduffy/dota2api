@@ -62,30 +62,35 @@ Supported API calls
 -------------------
 All responses have 3 default attributes:
 - url: the URL constructed by the api
-- json: the JSON returned of request
-- resp: the response returned of request
+- json: the JSON dictionary returned from request
+- resp: the response returned from request
  
-- get_match_history
-Returns a list HistoryMatch
- - num_results
- - total_results
- - results_remaining
- - matches: list of HistoryMatch
-    - match_id
-    - match_seq_num
-    - start_time
-    - lobby_type
-    - lobby_name
-    - radiant_team_id
-    - dire_team_id
-    - players: list of HistoryPlayer
-       - account_id
-       - player_slot
-       - hero: Hero object
+#### get_match_history(account_id, **kwargs):
+optionals: hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only  
 
-- get_match_history_by_seq_num
+returns: list[HistoryMatch]
+ 
+   - num_results
+   - total_results
+   - results_remaining
+   - matches: list of HistoryMatch
+      - match_id
+      - match_seq_num
+      - start_time
+      - lobby_type
+      - lobby_name
+      - radiant_team_id
+      - dire_team_id
+      - players: list of HistoryPlayer
+         - account_id
+         - player_slot
+         - hero: Hero object
 
-- get_match_details:
+#### get_match_history_by_seq_num(start_at_match_seq_num,  **kwargs):
+optionals: start_at_match_seq_num, matches_requested  
+returns: list[HistoryMatch]
+
+#### get_match_details(match_id, **kwargs):
 returns: DetailMatch
   - is_radiant_win
   - duration
@@ -128,139 +133,140 @@ returns: DetailMatch
     - tower_damage
     - hero_healing
     - level
-    - items: list of Item's
-    - ability_upgrades: list of AbilityUpgrade's
+    - items: list[Item]
+    - ability_upgrades: list[AbilityUpgrade]
       - ability
       - ability_name
       - time
       - level
-    - additional_units: list of AdditionalUnit's
+    - additional_units: list[AdditionalUnit]
       - unit_name
       - items: list of Item's
 
-- get_player_summaries
-returns: a list of PlayerSummary
-    - steam_id
-    - community_visibility_state
-    - profile_state
-    - persona_name
-    - last_logoff
-    - profile_url
-    - url_avatar
-    - url_avatar_medium
-    - url_avatar_full
-    - persona_state
-    - primary_clan_id
-    - time_created
-    - persona_state_flags
+#### get_player_summaries(*steamids, **kwargs):
+returns: list[PlayerSummary]
+- steam_id
+- community_visibility_state
+- profile_state
+- persona_name
+- last_logoff
+- profile_url
+- url_avatar
+- url_avatar_medium
+- url_avatar_full
+- persona_state
+- primary_clan_id
+- time_created
+- persona_state_flags
 
 
-- get_league_listing
-returns: a list of League
-  - league_id
-  - name
-  - tournament_url
-  - description
-  - itemdef
+#### get_league_listing()
+returns: list[League]
+- league_id
+- name
+- tournament_url
+- description
+- itemdef
 
-- get_live_league_games
-returns: a list of LiveLeagueGame
-    - radiant_team: LiveLeagueGameTeam
-        - team_name
-        - team_id
-        - team_logo
-        - complete
-    - dire_team: LiveLeagueTeam
-    - lobby_id
-    - match_id
-    - spectators
-    - league_id
-    - stream_delay_s
-    - radiant_series_wins
-    - dire_series_wins
-    - series_type
-    - league_tier
-    - scoreboard: LiveLeagueGameScoreboard
-        - duration
-        - roshan_respawn_timer
-        - radiant: LiveLeagueGameTeamScoreboard
-            - score
-            - tower_state
-            - barracks_state
-            - picks: list of Hero
-            - bans: list of Hero
-            - players: list of LiveLeagueGamePlayer
-                    - account_id
-                    - player_slot
-                    - hero: Hero
-                    - kills
-                    - deaths
-                    - assists
-                    - leaver_status: LeaverStatus
-                    - gold
-                    - last_hits
-                    - denies
-                    - gold_per_min
-                    - xp_per_min
-                    - gold_spent
-                    - hero_damage
-                    - tower_damage
-                    - hero_healing
-                    - level
-                    - ultimate_state
-                    - ultimate_cooldown
-                    - respawn_timer
-                    - position_x
-                    - position_y
-                    - net_worth
-                    # the api can't parse the abilities yet :(
-        - dire: list of LiveLeagueGamePlayer
+#### get_live_league_games()
+returns: list[LiveLeagueGame]
+- radiant_team: LiveLeagueGameTeam
+  - team_name
+  - team_id
+  - team_logo
+  - complete
+- dire_team: LiveLeagueGameTeam
+- lobby_id
+- match_id
+- spectators
+- league_id
+- stream_delay_s
+- radiant_series_wins
+- dire_series_wins
+- series_type
+- league_tier
+- scoreboard: LiveLeagueGameScoreboard
+  - duration
+  - roshan_respawn_timer
+  - radiant: LiveLeagueGameTeamScoreboard
+    - score
+    - tower_state
+    - barracks_state
+    - picks: list[Hero]
+    - bans: list[Hero]
+    - players: list[LiveLeagueGamePlayer]
+      - account_id
+      - player_slot
+      - hero: Hero
+      - kills
+      - deaths
+      - assists
+      - leaver_status: LeaverStatus
+      - gold
+      - last_hits
+      - denies
+      - gold_per_min
+      - xp_per_min
+      - gold_spent
+      - hero_damage
+      - tower_damage
+      - hero_healing
+      - level
+      - ultimate_state
+      - ultimate_cooldown
+      - respawn_timer
+      - position_x
+      - position_y
+      - net_worth
+      - the api can't parse the abilities yet :(
+    - dire: list of LiveLeagueGamePlayer
 
 
-- get_team_info_by_team_id
-return: a list of Team
-    - team_id
-    - name
-    - tag
-    - time_created
-    - rating
-    - logo
-    - logo_sponsor
-    - country_code
-    - url
-    - games_played_with_current_roster
-    - player_0_account_id
-    - player_1_account_id
-    - player_2_account_id
-    - player_3_account_id
-    - player_4_account_id
-    - player_5_account_id
-    - player_6_account_id
-    - admin_account_id
+#### get_team_info_by_team_id()
+optionals: start_at_team_id, teams_requested  
+return: list[Team]
+- team_id
+- name
+- tag
+- time_created
+- rating
+- logo
+- logo_sponsor
+- country_code
+- url
+- games_played_with_current_roster
+- player_0_account_id
+- player_1_account_id
+- player_2_account_id
+- player_3_account_id
+- player_4_account_id
+- player_5_account_id
+- player_6_account_id
+- admin_account_id
 
-- get_heroes
-return: a list of Hero
-    - localized_name
-    - name
-    - url_small_portrait
-    - url_large_portrait
-    - url_full_portrait
-    - url_vertical_portrait
+#### get_heroes()
+return: list[Hero]
+- localized_name
+- name
+- url_small_portrait
+- url_large_portrait
+- url_full_portrait
+- url_vertical_portrait
 
-- get_tournament_prize_pool
+#### get_tournament_prize_pool(leagueid, **kwargs):
 return: TournamentPrizePool
-    - prize_pool
-    - league_id
+- prize_pool
+- league_id
 
-- get_game_items
-return: a list of Item
-    - localized_name
-    - name
-    - is_recipe
-    - in_secret_shop
-    - cost
-    - in_side_shop
-    - url_image
+#### get_game_items()
+return: list[Item]
+- localized_name
+- name
+- is_recipe
+- in_secret_shop
+- cost
+- in_side_shop
+- url_image
 
 Unsupported
 -----------
