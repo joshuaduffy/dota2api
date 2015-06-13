@@ -29,14 +29,10 @@ Install
 
 Install via pip...
 
-.. code-block:: bash
-
     $ pip install dota2api
 
 
 Or the old fashioned way...
-
-.. code-block:: bash
 
     $ git clone https://github.com/joshuaduffy/dota2api.git
     $ cd dota2api
