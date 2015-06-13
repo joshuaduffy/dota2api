@@ -1590,7 +1590,7 @@
             "name": "item_recipe_silver_edge", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 350, 
+            "cost": 600, 
             "side_shop": 0, 
             "id": 248
         }, 
@@ -1599,7 +1599,7 @@
             "name": "item_silver_edge", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 5200, 
+            "cost": 5450, 
             "side_shop": 0, 
             "id": 249
         }, 

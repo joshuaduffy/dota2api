@@ -5,7 +5,7 @@ import urllib
 import os
 import json
 
-from src import urls, exceptions, response, parse
+from src import urls, exceptions, response, parse, utils
 
 
 class Initialise(object):
@@ -143,14 +143,17 @@ class Initialise(object):
         if not self.__check_http_err(req.status_code):
             return self.parser(req, url)
 
-    def get_player_summaries(self, steamids=None, **kwargs):
+    def get_player_summaries(self, *steamids, **kwargs):
         """Returns a dictionary containing a player summaries
 
         :param steamids: (list) list of ``64-bit`` steam ids
         :return: dictionary of player summaries, see :doc:`responses </responses>`
         """
+        base64_ids = [convert_to_64_bit(id) for id in steamids]
+
         if 'steamids' not in kwargs:
-            kwargs['steamids'] = steamids
+            kwargs['steamids'] = base64_ids
+
         url = self.__build_url(urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
         if self.logger:
@@ -233,7 +236,10 @@ class Initialise(object):
 
 
 def convert_to_64_bit(number):
-    return number + 76561197960265728
+    min64b = 76561197960265728
+    if number < min64b:
+        return number + min64b
+    return number
 
 
 def _setup_logger():
@@ -244,6 +250,6 @@ def _setup_logger():
 
 
 def _save_dict_to_file(json_dict, file_name):
-    out_file = open(parse.load_json_file(file_name), "w")
+    out_file = open(utils.load_json_file(file_name), "w")
     json.dump(json_dict, out_file, indent=4)
     out_file.close()

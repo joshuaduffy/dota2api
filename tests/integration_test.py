@@ -319,7 +319,7 @@ class APITest(TestCase):
     def test_get_player_summaries(self):
         matcher = utils.UrlMatcher(BASE_URL + GET_PLAYER_SUMMARIES,
                                    utils.LANGUAGE_PAR,
-                                   'steamids=76561198049003839',
+                                   'steamids=%5B76561198049003839%5D',
                                    utils.STEAM_ID_PAR,
                                    'format=json')
 

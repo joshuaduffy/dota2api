@@ -24,6 +24,8 @@ class APIAuthenticationErrorTest(unittest.TestCase):
 class APITimeoutErrorTest(unittest.TestCase):
     def setUp(self):
         self.api = Initialise()
+        self.assertTrue()
 
     def too_many_requests(self):
-        assert True  # Can I do this?
+        assert True  #Actually you can, but I think that in test cases you should use the instance method,
+        #since it gives you more information and you can put a message of what is your intent with that assert
