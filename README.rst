@@ -86,10 +86,12 @@ All responses have 3 default attributes:
          - hero: Hero object
 
 **get_match_history_by_seq_num(start_at_match_seq_num,  **kwargs):**
+
 :optionals: start_at_match_seq_num, matches_requested
 :returns: list[HistoryMatch]
 
 ** get_match_details(match_id, **kwargs):**
+
 :returns: DetailMatch
   - is_radiant_win
   - duration
@@ -143,6 +145,7 @@ All responses have 3 default attributes:
       - items: list of Item's
 
 **get_player_summaries(*steamids, **kwargs):**
+
 You can use this method with 32b numbers (same value of account_id returned from the other calls).
 The api will take care to convert those to 64b base.
 :returns: list[PlayerSummary]
@@ -162,6 +165,7 @@ The api will take care to convert those to 64b base.
 
 
 **get_league_listing()**
+
 :returns: list[League]
 - league_id
 - name
@@ -170,6 +174,7 @@ The api will take care to convert those to 64b base.
 - itemdef
 
 **get_live_league_games()**
+
 :returns: list[LiveLeagueGame]
     - radiant_team: LiveLeagueGameTeam
       - team_name
@@ -224,50 +229,54 @@ The api will take care to convert those to 64b base.
 
 
 **get_team_info_by_team_id()**
+
 :optionals: start_at_team_id, teams_requested
 :return: list[Team]
-- team_id
-- name
-- tag
-- time_created
-- rating
-- logo
-- logo_sponsor
-- country_code
-- url
-- games_played_with_current_roster
-- player_0_account_id
-- player_1_account_id
-- player_2_account_id
-- player_3_account_id
-- player_4_account_id
-- player_5_account_id
-- player_6_account_id
-- admin_account_id
+    - team_id
+    - name
+    - tag
+    - time_created
+    - rating
+    - logo
+    - logo_sponsor
+    - country_code
+    - url
+    - games_played_with_current_roster
+    - player_0_account_id
+    - player_1_account_id
+    - player_2_account_id
+    - player_3_account_id
+    - player_4_account_id
+    - player_5_account_id
+    - player_6_account_id
+    - admin_account_id
 
 **get_heroes()**
+
 :return: list[Hero]
-- localized_name
-- name
-- url_small_portrait
-- url_large_portrait
-- url_full_portrait
-- url_vertical_portrait
+    - localized_name
+    - name
+    - url_small_portrait
+    - url_large_portrait
+    - url_full_portrait
+    - url_vertical_portrait
 
 **get_tournament_prize_pool(leagueid, **kwargs):**
+
 :return: TournamentPrizePool
-- prize_pool
-- league_id
+    - prize_pool
+    - league_id
 
 **get_game_items()**
+
 :return: list[Item]
-- localized_name
-- name
-- is_recipe
-- in_secret_shop
-- cost
-- in_side_shop
-- url_image
+    - localized_name
+    - name
+    - is_recipe
+    - in_secret_shop
+    - cost
+    - in_side_shop
+    - url_image
 
 Unsupported
 -----------
