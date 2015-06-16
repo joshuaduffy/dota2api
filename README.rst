@@ -183,58 +183,57 @@ The api will take care to convert those to 64b base.
 
 **get_live_league_games()**
 
-:returns:
-    -list[LiveLeagueGame]
-        - radiant_team: LiveLeagueGameTeam
-          - team_name
-          - team_id
-          - team_logo
-          - complete
-        - dire_team: LiveLeagueGameTeam
-        - lobby_id
-        - match_id
-        - spectators
-        - league_id
-        - stream_delay_s
-        - radiant_series_wins
-        - dire_series_wins
-        - series_type
-        - league_tier
-        - scoreboard: LiveLeagueGameScoreboard
-          - duration
-          - roshan_respawn_timer
-          - radiant: LiveLeagueGameTeamScoreboard
-            - score
-            - tower_state
-            - barracks_state
-            - picks: list[Hero]
-            - bans: list[Hero]
-            - players: list[LiveLeagueGamePlayer]
-              - account_id
-              - player_slot
-              - hero: Hero
-              - kills
-              - deaths
-              - assists
-              - leaver_status: LeaverStatus
-              - gold
-              - last_hits
-              - denies
-              - gold_per_min
-              - xp_per_min
-              - gold_spent
-              - hero_damage
-              - tower_damage
-              - hero_healing
-              - level
-              - ultimate_state
-              - ultimate_cooldown
-              - respawn_timer
-              - position_x
-              - position_y
-              - net_worth
-              - the api can't parse the abilities yet :(
-            - dire: list of LiveLeagueGamePlayer
+:returns: list[LiveLeagueGame]
+    - radiant_team: LiveLeagueGameTeam
+        - team_name
+        - team_id
+        - team_logo
+        - complete
+    - dire_team: LiveLeagueGameTeam
+    - lobby_id
+    - match_id
+    - spectators
+    - league_id
+    - stream_delay_s
+    - radiant_series_wins
+    - dire_series_wins
+    - series_type
+    - league_tier
+    - scoreboard: LiveLeagueGameScoreboard
+        - duration
+        - roshan_respawn_timer
+        - radiant: LiveLeagueGameTeamScoreboard
+        - score
+        - tower_state
+        - barracks_state
+        - picks: list[Hero]
+        - bans: list[Hero]
+        - players: list[LiveLeagueGamePlayer]
+            - account_id
+            - player_slot
+            - hero: Hero
+            - kills
+            - deaths
+            - assists
+            - leaver_status: LeaverStatus
+            - gold
+            - last_hits
+            - denies
+            - gold_per_min
+            - xp_per_min
+            - gold_spent
+            - hero_damage
+            - tower_damage
+            - hero_healing
+            - level
+            - ultimate_state
+            - ultimate_cooldown
+            - respawn_timer
+            - position_x
+            - position_y
+            - net_worth
+            - the api can't parse the abilities yet :(
+        - dire: list of LiveLeagueGamePlayer
 
 
 **get_team_info_by_team_id()**
