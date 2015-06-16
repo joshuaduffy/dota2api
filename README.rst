@@ -65,6 +65,7 @@ All responses have 3 default attributes:
 - resp: the response returned from request
  
 **get_match_history(account_id, ** kwargs):**
+
 :optionals: hero_id, game_mode, skill, date_min, date_max, min_players, league_id, start_at_match_id, matches_requested, tournament_games_only
 :returns: HistoryMatches
 
