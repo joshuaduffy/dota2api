@@ -90,7 +90,7 @@ All responses have 3 default attributes:
 :optionals: start_at_match_seq_num, matches_requested
 :returns: list[HistoryMatch]
 
-** get_match_details(match_id, **kwargs):**
+** get_match_details(match_id, ** kwargs):**
 
 :returns: DetailMatch
 
@@ -115,6 +115,7 @@ All responses have 3 default attributes:
   - game_mode
   - game_mode_name
   - players: list[DetailMatchPlayer]
+
     - account_id
     - player_slot
     - hero: Hero
@@ -122,6 +123,7 @@ All responses have 3 default attributes:
     - deaths
     - assists
     - leaver_status: LeaverStatus
+
       - id
       - name
       - description
@@ -137,11 +139,13 @@ All responses have 3 default attributes:
     - level
     - items: list[Item]
     - ability_upgrades: list[AbilityUpgrade]
+
       - ability
       - ability_name
       - time
       - level
     - additional_units: list[AdditionalUnit]
+
       - unit_name
       - items: list of Item's
 
@@ -149,86 +153,88 @@ All responses have 3 default attributes:
 
 You can use this method with 32b numbers (same value of account_id returned from the other calls).
 The api will take care to convert those to 64b base.
+
 :returns: list[PlayerSummary]
-- steam_id
-- community_visibility_state
-- profile_state
-- persona_name
-- last_logoff
-- profile_url
-- url_avatar
-- url_avatar_medium
-- url_avatar_full
-- persona_state
-- primary_clan_id
-- time_created
-- persona_state_flags
+
+    - steam_id
+    - community_visibility_state
+    - profile_state
+    - persona_name
+    - last_logoff
+    - profile_url
+    - url_avatar
+    - url_avatar_medium
+    - url_avatar_full
+    - persona_state
+    - primary_clan_id
+    - time_created
+    - persona_state_flags
 
 
 **get_league_listing()**
 
 :returns: list[League]
-- league_id
-- name
-- tournament_url
-- description
-- itemdef
+
+    - league_id
+    - name
+    - tournament_url
+    - description
+    - itemdef
 
 **get_live_league_games()**
 
-:returns: list[LiveLeagueGame]
-
-    - radiant_team: LiveLeagueGameTeam
-      - team_name
-      - team_id
-      - team_logo
-      - complete
-    - dire_team: LiveLeagueGameTeam
-    - lobby_id
-    - match_id
-    - spectators
-    - league_id
-    - stream_delay_s
-    - radiant_series_wins
-    - dire_series_wins
-    - series_type
-    - league_tier
-    - scoreboard: LiveLeagueGameScoreboard
-
-      - duration
-      - roshan_respawn_timer
-      - radiant: LiveLeagueGameTeamScoreboard
-        - score
-        - tower_state
-        - barracks_state
-        - picks: list[Hero]
-        - bans: list[Hero]
-        - players: list[LiveLeagueGamePlayer]
-          - account_id
-          - player_slot
-          - hero: Hero
-          - kills
-          - deaths
-          - assists
-          - leaver_status: LeaverStatus
-          - gold
-          - last_hits
-          - denies
-          - gold_per_min
-          - xp_per_min
-          - gold_spent
-          - hero_damage
-          - tower_damage
-          - hero_healing
-          - level
-          - ultimate_state
-          - ultimate_cooldown
-          - respawn_timer
-          - position_x
-          - position_y
-          - net_worth
-          - the api can't parse the abilities yet :(
-        - dire: list of LiveLeagueGamePlayer
+:returns:
+    -list[LiveLeagueGame]
+        - radiant_team: LiveLeagueGameTeam
+          - team_name
+          - team_id
+          - team_logo
+          - complete
+        - dire_team: LiveLeagueGameTeam
+        - lobby_id
+        - match_id
+        - spectators
+        - league_id
+        - stream_delay_s
+        - radiant_series_wins
+        - dire_series_wins
+        - series_type
+        - league_tier
+        - scoreboard: LiveLeagueGameScoreboard
+          - duration
+          - roshan_respawn_timer
+          - radiant: LiveLeagueGameTeamScoreboard
+            - score
+            - tower_state
+            - barracks_state
+            - picks: list[Hero]
+            - bans: list[Hero]
+            - players: list[LiveLeagueGamePlayer]
+              - account_id
+              - player_slot
+              - hero: Hero
+              - kills
+              - deaths
+              - assists
+              - leaver_status: LeaverStatus
+              - gold
+              - last_hits
+              - denies
+              - gold_per_min
+              - xp_per_min
+              - gold_spent
+              - hero_damage
+              - tower_damage
+              - hero_healing
+              - level
+              - ultimate_state
+              - ultimate_cooldown
+              - respawn_timer
+              - position_x
+              - position_y
+              - net_worth
+              - the api can't parse the abilities yet :(
+            - dire: list of LiveLeagueGamePlayer
 
 
 **get_team_info_by_team_id()**
