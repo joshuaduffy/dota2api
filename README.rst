@@ -93,6 +93,7 @@ All responses have 3 default attributes:
 ** get_match_details(match_id, **kwargs):**
 
 :returns: DetailMatch
+
   - is_radiant_win
   - duration
   - start_time
@@ -176,6 +177,7 @@ The api will take care to convert those to 64b base.
 **get_live_league_games()**
 
 :returns: list[LiveLeagueGame]
+
     - radiant_team: LiveLeagueGameTeam
       - team_name
       - team_id
@@ -192,6 +194,7 @@ The api will take care to convert those to 64b base.
     - series_type
     - league_tier
     - scoreboard: LiveLeagueGameScoreboard
+
       - duration
       - roshan_respawn_timer
       - radiant: LiveLeagueGameTeamScoreboard
@@ -232,6 +235,7 @@ The api will take care to convert those to 64b base.
 
 :optionals: start_at_team_id, teams_requested
 :return: list[Team]
+
     - team_id
     - name
     - tag
@@ -254,6 +258,7 @@ The api will take care to convert those to 64b base.
 **get_heroes()**
 
 :return: list[Hero]
+
     - localized_name
     - name
     - url_small_portrait
@@ -264,12 +269,14 @@ The api will take care to convert those to 64b base.
 **get_tournament_prize_pool(leagueid, **kwargs):**
 
 :return: TournamentPrizePool
+
     - prize_pool
     - league_id
 
 **get_game_items()**
 
 :return: list[Item]
+
     - localized_name
     - name
     - is_recipe
