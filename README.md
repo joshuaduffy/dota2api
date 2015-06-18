@@ -262,13 +262,9 @@ Run the tests
 
 Using nose and nose-cov:
 
-.. code-block:: bash
-
     $ nosetests --with-cov --cov-report html dota2api tests
 
 To install them do the following:
-
-.. code-block:: bash
 
     $ pip install nose nose-cov
 
