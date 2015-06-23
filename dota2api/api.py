@@ -1,5 +1,3 @@
-__author__ = 'evaldo'
-
 import requests
 import urllib
 import os
