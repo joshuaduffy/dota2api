@@ -42,8 +42,8 @@ class DetailMatchPlayer(BasePlayer):
                                  kwargs.get("ability_upgrades", [])]
         self.additional_units = [AdditionalUnit(**additional_unit) for additional_unit in
                                  kwargs.get('additional_units', [])]
-
-        self.leaver_status = Leaver(kwargs.get("leaver_status"))
+        if kwargs.get("leaver_status") is not None:  
+            self.leaver_status = Leaver(kwargs.get("leaver_status"))
 
 class AbilityUpgrade(object):
     def __init__(self, **kwargs):
