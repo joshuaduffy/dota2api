@@ -79,7 +79,9 @@ class Leaver(object):
 
 
 def leaver_map(leaver_id):
-    return [l for l in leaver if l['id'] == leaver_id][0]
+    if leaver_id is None:
+        return [l for l in leaver if l['id'] == leaver_id][0]
+    return [l for l in leaver if l['id'] == 0][0]
 
 
 with open(load_json_file("leaver.json")) as leaver_json:
