@@ -6,6 +6,7 @@ import logging
 from hero import Hero
 from item import load_item
 from ..src.utils import load_json_file
+from dota2api.src import exceptions
 
 class BasePlayer(object):
     def __init__(self, **kwargs):
@@ -45,21 +46,33 @@ def lobby_name(lobby_id):
     """
     Parse the lobby, will be available as ``lobby_type``
     """
-    return [lobby['name'] for lobby in lobbies['lobbies'] if lobby['id'] == lobby_id][0]
+    lobby = [lobby['name'] for lobby in lobbies['lobbies'] if lobby['id'] == lobby_id]
+    if lobby:
+        return lobby[0]
+
+    raise exceptions.APIError("It was not possible to parse lobby " + lobby_id)
 
 
 def cluster_name(region_id):
     """
     Parse the lobby, will be available as ``cluster_name``
     """
-    return [region['name'] for region in regions['regions'] if region['id'] == region_id][0]
+    region = [region['name'] for region in regions['regions'] if region['id'] == region_id]
+    if region:
+        return region[0]
+
+    raise exceptions.APIError("It was not possible to parse cluster " + region_id)
 
 
 def game_mode_name(mode_id):
     """
     Parse the lobby, will be available as ``game_mode_name``
     """
-    return [mode['name'] for mode in modes['modes'] if mode['id'] == mode_id][0]
+    mode = [mode['name'] for mode in modes['modes'] if mode['id'] == mode_id]
+    if mode:
+        return mode[0]
+
+    raise exceptions.APIError("It was not possible to parse game mode " + mode_id)
 
 
 def ability_name(ability_id):
