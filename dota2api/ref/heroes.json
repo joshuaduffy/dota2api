@@ -1,6 +1,6 @@
 {
     "status": 200, 
-    "count": 110, 
+    "count": 111, 
     "heroes": [
         {
             "localized_name": "Anti-Mage", 
@@ -551,6 +551,11 @@
             "localized_name": "Winter Wyvern", 
             "name": "npc_dota_hero_winter_wyvern", 
             "id": 112
+        }, 
+        {
+            "localized_name": "Arc Warden", 
+            "name": "npc_dota_hero_arc_warden", 
+            "id": 113
         }
     ]
 }
