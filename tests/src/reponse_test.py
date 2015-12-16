@@ -32,7 +32,7 @@ class TestBuildDota2Dict(unittest.TestCase):
         self.assertEqual(len(dota2dict['matches']), 1)
 
     def test_get_match_history_from_only_one_player(self):
-        url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=88585077', STEAM_ID_PAR,
+        url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=112351324', STEAM_ID_PAR,
                                                           'format=json', 'matches_requested=10')
         request = self.executor(url)
 
@@ -42,7 +42,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 
         self.assertEqual(len(dota2dict['matches']), 10)
         for match in dota2dict['matches']:
-            player_is_in_match = bool([p for p in match['players'] if p['account_id'] == 88585077])
+            player_is_in_match = bool([p for p in match['players'] if p['account_id'] == 112351324])
             self.assertTrue(player_is_in_match, 'Player was not in a match from the result')
 
     def test_request_match_detail_on_a_non_existent_match(self):
