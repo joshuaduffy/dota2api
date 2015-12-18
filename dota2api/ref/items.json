@@ -107,7 +107,7 @@
             "secret_shop": 0, 
             "cost": 75, 
             "side_shop": 0, 
-            "id": 1023
+            "id": 237
         }, 
         {
             "localized_name": "Ring of Protection", 
@@ -816,7 +816,7 @@
             "name": "item_vladmir", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2325, 
+            "cost": 2300, 
             "side_shop": 0, 
             "id": 81
         }, 
@@ -861,7 +861,7 @@
             "name": "item_ring_of_basilius", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 525, 
+            "cost": 500, 
             "side_shop": 0, 
             "id": 88
         }, 
@@ -980,7 +980,7 @@
             "secret_shop": 0, 
             "cost": 0, 
             "side_shop": 0, 
-            "id": 1027
+            "id": 233
         }, 
         {
             "localized_name": "Aether Lens", 
@@ -989,7 +989,7 @@
             "secret_shop": 0, 
             "cost": 2350, 
             "side_shop": 0, 
-            "id": 1028
+            "id": 232
         }, 
         {
             "localized_name": "Recipe: Force Staff", 
@@ -1583,7 +1583,7 @@
             "secret_shop": 0, 
             "cost": 0, 
             "side_shop": 0, 
-            "id": 1024
+            "id": 234
         }, 
         {
             "localized_name": "Dragon Lance", 
@@ -1592,7 +1592,7 @@
             "secret_shop": 0, 
             "cost": 1875, 
             "side_shop": 0, 
-            "id": 1025
+            "id": 236
         }, 
         {
             "localized_name": "Recipe: Armlet of Mordiggian", 
@@ -2069,7 +2069,7 @@
             "secret_shop": 0, 
             "cost": 125, 
             "side_shop": 0, 
-            "id": 272
+            "id": 238
         }, 
         {
             "localized_name": "Iron Talon", 
@@ -2078,7 +2078,7 @@
             "secret_shop": 0, 
             "cost": 500, 
             "side_shop": 0, 
-            "id": 273
+            "id": 239
         }, 
         {
             "localized_name": "Recipe: Abyssal Blade", 
