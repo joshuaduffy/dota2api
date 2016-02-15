@@ -27,7 +27,7 @@ class BasePlayer(object):
         self.deaths = kwargs.get("deaths", kwargs.get('death'))
         self.assists = kwargs["assists"]
 
-        self.gold = kwargs["gold"]
+        self.gold = kwargs.get("gold", 0)
         self.last_hits = kwargs["last_hits"]
         self.denies = kwargs["denies"]
         self.gold_per_min = kwargs["gold_per_min"]
