@@ -32,7 +32,7 @@ class BasePlayer(object):
         self.denies = kwargs["denies"]
         self.gold_per_min = kwargs["gold_per_min"]
         self.xp_per_min = kwargs["xp_per_min"]
-        self.gold_spent = kwargs.get("gold_spent")
+        self.gold_spent = kwargs.get("gold_spent", 0)
         self.hero_damage = kwargs.get("hero_damage")
         self.tower_damage = kwargs.get("tower_damage")
         self.hero_healing = kwargs.get("hero_healing")
