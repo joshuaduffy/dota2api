@@ -33,9 +33,9 @@ class BasePlayer(object):
         self.gold_per_min = kwargs["gold_per_min"]
         self.xp_per_min = kwargs["xp_per_min"]
         self.gold_spent = kwargs.get("gold_spent", 0)
-        self.hero_damage = kwargs.get("hero_damage")
-        self.tower_damage = kwargs.get("tower_damage")
-        self.hero_healing = kwargs.get("hero_healing")
+        self.hero_damage = kwargs.get("hero_damage", 0)
+        self.tower_damage = kwargs.get("tower_damage", 0)
+        self.hero_healing = kwargs.get("hero_healing", 0)
         self.level = kwargs["level"]
 
     def __repr__(self):
