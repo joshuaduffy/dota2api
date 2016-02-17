@@ -18,6 +18,19 @@ def hero_id(response):
 
     return response
 
+def leaver(response):
+    """
+    Parse the lobby, will be available as ``hero_name``
+    """
+    for player in response['players']:
+        for leaver in leavers:
+            if leaver['id'] == player['leaver_status']:
+                player[u'leaver_status_name'] = leaver['leaver_status_name']
+                player[u'leaver_status_description'] = leaver['leaver_status_description']
+
+    return response
+
+
 
 def item_id(response):
     """
@@ -91,3 +104,5 @@ with open(load_json_file("modes.json")) as modes_json:
     modes = json.load(modes_json)
 with open(load_json_file("regions.json")) as regions_json:
     regions = json.load(regions_json)
+with open(load_json_file("leaver.json")) as leaver_json:
+    leavers = json.load(leaver_json)

@@ -35,6 +35,7 @@ def build(req, url):
             resp = parse.lobby_type(resp)
             resp = parse.game_mode(resp)
             resp = parse.cluster(resp)
+            resp = parse.leaver(resp)
     except KeyError:
         pass  # Only do the above for matches
 

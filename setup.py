@@ -18,6 +18,7 @@ setup(
     packages=['dota2api', 'dota2api.src', 'dota2api.ref'],
     package_data={'dota2api.ref': ['abilities.json',
                                    'heroes.json',
+                                   'leaver.json',
                                    'items.json',
                                    'lobbies.json',
                                    'modes.json',
