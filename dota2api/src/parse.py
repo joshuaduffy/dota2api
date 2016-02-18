@@ -5,7 +5,7 @@
 import json
 import os
 import itertools
-
+import urls
 
 def hero_id(response):
     """
@@ -18,6 +18,7 @@ def hero_id(response):
 
     return response
 
+
 def leaver(response):
     """
     Parse the lobby, will be available as ``hero_name``
@@ -29,7 +30,6 @@ def leaver(response):
                 player[u'leaver_status_description'] = leaver['leaver_status_description']
 
     return response
-
 
 
 def item_id(response):
@@ -106,3 +106,18 @@ with open(load_json_file("regions.json")) as regions_json:
     regions = json.load(regions_json)
 with open(load_json_file("leaver.json")) as leaver_json:
     leavers = json.load(leaver_json)
+
+
+def parse_items_images_urls(resp):
+    for item in resp['items']:
+        item['url_image'] = urls.BASE_ITEMS_IMAGES_URL + item['name'].replace('item_', '') + '_lg.png'
+
+
+def parse_heroes_images(resp):
+    for hero in resp['heroes']:
+        base_images_url = urls.BASE_HERO_IMAGES_URL + hero['name'].replace('npc_dota_hero_', '')
+
+        hero['url_small_portrait'] = base_images_url + '_sb.png'
+        hero['url_large_portrait'] = base_images_url + '_lg.png'
+        hero['url_full_portrait'] = base_images_url + '_full.png'
+        hero['url_vertical_portrait'] = base_images_url + '_vert.jpg'
