@@ -26,8 +26,8 @@ def leaver(response):
     for player in response['players']:
         for leaver in leavers:
             if leaver['id'] == player['leaver_status']:
-                player[u'leaver_status_name'] = leaver['leaver_status_name']
-                player[u'leaver_status_description'] = leaver['leaver_status_description']
+                player[u'leaver_status_name'] = leaver['name']
+                player[u'leaver_status_description'] = leaver['description']
 
     return response
 
