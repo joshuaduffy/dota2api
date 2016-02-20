@@ -90,22 +90,6 @@ def load_json_file(file_name):
                                                     "ref",
                                                     file_name))
     return inp_file
-    
-# Load the files into memory as a response
-with open(load_json_file("heroes.json")) as heroes_json:
-    heroes = json.load(heroes_json)
-with open(load_json_file("items.json")) as items_json:
-    items = json.load(items_json)
-with open(load_json_file("abilities.json")) as abilities_json:
-    abilities = json.load(abilities_json)
-with open(load_json_file("lobbies.json")) as lobbies_json:
-    lobbies = json.load(lobbies_json)
-with open(load_json_file("modes.json")) as modes_json:
-    modes = json.load(modes_json)
-with open(load_json_file("regions.json")) as regions_json:
-    regions = json.load(regions_json)
-with open(load_json_file("leaver.json")) as leaver_json:
-    leavers = json.load(leaver_json)
 
 
 def parse_items_images_urls(resp):
@@ -121,3 +105,19 @@ def parse_heroes_images(resp):
         hero['url_large_portrait'] = base_images_url + '_lg.png'
         hero['url_full_portrait'] = base_images_url + '_full.png'
         hero['url_vertical_portrait'] = base_images_url + '_vert.jpg'
+
+# Load the files into memory as a response
+with open(load_json_file("heroes.json")) as heroes_json:
+    heroes = json.load(heroes_json)
+with open(load_json_file("items.json")) as items_json:
+    items = json.load(items_json)
+with open(load_json_file("abilities.json")) as abilities_json:
+    abilities = json.load(abilities_json)
+with open(load_json_file("lobbies.json")) as lobbies_json:
+    lobbies = json.load(lobbies_json)
+with open(load_json_file("modes.json")) as modes_json:
+    modes = json.load(modes_json)
+with open(load_json_file("regions.json")) as regions_json:
+    regions = json.load(regions_json)
+with open(load_json_file("leaver.json")) as leaver_json:
+    leavers = json.load(leaver_json)

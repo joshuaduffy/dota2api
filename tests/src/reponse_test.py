@@ -77,7 +77,7 @@ class TestBuildDota2Dict(unittest.TestCase):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
         self.assertEqual(build['players'][0]['item_0_name'], "Phase Boots")
-        self.assertEqual(build['players'][0]['item_1_name'], "Shadow Blade")  # I think the API did a whoopsie
+        self.assertEqual(build['players'][0]['item_1_name'], "Shadow Blade")
         self.assertEqual(build['players'][0]['item_2_name'], "Dagon")
         self.assertEqual(build['players'][0]['item_3_name'], "Hand of Midas")
         self.assertEqual(build['players'][0]['item_4_name'], "Town Portal Scroll")
@@ -96,3 +96,10 @@ class TestBuildDota2Dict(unittest.TestCase):
         build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
 
         self.assertEqual(build['cluster_name'], "Europe West")
+
+    def test_parse_leaver_status(self):
+        build = response.build(RequestMock().configure_single_match_result(), 'SomeUrl')
+
+        self.assertEqual(build['players'][0]['leaver_status'], 0)
+        self.assertEqual(build['players'][0]['leaver_status_name'], "NONE")
+        self.assertEqual(build['players'][0]['leaver_status_description'], "finished match, no abandon")
