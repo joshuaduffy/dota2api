@@ -152,11 +152,14 @@ class Initialise(object):
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
 
-        :param steamids: (list) list of ``64-bit`` steam ids
+        :param steamids: (list) list of ``32-bit`` or ``64-bit`` steam ids, notice
+                                that api will convert if ``32-bit`` are given
         :return: dictionary of player summaries, see :doc:`responses </responses>`
         """
+        base64_ids = map(convert_to_64_bit, filter(lambda x: x is not None, steamids))
+
         if 'steamids' not in kwargs:
-            kwargs['steamids'] = steamids
+            kwargs['steamids'] = base64_ids
         url = self.__build_url(urls.GET_PLAYER_SUMMARIES, **kwargs)
         req = self.executor(url)
         if self.logger:
@@ -239,7 +242,10 @@ class Initialise(object):
 
 
 def convert_to_64_bit(number):
-    return number + 76561197960265728
+    min64b = 76561197960265728
+    if number < min64b:
+        return number + min64b
+    return number
 
 
 def _setup_logger():
