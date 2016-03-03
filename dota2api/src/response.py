@@ -3,8 +3,8 @@
 """Response template, this is used so we can pass the response as an object"""
 
 import json
-import parse
-from exceptions import *
+from .parse import *
+from .exceptions import *
 
 
 class Dota2Dict(dict):
@@ -30,11 +30,11 @@ def build(req, url):
 
     try:
         if 'players' in resp:
-            resp = parse.hero_id(resp)
-            resp = parse.item_id(resp)
-            resp = parse.lobby_type(resp)
-            resp = parse.game_mode(resp)
-            resp = parse.cluster(resp)
+            resp = hero_id(resp)
+            resp = item_id(resp)
+            resp = lobby_type(resp)
+            resp = game_mode(resp)
+            resp = cluster(resp)
     except KeyError:
         pass  # Only do the above for matches
 

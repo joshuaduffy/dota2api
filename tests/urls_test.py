@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
 import unittest
 
-from dota2api.src.urls import *
 from dota2api import Initialise
 from dota2api.src import exceptions
+from dota2api.src.urls import *
 from tests.utils import *
 
 
@@ -131,6 +130,3 @@ class UrlsMatchTests(unittest.TestCase):
         self.api.executor = RequestMock(matcher).configure_success()
         self.api.get_tournament_prize_pool(1)
         self.api.executor.assert_called()
-
-
-

@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import unittest
-import os
 import json
+import unittest
+
+import os
 
 import dota2api
-from dota2api.src.response import Dota2Dict
 from dota2api.src.exceptions import *
-from utils import RequestMock
+from dota2api.src.response import Dota2Dict
+from .utils import RequestMock
 
 
 class APITest(unittest.TestCase):
@@ -28,19 +29,19 @@ class APITest(unittest.TestCase):
         self.assertEqual(type(Dota2Dict()), type(match))
 
     def json_loads_test(self):
-            # Test json function loads json
-            match = self.api.get_match_details(match_id=988604774)
-            try:
-                json.loads(match.json)
-            except ValueError:
-                self.fail("JSON does not load!")
+        # Test json function loads json
+        match = self.api.get_match_details(match_id=988604774)
+        try:
+            json.loads(match.json)
+        except ValueError:
+            self.fail("JSON does not load!")
 
     def wrong_api_key_test(self):
-            # Test the wrong API key
-            try:
-                dota2api.Initialise("sdfsdfsdf").get_match_history()
-            except APIAuthenticationError:
-                assert True
+        # Test the wrong API key
+        try:
+            dota2api.Initialise("sdfsdfsdf").get_match_history()
+        except APIAuthenticationError:
+            assert True
 
     def update_heroes_test(self):
         self.api.update_heroes()

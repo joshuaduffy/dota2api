@@ -510,7 +510,7 @@
             "name": "item_travel_boots", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2450, 
+            "cost": 2400, 
             "side_shop": 0, 
             "id": 48
         }, 
@@ -519,7 +519,7 @@
             "name": "item_travel_boots_2", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 4450, 
+            "cost": 4400, 
             "side_shop": 0, 
             "id": 220
         }, 
@@ -537,7 +537,7 @@
             "name": "item_phase_boots", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1290, 
+            "cost": 1240, 
             "side_shop": 0, 
             "id": 50
         }, 
@@ -654,7 +654,7 @@
             "name": "item_power_treads", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1400, 
+            "cost": 1350, 
             "side_shop": 0, 
             "id": 63
         }, 
@@ -978,7 +978,7 @@
             "name": "item_recipe_aether_lens", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 0, 
+            "cost": 550, 
             "side_shop": 0, 
             "id": 233
         }, 
@@ -987,7 +987,7 @@
             "name": "item_aether_lens", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2350, 
+            "cost": 2300, 
             "side_shop": 0, 
             "id": 232
         }, 
@@ -1131,7 +1131,7 @@
             "name": "item_necronomicon", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2700, 
+            "cost": 2650, 
             "side_shop": 0, 
             "id": 106
         }, 
@@ -1140,7 +1140,7 @@
             "name": "item_necronomicon_2", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 3950, 
+            "cost": 3850, 
             "side_shop": 0, 
             "id": 193
         }, 
@@ -1149,7 +1149,7 @@
             "name": "item_necronomicon_3", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 5200, 
+            "cost": 5050, 
             "side_shop": 0, 
             "id": 194
         }, 
@@ -1536,7 +1536,7 @@
             "name": "item_bfury", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 4525, 
+            "cost": 4500, 
             "side_shop": 0, 
             "id": 145
         }, 
@@ -1914,7 +1914,7 @@
             "name": "item_arcane_boots", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1350, 
+            "cost": 1300, 
             "side_shop": 0, 
             "id": 180
         }, 
@@ -2040,7 +2040,7 @@
             "name": "item_guardian_greaves", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 5300, 
+            "cost": 5250, 
             "side_shop": 0, 
             "id": 231
         }, 
@@ -2130,7 +2130,7 @@
             "name": "item_ring_of_aquila", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1010, 
+            "cost": 985, 
             "side_shop": 0, 
             "id": 212
         }, 
@@ -2148,7 +2148,7 @@
             "name": "item_tranquil_boots", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1000, 
+            "cost": 925, 
             "side_shop": 0, 
             "id": 214
         }, 

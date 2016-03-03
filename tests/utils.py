@@ -1,6 +1,7 @@
-import os
-from dota2api.src.parse import load_json_file
 import json
+
+import os
+
 DEFAULT_MATCHES_SIZE = 100
 LANGUAGE_PAR = 'language=en_us'
 STEAM_ID_PAR = 'key=' + os.environ.get('D2_API_KEY')
@@ -47,7 +48,6 @@ class RequestMock(object):
         return self
 
     def __call__(self, url):
-        print url
         if self.url_matcher:
             self.url_matcher.compare(url)
         self.called = True
@@ -71,14 +71,14 @@ class UrlMatcher(object):
             raise AssertionError(url + ' does not start with ' + self.base_url)
 
         all_args = str(url).split('?')[1]
-        splitted_args = all_args.split("&")
+        split_args = all_args.split("&")
 
         for arg in self.args:
-            if arg in splitted_args:
-                splitted_args.remove(arg)
+            if arg in split_args:
+                split_args.remove(arg)
             else:
                 raise AssertionError('The parameter ' + arg + ' is not in the url ' + url)
 
-        if splitted_args:
-            raise AssertionError("Args left: " + str(splitted_args))
+        if split_args:
+            raise AssertionError("Args left: " + str(split_args))
         return True

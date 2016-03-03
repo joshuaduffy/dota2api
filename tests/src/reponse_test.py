@@ -1,9 +1,11 @@
 import unittest
-from dota2api.src.urls import *
-from tests.utils import *
+
+import requests
+
 from dota2api.src import response
 from dota2api.src.exceptions import *
-import requests
+from dota2api.src.urls import *
+from tests.utils import *
 
 
 class TestBuildDota2Dict(unittest.TestCase):

@@ -22,12 +22,18 @@ setup(
                                    'lobbies.json',
                                    'modes.json',
                                    'regions.json']},
-    install_requires=['requests>=2.2.1'],
+    install_requires=['requests'],
     classifiers=[
-        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
+        "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python"
+        "Programming Language :: Python 2.6"
+        "Programming Language :: Python 2.7"
+        "Programming Language :: Python 3.2"
+        "Programming Language :: Python 3.3"
+        "Programming Language :: Python 3.4"
+        "Programming Language :: Python 3.5"
     ]
 )
