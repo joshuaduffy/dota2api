@@ -3,9 +3,14 @@
 """Parse some of the values from the API, all can be found in the ``response`` returned"""
 
 import json
+
 import os
-import itertools
-import urls
+
+try:
+    from itertools import izip as zip
+except ImportError:
+    pass
+
 
 def hero_id(response):
     """
@@ -43,10 +48,10 @@ def item_id(response):
                 u'item_3_name', u'item_4_name', u'item_5_name']
 
     for player in response['players']:
-        for key, newkey in itertools.izip(dict_keys, new_keys):
+        for key, new_key in zip(dict_keys, new_keys):
             for item in items['items']:
                 if item['id'] == player[key]:
-                    player[newkey] = item['localized_name']
+                    player[new_key] = item['localized_name']
 
     return response
 
@@ -87,8 +92,8 @@ def cluster(response):
 def load_json_file(file_name):
     inp_file = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "..",
-                                                    "ref",
-                                                    file_name))
+        "ref",
+        file_name))
     return inp_file
 
 

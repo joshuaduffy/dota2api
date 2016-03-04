@@ -4,16 +4,21 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.2.9"
+__version__ = "1.3.0"
 __licence__ = "GPL"
 
-import requests
-import urllib
-import os
 import json
 import collections
 
-from src import urls, exceptions, response, parse
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
+
+import os
+import requests
+
+from .src import urls, exceptions, response, parse
 
 
 class Initialise(object):
@@ -23,6 +28,7 @@ class Initialise(object):
     :param api_key: (str) string with the ``api key``
     :param logging: (bool, optional) set this to True for logging output
     """
+
     def __init__(self, api_key=None, executor=None, language=None, logging=None):
         if api_key:
             self.api_key = api_key
@@ -229,7 +235,7 @@ class Initialise(object):
             kwargs['language'] = self.language
         if 'format' not in kwargs:
             kwargs['format'] = self.__format
-        api_query = urllib.urlencode(kwargs)
+        api_query = urlencode(kwargs)
 
         return "{0}{1}?{2}".format(urls.BASE_URL,
                                    api_call,

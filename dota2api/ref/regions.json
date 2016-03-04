@@ -1,232 +1,232 @@
 {
-    "regions": [
-        {
-            "id" : 0,
-            "name" : "Unknow"
-        },
-        {
-            "id" : 111,
-            "name" : "US West"
-        },
-        {
-            "id" : 112,
-            "name" : "US West"
-        },
-        {
-            "id" : 113,
-            "name" : "US West"
-        },
-        {
-            "id" : 114,
-            "name" : "US West"
-        },
-        {
-            "id" : 121,
-            "name" : "US East"
-        },
-        {
-            "id" : 122,
-            "name" : "US East"
-        },
-        {
-            "id" : 123,
-            "name" : "US East"
-        },
-        {
-            "id" : 124,
-            "name" : "US East"
-        },
-        {
-            "id" : 131,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 132,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 133,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 134,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 135,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 136,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 137,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 138,
-            "name" : "Europe West"
-        },
-        {
-            "id" : 142 ,
-            "name" : "South Korea"
-        },
-        {
-            "id" : 143,
-            "name" : "South Korea"
-        },
-        {
-            "id" : 144,
-            "name" : "Japan"
-        },
-        {
-            "id" : 145,
-            "name" : "Japan"
-        },
-        {
-            "id" : 151 ,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 152,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 153,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 154,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 155,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 156,
-            "name" : "Southeast Asia"
-        },
-        {
-            "id" : 161,
-            "name" : "China"
-        },
-        {
-            "id" : 163,
-            "name" : "China"
-        },
-        {
-            "id" : 171,
-            "name": "Australia"
-        },
-        {
-            "id" : 181,
-            "name" : "Russia"
-        },
-        {
-            "id" : 182,
-            "name" : "Russia"
-        },
-        {
-            "id" : 183,
-            "name" : "Russia"
-        },
-        {
-            "id" : 184,
-            "name" : "Russia"
-        },
-        {
-            "id" : 185,
-            "name" : "Russia"
-        },
-        {
-            "id" : 186,
-            "name" : "Russia"
-        },
-        {
-            "id" : 187,
-            "name" : "Russia"
-        },
-        {
-            "id" : 188,
-            "name" : "Russia"
-        },
-        {
-            "id" : 191,
-            "name" : "Europe East"
-        },
-        {
-            "id" : 192,
-            "name" : "Europe East"
-        },
-        {
-            "id" : 200,
-            "name" : "South America"
-        },
-        {
-            "id" : 202,
-            "name" : "South America"
-        },
-        {
-            "id" : 203,
-            "name" : "South America"
-        },
-        {
-            "id" : 204,
-            "name" : "South America"
-        },
-        {
-            "id" : 211,
-            "name" : "South Africa"
-        },
-        {
-            "id" : 212,
-            "name" : "South Africa"
-        },
-        {
-            "id" : 213,
-            "name" : "South America"
-        },
-        {
-            "id" : 221,
-            "name" : "China"
-        },
-        {
-            "id" : 222,
-            "name" : "China"
-        },
-        {
-            "id" : 223,
-            "name" : "China"
-        },
-        {
-            "id" : 224,
-            "name" : "China"
-        },
-        {
-            "id" : 225,
-            "name" : "China"
-        },
-        {
-            "id" : 231,
-            "name" : "China"
-        },
-        {
-            "id" : 241,
-            "name" : "Chile"
-        },
-        {
-            "id" : 242,
-            "name" : "Chile"
-        },
-        {
-            "id" : 251,
-            "name" : "Peru"
-        },
-        {
-            "id" : 261,
-            "name" : "India"
-        }
-    ]
+  "regions": [
+    {
+      "id": 0,
+      "name": "Unknow"
+    },
+    {
+      "id": 111,
+      "name": "US West"
+    },
+    {
+      "id": 112,
+      "name": "US West"
+    },
+    {
+      "id": 113,
+      "name": "US West"
+    },
+    {
+      "id": 114,
+      "name": "US West"
+    },
+    {
+      "id": 121,
+      "name": "US East"
+    },
+    {
+      "id": 122,
+      "name": "US East"
+    },
+    {
+      "id": 123,
+      "name": "US East"
+    },
+    {
+      "id": 124,
+      "name": "US East"
+    },
+    {
+      "id": 131,
+      "name": "Europe West"
+    },
+    {
+      "id": 132,
+      "name": "Europe West"
+    },
+    {
+      "id": 133,
+      "name": "Europe West"
+    },
+    {
+      "id": 134,
+      "name": "Europe West"
+    },
+    {
+      "id": 135,
+      "name": "Europe West"
+    },
+    {
+      "id": 136,
+      "name": "Europe West"
+    },
+    {
+      "id": 137,
+      "name": "Europe West"
+    },
+    {
+      "id": 138,
+      "name": "Europe West"
+    },
+    {
+      "id": 142,
+      "name": "South Korea"
+    },
+    {
+      "id": 143,
+      "name": "South Korea"
+    },
+    {
+      "id": 144,
+      "name": "Japan"
+    },
+    {
+      "id": 145,
+      "name": "Japan"
+    },
+    {
+      "id": 151,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 152,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 153,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 154,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 155,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 156,
+      "name": "Southeast Asia"
+    },
+    {
+      "id": 161,
+      "name": "China"
+    },
+    {
+      "id": 163,
+      "name": "China"
+    },
+    {
+      "id": 171,
+      "name": "Australia"
+    },
+    {
+      "id": 181,
+      "name": "Russia"
+    },
+    {
+      "id": 182,
+      "name": "Russia"
+    },
+    {
+      "id": 183,
+      "name": "Russia"
+    },
+    {
+      "id": 184,
+      "name": "Russia"
+    },
+    {
+      "id": 185,
+      "name": "Russia"
+    },
+    {
+      "id": 186,
+      "name": "Russia"
+    },
+    {
+      "id": 187,
+      "name": "Russia"
+    },
+    {
+      "id": 188,
+      "name": "Russia"
+    },
+    {
+      "id": 191,
+      "name": "Europe East"
+    },
+    {
+      "id": 192,
+      "name": "Europe East"
+    },
+    {
+      "id": 200,
+      "name": "South America"
+    },
+    {
+      "id": 202,
+      "name": "South America"
+    },
+    {
+      "id": 203,
+      "name": "South America"
+    },
+    {
+      "id": 204,
+      "name": "South America"
+    },
+    {
+      "id": 211,
+      "name": "South Africa"
+    },
+    {
+      "id": 212,
+      "name": "South Africa"
+    },
+    {
+      "id": 213,
+      "name": "South America"
+    },
+    {
+      "id": 221,
+      "name": "China"
+    },
+    {
+      "id": 222,
+      "name": "China"
+    },
+    {
+      "id": 223,
+      "name": "China"
+    },
+    {
+      "id": 224,
+      "name": "China"
+    },
+    {
+      "id": 225,
+      "name": "China"
+    },
+    {
+      "id": 231,
+      "name": "China"
+    },
+    {
+      "id": 241,
+      "name": "Chile"
+    },
+    {
+      "id": 242,
+      "name": "Chile"
+    },
+    {
+      "id": 251,
+      "name": "Peru"
+    },
+    {
+      "id": 261,
+      "name": "India"
+    }
+  ]
 }

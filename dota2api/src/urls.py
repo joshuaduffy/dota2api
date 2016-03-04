@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """The base URL and the API calls are defined in this file"""
 
-
 BASE_URL = "http://api.steampowered.com/"
 GET_MATCH_HISTORY = "IDOTA2Match_570/GetMatchHistory/v001/"
 GET_MATCH_HISTORY_BY_SEQ_NUM = "IDOTA2Match_570/GetMatchHistoryBySequenceNum/v0001/"

@@ -10,7 +10,7 @@ dota2api: wrapper and parser
 .. image:: https://readthedocs.org/projects/dota2api/badge/?version=latest
     :target: https://readthedocs.org/projects/dota2api/?badge=latest
 
-Wrapper and parser in Python (2.X) created for interacting and getting data easily from Valve's Dota 2 API.
+Wrapper and parser in Python created for interacting and getting data easily from Valve's Dota 2 API.
 
 This library parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
 
