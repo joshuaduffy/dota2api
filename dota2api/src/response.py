@@ -40,10 +40,10 @@ def build(req, url):
         pass  # Only do the above for matches
 
     if 'items' in resp:
-        parse.parse_items_images_urls(resp)
+        parse_items_images_urls(resp)
 
     if 'heroes' in resp:
-        parse.parse_heroes_images(resp)
+        parse_heroes_images(resp)
 
     resp.url = url
     resp.json = json.dumps(resp, ensure_ascii=False)

@@ -3,7 +3,7 @@
 """Parse some of the values from the API, all can be found in the ``response`` returned"""
 
 import json
-
+import urls
 import os
 
 try:
