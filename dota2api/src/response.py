@@ -35,8 +35,15 @@ def build(req, url):
             resp = lobby_type(resp)
             resp = game_mode(resp)
             resp = cluster(resp)
+            resp = leaver(resp)
     except KeyError:
         pass  # Only do the above for matches
+
+    if 'items' in resp:
+        parse_items_images_urls(resp)
+
+    if 'heroes' in resp:
+        parse_heroes_images(resp)
 
     resp.url = url
     resp.json = json.dumps(resp, ensure_ascii=False)

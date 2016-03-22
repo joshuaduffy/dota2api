@@ -13,3 +13,5 @@ GET_PLAYER_SUMMARIES = "ISteamUser/GetPlayerSummaries/v0002/"
 GET_HEROES = "IEconDOTA2_570/GetHeroes/v0001/"
 GET_GAME_ITEMS = "IEconDOTA2_570/GetGameItems/v0001/"
 GET_TOURNAMENT_PRIZE_POOL = "IEconDOTA2_570/GetTournamentPrizePool/v1/"
+BASE_ITEMS_IMAGES_URL = 'http://cdn.dota2.com/apps/dota2/images/items/'
+BASE_HERO_IMAGES_URL = 'http://cdn.dota2.com/apps/dota2/images/heroes/'

@@ -3,7 +3,7 @@
 """Parse some of the values from the API, all can be found in the ``response`` returned"""
 
 import json
-
+import urls
 import os
 
 try:
@@ -20,6 +20,19 @@ def hero_id(response):
         for hero in heroes['heroes']:
             if hero['id'] == player['hero_id']:
                 player[u'hero_name'] = hero['localized_name']
+
+    return response
+
+
+def leaver(response):
+    """
+    Parse the lobby, will be available as ``hero_name``
+    """
+    for player in response['players']:
+        for leaver in leavers:
+            if leaver['id'] == player['leaver_status']:
+                player[u'leaver_status_name'] = leaver['name']
+                player[u'leaver_status_description'] = leaver['description']
 
     return response
 
@@ -84,6 +97,20 @@ def load_json_file(file_name):
     return inp_file
 
 
+def parse_items_images_urls(resp):
+    for item in resp['items']:
+        item['url_image'] = urls.BASE_ITEMS_IMAGES_URL + item['name'].replace('item_', '') + '_lg.png'
+
+
+def parse_heroes_images(resp):
+    for hero in resp['heroes']:
+        base_images_url = urls.BASE_HERO_IMAGES_URL + hero['name'].replace('npc_dota_hero_', '')
+
+        hero['url_small_portrait'] = base_images_url + '_sb.png'
+        hero['url_large_portrait'] = base_images_url + '_lg.png'
+        hero['url_full_portrait'] = base_images_url + '_full.png'
+        hero['url_vertical_portrait'] = base_images_url + '_vert.jpg'
+
 # Load the files into memory as a response
 with open(load_json_file("heroes.json")) as heroes_json:
     heroes = json.load(heroes_json)
@@ -97,3 +124,5 @@ with open(load_json_file("modes.json")) as modes_json:
     modes = json.load(modes_json)
 with open(load_json_file("regions.json")) as regions_json:
     regions = json.load(regions_json)
+with open(load_json_file("leaver.json")) as leaver_json:
+    leavers = json.load(leaver_json)
