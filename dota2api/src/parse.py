@@ -3,8 +3,8 @@
 """Parse some of the values from the API, all can be found in the ``response`` returned"""
 
 import json
-import urls
 import os
+from .urls import BASE_ITEMS_IMAGES_URL, BASE_HERO_IMAGES_URL
 
 try:
     from itertools import izip as zip
@@ -19,7 +19,7 @@ def hero_id(response):
     for player in response['players']:
         for hero in heroes['heroes']:
             if hero['id'] == player['hero_id']:
-                player[u'hero_name'] = hero['localized_name']
+                player['hero_name'] = hero['localized_name']
 
     return response
 
@@ -31,8 +31,8 @@ def leaver(response):
     for player in response['players']:
         for leaver in leavers:
             if leaver['id'] == player['leaver_status']:
-                player[u'leaver_status_name'] = leaver['name']
-                player[u'leaver_status_description'] = leaver['description']
+                player['leaver_status_name'] = leaver['name']
+                player['leaver_status_description'] = leaver['description']
 
     return response
 
@@ -44,8 +44,8 @@ def item_id(response):
     """
     dict_keys = ['item_0', 'item_1', 'item_2',
                  'item_3', 'item_4', 'item_5']
-    new_keys = [u'item_0_name', u'item_1_name', u'item_2_name',
-                u'item_3_name', u'item_4_name', u'item_5_name']
+    new_keys = ['item_0_name', 'item_1_name', 'item_2_name',
+                'item_3_name', 'item_4_name', 'item_5_name']
 
     for player in response['players']:
         for key, new_key in zip(dict_keys, new_keys):
@@ -62,7 +62,7 @@ def lobby_type(response):
     """
     for lobby in lobbies['lobbies']:
         if lobby['id'] == response['lobby_type']:
-            response[u'lobby_name'] = lobby['name']
+            response['lobby_name'] = lobby['name']
 
     return response
 
@@ -73,7 +73,7 @@ def game_mode(response):
     """
     for mode in modes['modes']:
         if mode['id'] == response['game_mode']:
-            response[u'game_mode_name'] = mode['name']
+            response['game_mode_name'] = mode['name']
 
     return response
 
@@ -84,7 +84,7 @@ def cluster(response):
     """
     for reg in regions['regions']:
         if reg['id'] == response['cluster']:
-            response[u'cluster_name'] = reg['name']
+            response['cluster_name'] = reg['name']
 
     return response
 
@@ -99,12 +99,12 @@ def load_json_file(file_name):
 
 def parse_items_images_urls(resp):
     for item in resp['items']:
-        item['url_image'] = urls.BASE_ITEMS_IMAGES_URL + item['name'].replace('item_', '') + '_lg.png'
+        item['url_image'] = BASE_ITEMS_IMAGES_URL + item['name'].replace('item_', '') + '_lg.png'
 
 
 def parse_heroes_images(resp):
     for hero in resp['heroes']:
-        base_images_url = urls.BASE_HERO_IMAGES_URL + hero['name'].replace('npc_dota_hero_', '')
+        base_images_url = BASE_HERO_IMAGES_URL + hero['name'].replace('npc_dota_hero_', '')
 
         hero['url_small_portrait'] = base_images_url + '_sb.png'
         hero['url_large_portrait'] = base_images_url + '_lg.png'

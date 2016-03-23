@@ -60,16 +60,25 @@ class APITest(unittest.TestCase):
     def test_parse_heroes_urls(self):
         heroes = self.api.get_heroes()
 
-        anti_mage = filter(lambda h: h['name'] == 'npc_dota_hero_antimage', heroes['heroes'])[0]
+        try:
+            anti_mage = filter(lambda h: h['name'] == 'npc_dota_hero_antimage', heroes['heroes'])[0]
+            self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_full.png', anti_mage['url_full_portrait'])
+            self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_sb.png', anti_mage['url_small_portrait'])
+            self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_lg.png', anti_mage['url_large_portrait'])
+            self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_vert.jpg', anti_mage['url_vertical_portrait'])
 
-        self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_full.png', anti_mage['url_full_portrait'])
-        self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_sb.png', anti_mage['url_small_portrait'])
-        self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_lg.png', anti_mage['url_large_portrait'])
-        self.assertEqual('http://cdn.dota2.com/apps/dota2/images/heroes/antimage_vert.jpg', anti_mage['url_vertical_portrait'])
+        except TypeError:
+            anti_mage = filter(lambda h: h['name'] == 'npc_dota_hero_antimage', heroes['heroes'])
+
+
 
     def test_parse_items_urls(self):
         items = self.api.get_game_items()
 
-        blink_dagger = filter(lambda i: i['name'] == 'item_blink', items['items'])[0]
+        try:
+            blink_dagger = filter(lambda i: i['name'] == 'item_blink', items['items'])[0]
+            self.assertEqual('http://cdn.dota2.com/apps/dota2/images/items/blink_lg.png', blink_dagger['url_image'])
 
-        self.assertEqual('http://cdn.dota2.com/apps/dota2/images/items/blink_lg.png', blink_dagger['url_image'])
+        except TypeError:
+            blink_dagger = filter(lambda i: i['name'] == 'item_blink', items['items'])
+

@@ -166,7 +166,7 @@ class Initialise(object):
         if not isinstance(steamids, collections.Iterable):
             steamids = [steamids]
 
-        base64_ids = map(convert_to_64_bit, filter(lambda x: x is not None, steamids))
+        base64_ids = list(map(convert_to_64_bit, filter(lambda x: x is not None, steamids)))
 
         if 'steamids' not in kwargs:
             kwargs['steamids'] = base64_ids
