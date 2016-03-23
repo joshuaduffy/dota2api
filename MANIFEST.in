@@ -1,6 +1,6 @@
 include *.rst
 include *.py
-include *.pip
+include *.txt
 include LICENSE
 
 recursive-include dota2api/ref *.json
