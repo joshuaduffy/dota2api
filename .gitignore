@@ -9,6 +9,7 @@ __pycache__/
 .Python
 env/
 /build/*
+/docs/build/*
 develop-eggs/
 dist/
 downloads/
@@ -51,3 +52,4 @@ target/
 # Mine
 key.tmp
 /.idea/*
+
