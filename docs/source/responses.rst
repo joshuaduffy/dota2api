@@ -27,9 +27,9 @@ get_match_history()
 *******************
 Returns a dictionary with a list of ``players`` within.
 
-``lobby_type`` -- see :ref:`lobby_type`.
+``match::lobby_type`` -- see :ref:`lobby_type`.
 
-``player_slot`` -- see :ref:`player_slot`.
+``player::player_slot`` -- see :ref:`player_slot`.
 
 .. code-block:: text
 
@@ -43,7 +43,7 @@ Returns a dictionary with a list of ``players`` within.
             match_seq_num       - Number indicating position in which this match was recorded
             start_time          - Unix timestamp of beginning of match
             lobby_type          - See lobby_type table
-            [players]           - list of players in the match
+            [player]            - list of players in the match
             {
                 account_id      - Unique account ID
                 player_slot     - Player's position within the team
@@ -89,7 +89,7 @@ Returns a dictionary with a list of ``matches`` within. See :ref:`get_match_deta
 get_match_details()
 *******************
 
-Returns a dictionary with a list of ``matches`` with ``players``.
+Returns a ``match`` dictionary with  with ``players``.
 
 For dynamic values such as kills or gold, if the match is live, then the value is current as of
 the API call. For matches that have finished, these values are simply the value at the end of the 
@@ -192,28 +192,37 @@ Returns a dictionary with a list of ``leagues`` within; can be viewed with DotaT
 get_live_league_games()
 ***********************
 
-Returns a dictionary with a list of ``leagues`` within.
+Returns a dictionary with a list of league ``games`` within.
 
 ``tower_state`` -- see :ref:`towers_and_barracks`.
+
+``player::team`` -- see :ref:`team_id`.
 
 .. code-block:: text
 
     {
-        [league]
+        [games]
         {
+            league_id               - ID for the league in which the match is being played
+            league_tier             - ?
+            league_series_id        - ?
             [players]               - list of all players in the match
             {
-                account_id          - 32-bit account ID
+                account_id          - Unique account ID
                 name                - in-game display name
-                hero_id             - Hero ID
-                team                - Team the player is o
+                hero_id             - Unique hero ID
+                team                - Team the player is on
             }
-            radiant_team            - information about the Radiant team
-            dire_team               - information about the Dire team
+            series_id               - ?
+            series_type             - ?
+            stage_name              - ?
+            game_number             - Game number of the series
+            radiant_series_wins     - Number of wins by Radiant during the series
+            dire_series_wins        - Number of wins by Dire during the series
+            tower_state             - state of *all* towers in the match
+            spectators              - Number of spectators watching
             lobby_id                - ID for the match's lobby
-            spectators              - number of spectators (at time of request)
-            tower_state             - state of *all* towers
-            league_id               - ID for the league in which the match is being played
+            stream_delay_s          - (?) Delay in seconds that match replay is delayed  
         }
     }
 
