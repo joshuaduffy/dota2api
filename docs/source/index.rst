@@ -19,7 +19,6 @@ Contents
    installation
    tutorial
    responses
-   fields
    reference
    contribute
 
