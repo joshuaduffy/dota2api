@@ -27,7 +27,11 @@ get_match_history()
 *******************
 Returns a dictionary with a list of ``players`` within.
 
-.. code-block:: json
+``lobby_type`` -- see :ref:`lobby_type`.
+
+``player_slot`` -- see :ref:`player_slot`.
+
+.. code-block:: text
 
     {
         num_results             - Number of matches within a single response
@@ -48,13 +52,28 @@ Returns a dictionary with a list of ``players`` within.
         }
     }
 
+.. _player_slot:
+
+player_slot
+=============
+
+The player slot is an 8-bit representation of the player's team and the slot (0-4) within the team.
+
+.. code-block:: text
+
+    ┌─────────────── Team (false if Radiant, true if Dire).
+    │ ┌─┬─┬─┬─────── Not used.
+    │ │ │ │ │ ┌─┬─┬─ The position of a player within their team (0-4).
+    │ │ │ │ │ │ │ │
+    0 0 0 0 0 0 0 0
+
 ******************************
 get_match_history_by_seq_num()
 ******************************
 
 Returns a dictionary with a list of ``matches`` within. See :ref:`get_match_details()` for structure of matches.
 
-.. code-block:: json
+.. code-block:: text
 
     {
         status
@@ -63,6 +82,8 @@ Returns a dictionary with a list of ``matches`` within. See :ref:`get_match_deta
         statusDetail        - Message explaining a status that is not equal to 1
         [matches]           - See get_match_details()
     }
+
+.. _get_match_details():
 
 *******************
 get_match_details()
@@ -74,7 +95,11 @@ For dynamic values such as kills or gold, if the match is live, then the value i
 the API call. For matches that have finished, these values are simply the value at the end of the 
 match for the player.
 
-.. code-block:: json
+``lobby_type`` -- see :ref:`lobby_type`.
+
+``game_mode`` and ``game_mode_name`` -- see :ref:`game_mode`
+
+.. code-block:: text
 
     {
         season                  - Season the game was played in
@@ -83,10 +108,10 @@ match for the player.
         start_time              - Unix timestamp for beginning of match
         match_id                - Unique match ID
         match_seq_num           - Number indicating position in which this match was recorded
-        tower_status_radiant    - Status of Radiant towers (see below)
-        tower_status_dire       - Status of Dire towers (see below)
-        barracks_status_radiant - Status of Radiant barracks (see below)
-        barracks_status_dire    - Status of Dire barracks (see below)
+        tower_status_radiant    - Status of Radiant towers
+        tower_status_dire       - Status of Dire towers
+        barracks_status_radiant - Status of Radiant barracks
+        barracks_status_dire    - Status of Dire barracks
         cluster                 - The server cluster the match was played on, used in retrieving replays
         cluster_name            - ?
         first_blood_time        - Time elapsed in seconds since first blood of the match
@@ -109,7 +134,7 @@ match for the player.
             kills               - Number of kills by player
             deaths              - Number of player deaths 
             assists             - Number of player assists
-            leaver_status       - Connection/leaving status of player, see leaver_status table
+            leaver_status       - Connection/leaving status of player
             gold                - Gold held by player
             last_hits           - Number of last hits by player (creep score)
             denies              - Number of denies
@@ -148,17 +173,17 @@ match for the player.
 get_league_listing()
 ********************
 
-Returns a dictionary with a list of ``leagues`` within.
+Returns a dictionary with a list of ``leagues`` within; can be viewed with DotaTV.
 
-.. code-block:: json
+.. code-block:: text
 
     {
         [league]
         {
-            name
-            leagueid
-            description
-            tournament_url
+            name            - name of the league
+            leagueid        - Unique league ID
+            description     - Description of the league
+            tournament_url  - League website information
         }
     }
     
@@ -169,7 +194,9 @@ get_live_league_games()
 
 Returns a dictionary with a list of ``leagues`` within.
 
-.. code-block:: json
+``tower_state`` -- see :ref:`towers_and_barracks`.
+
+.. code-block:: text
 
     {
         [league]
@@ -179,13 +206,13 @@ Returns a dictionary with a list of ``leagues`` within.
                 account_id          - 32-bit account ID
                 name                - in-game display name
                 hero_id             - Hero ID
-                team                - Team the player is on, see team_id table
+                team                - Team the player is o
             }
-            radiant_team            - information about the Radiant team, see "team" section
-            dire_team               - information about the Dire team, see "team" section
+            radiant_team            - information about the Radiant team
+            dire_team               - information about the Dire team
             lobby_id                - ID for the match's lobby
             spectators              - number of spectators (at time of request)
-            tower_state             - state of all tower states, see "towers" section
+            tower_state             - state of *all* towers
             league_id               - ID for the league in which the match is being played
         }
     }
@@ -196,23 +223,23 @@ get_team_info_by_team_id()
 
 Returns a dictionary with a list of ``teams`` within.
 
-.. code-block:: json
+.. code-block:: text
 
     {
         [team]
         {
-            team_id
-            name
-            tag
-            time_created
-            rating
-            logo
-            logo_sponsor
-            country_code
-            url
-            games_played_with_current_roster
+            team_id                             - Unique team ID
+            name                                - team's name
+            tag                                 - team's tag
+            time_created                        - Unix timestamp of team creation
+            rating                              - ?
+            logo                                - UGC ID for the team logo
+            logo_sponsor                        - UGC ID for the team sponsor logo
+            country_code                        - ISO 3166-1 country code
+            url                                 - team-provided URL
+            games_played_with_current_roster    - number of games played by team with current team members
             player_#_account_id                 - account ID for player # (0-5)
-            admin_account_id
+            admin_account_id                    - account ID for team admin
         }
     }
 
@@ -223,7 +250,7 @@ get_player_summaries()
 
 Returns a dictionary with a list of ``players`` within.
 
-.. code-block:: json
+.. code-block:: text
 
     {
         [player]
@@ -252,16 +279,16 @@ Returns a dictionary with a list of ``players`` within.
 get_heroes()
 ************
 
-.. code-block:: json
+.. code-block:: text
 
     {
-        count
-        status
+        count               - number of results
+        status              - ?
         [heroes]
         {
-            id
-            name
-            localized_name
+            id              - unique hero ID
+            name            - hero's name
+            localized_name  - localized version of hero's name
         }
     }
 
@@ -269,20 +296,20 @@ get_heroes()
 get_game_items()
 ****************
 
-.. code-block:: json
+.. code-block:: text
 
     {
-        count
-        status
+        count               - number of results
+        status              - ?
         [items]
         {
-            id
-            name
-            cost
-            localized_name
-            recipe
-            secret_shop
-            side_shop
+            id              - Unique item ID
+            name            - item's name
+            cost            - item's gold cost
+            localized_name  - item's localized name
+            recipe          - true if item is a recipe item, false otherwise
+            secret_shop     - true if item is bought at the secret shop, false otherwise
+            side_shop       - true if item is bought at the side shop, false otherwise
         }
     }
 
@@ -290,19 +317,103 @@ get_game_items()
 get_tournament_prize_pool()
 ***************************
 
-.. code-block:: json
+.. code-block:: text
 
     {
-        league_id
-        prizepool
-        status
+        league_id   - unique league ID
+        prizepool   - Current prize pool if the league includes a community-funded pool, otherwise 0
+        status      - ?
     }
+
+.. _towers_and_barracks:
+
+***************************
+Towers and Barracks
+***************************
+
+Combined status
+===============
+
+The overall match tower and barracks status uses 32 bits for representation and should be interpreted as follows:
+
+.. code-block:: text
+
+    ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬───────────────────────────────────────────── Not used.
+    │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────────────────────── Dire Ancient Top
+    │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────────────────────── Dire Ancient Bottom
+    │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────────────────── Dire Bottom Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────────────────── Dire Bottom Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────────────── Dire Bottom Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────────────── Dire Middle Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────────── Dire Middle Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────────── Dire Middle Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────── Dire Top Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────── Dire Top Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────── Dire Top Tier 1 
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────── Radiant Ancient Top
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────── Radiant Ancient Bottom
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────── Radiant Bottom Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────── Radiant Bottom Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────── Radiant Bottom Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────── Radiant Middle Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────── Radiant Middle Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────── Radiant Middle Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───── Radiant Top Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─── Radiant Top Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─ Radiant Top Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+Single team tower status
+========================
+
+The tower status for a single team uses 16 bits for representation and should be interpreted as follows:
+
+.. code-block:: text
+
+    ┌─┬─┬─┬─┬─────────────────────── Not used.
+    │ │ │ │ │ ┌───────────────────── Ancient Bottom
+    │ │ │ │ │ │ ┌─────────────────── Ancient Top
+    │ │ │ │ │ │ │ ┌───────────────── Bottom Tier 3
+    │ │ │ │ │ │ │ │ ┌─────────────── Bottom Tier 2
+    │ │ │ │ │ │ │ │ │ ┌───────────── Bottom Tier 1
+    │ │ │ │ │ │ │ │ │ │ ┌─────────── Middle Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ ┌───────── Middle Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ ┌─────── Middle Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───── Top Tier 3
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─── Top Tier 2
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─ Top Tier 1
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
+
+Single team barracks status
+===========================
+
+The barracks status uses 8 bits for representation and should be interpreted as follows:
+
+.. code-block:: text
+    
+    ┌─┬───────────── Not used.
+    │ │ ┌─────────── Bottom Ranged
+    │ │ │ ┌───────── Bottom Melee
+    │ │ │ │ ┌─────── Middle Ranged
+    │ │ │ │ │ ┌───── Middle Melee
+    │ │ │ │ │ │ ┌─── Top Ranged
+    │ │ │ │ │ │ │ ┌─ Top Melee
+    │ │ │ │ │ │ │ │
+    0 0 0 0 0 0 0 0
+
+.. _status_code_mappings:
 
 ***************************
 Status code mappings
 ***************************
 
-Tables outline various codes/status and what they mean.
+These tables outline various codes/status in responses and their meaning.
+
+See ``dota2api.parse`` for various parsing utilities.
+
+.. _game_mode:
 
 game_mode
 =========
@@ -326,6 +437,8 @@ game_mode
     14, Compendium Matchmaking
     16, Captains Draft
 
+.. _lobby_type:
+
 lobby_type
 ==========
 .. csv-table::
@@ -342,6 +455,7 @@ lobby_type
     7, Ranked matchmaking
     8, 1v1 solo mid
 
+.. _leaver_status:
 
 leaver_status
 =============
@@ -355,6 +469,8 @@ leaver_status
     4, "AFK", "player AFK, abandon"
     5, "NEVER_CONNECTED", "never connected, no abandon"
     6, "NEVER_CONNECTED_TOO_LONG", "too long to connect, no abandon"
+
+.. _team_id:
 
 team_id
 =======
