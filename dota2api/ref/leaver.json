@@ -32,6 +32,6 @@
     {
         "id": 6,
         "name": "NEVER_CONNECTED_TOO_LONG",
-        "description": "ntoo long to connect, no abandon"
+        "description": "too long to connect, no abandon"
     }
 ]
