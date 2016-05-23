@@ -177,24 +177,24 @@ class Initialise(object):
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
-    def get_heroes(self):
+    def get_heroes(self, **kwargs):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
 
         :return: dictionary of heroes, see :doc:`responses </responses>`
         """
-        url = self.__build_url(urls.GET_HEROES)
+        url = self.__build_url(urls.GET_HEROES, **kwargs)
         req = self.executor(url)
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
-    def get_game_items(self):
+    def get_game_items(self, **kwargs):
         """Returns a dictionary of in-game items, used to parse ids into localised names
 
         :return: dictionary of items, see :doc:`responses </responses>`
         """
-        url = self.__build_url(urls.GET_GAME_ITEMS)
+        url = self.__build_url(urls.GET_GAME_ITEMS, **kwargs)
         req = self.executor(url)
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
