@@ -182,7 +182,7 @@ class Initialise(object):
 
         :return: dictionary of heroes, see :doc:`responses </responses>`
         """
-        url = self.__build_url(urls.GET_HEROES, **kwargs)
+        url = self.__build_url(urls.GET_HEROES, language=self.language, **kwargs)
         req = self.executor(url)
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
@@ -194,7 +194,7 @@ class Initialise(object):
 
         :return: dictionary of items, see :doc:`responses </responses>`
         """
-        url = self.__build_url(urls.GET_GAME_ITEMS, **kwargs)
+        url = self.__build_url(urls.GET_GAME_ITEMS, language=self.language, **kwargs)
         req = self.executor(url)
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
