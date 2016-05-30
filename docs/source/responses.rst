@@ -123,6 +123,18 @@ match for the player.
         negative_votes          - Number of negative/thumbs down votes
         game_mode               - See game_mode table
         game_mode_name          - See game_mode table
+        radiant_captain         - account ID for Radiant captain
+        dire_captain            - account ID for Dire captain
+        [pick_bans]
+        {
+            {
+                hero_id         - Unique hero ID
+                is_pick         - True if hero was picked, False if hero was banned
+                order           - Order of pick or ban in overall pick/ban sequence
+                team            - See team_id table.
+
+            }
+        }
         [players]
         {
             account_id          - Unique account ID
@@ -148,7 +160,7 @@ match for the player.
             [ability_upgrades]  - Order of abilities chosen by player
             {
                 ability         - Ability chosen
-                time            - Time *since match start* that ability was upgraded
+                time            - Time in seconds since match start when ability was upgraded
                 level           - Level of player at time of upgrading
             }
 
@@ -158,13 +170,19 @@ match for the player.
                 item_#          - ID of item in slot # (0-5)
             }
         }
-        // These fields are only available for team matches //
-        radiant_name            - team name for Radiant
-        radiant_logo            - team logo for Radiant
-        radiant_team_complete   - ?
-        dire_name               - team name for Dire
-        dire_logo               - team logo for Dire
-        dire_team_complete      - ?
+        // These fields are only available for matches with teams //
+        [radiant_team]
+        {
+            team_name            - team name for Radiant
+            team_logo            - team logo for Radiant
+            team_complete   - ?
+        }
+        [dire_team]
+        {
+            team_name               - team name for Dire
+            team_logo               - team logo for Dire
+            team_team_complete      - ?
+        }
     }
 
 
@@ -178,11 +196,12 @@ Returns a dictionary with a list of ``leagues`` within; can be viewed with DotaT
 .. code-block:: text
 
     {
-        [league]
+        [leagues]
         {
-            name            - name of the league
-            leagueid        - Unique league ID
             description     - Description of the league
+            itemdef         - ?
+            leagueid        - Unique league ID
+            name            - name of the league
             tournament_url  - League website information
         }
     }
@@ -194,7 +213,11 @@ get_live_league_games()
 
 Returns a dictionary with a list of league ``games`` within.
 
+``league_tier`` -- see :ref:`league_tier`.
+
 ``tower_state`` -- see :ref:`towers_and_barracks`.
+
+``series_type`` -- see :ref:`series_type`.
 
 ``player::team`` -- see :ref:`team_id`.
 
@@ -204,7 +227,7 @@ Returns a dictionary with a list of league ``games`` within.
         [games]
         {
             league_id               - ID for the league in which the match is being played
-            league_tier             - ?
+            league_tier             - Level of play in this game
             league_series_id        - ?
             [players]               - list of all players in the match
             {
@@ -214,7 +237,7 @@ Returns a dictionary with a list of league ``games`` within.
                 team                - Team the player is on
             }
             series_id               - ?
-            series_type             - ?
+            series_type             - Type of tournament series
             stage_name              - ?
             game_number             - Game number of the series
             radiant_series_wins     - Number of wins by Radiant during the series
@@ -222,7 +245,21 @@ Returns a dictionary with a list of league ``games`` within.
             tower_state             - state of *all* towers in the match
             spectators              - Number of spectators watching
             lobby_id                - ID for the match's lobby
-            stream_delay_s          - (?) Delay in seconds that match replay is delayed  
+            stream_delay_s          - (?) Delay in seconds that match replay is delayed
+
+            // These fields are only available for matches with teams //
+            [radiant_team]
+            {
+                team_name            - team name for Radiant
+                team_logo            - team logo for Radiant
+                team_complete        - ?
+            }
+            [dire_team]
+            {
+                team_name               - team name for Dire
+                team_logo               - team logo for Dire
+                team_team_complete      - ?
+            }
         }
     }
 
@@ -235,20 +272,22 @@ Returns a dictionary with a list of ``teams`` within.
 .. code-block:: text
 
     {
-        [team]
+        status                                  - 1 if success, non-1 otherwise
+        [teams]
         {
-            team_id                             - Unique team ID
-            name                                - team's name
-            tag                                 - team's tag
-            time_created                        - Unix timestamp of team creation
-            rating                              - ?
+            admin_account_id                    - account ID for team admin
+            calibration_games_remaining         - ?
+            country_code                        - ISO 3166-1 country code
+            games_played                        - number of games played by team with current team members
+            league_id_#                         - (?) team ID for league #
             logo                                - UGC ID for the team logo
             logo_sponsor                        - UGC ID for the team sponsor logo
-            country_code                        - ISO 3166-1 country code
-            url                                 - team-provided URL
-            games_played_with_current_roster    - number of games played by team with current team members
+            name                                - team's name
             player_#_account_id                 - account ID for player # (0-5)
-            admin_account_id                    - account ID for team admin
+            tag                                 - team's tag
+            team_id                             - Unique team ID
+            time_created                        - Unix timestamp of team creation
+            url                                 - team-provided URL
         }
     }
 
@@ -264,25 +303,48 @@ Returns a dictionary with a list of ``players`` within.
     {
         [player]
         {
-            avatarfull
-            avatarmedium
-            commentpermission
-            communityvisibilitystate
-            lastlogoff
-            loccityid
-            loccountrycode
-            locstatecode
-            personaname
-            personastate
-            personastateflags
-            primaryclanid
-            profilestate
-            profileurl
-            realname
-            steamid
-            timecreated
+            avatar                      - 32x32 avatar image
+            avatarfull                  - 184x184 avatar image
+            avatarmedium                - 64x64 avatar image 
+            communityvisibilitystate    - See table below.
+            lastlogoff                  - Unix timestamp since last time logged out of steam
+            personaname                 - Equivalent of Steam username
+            personastate                - See table below.
+            personastateflags           - ?
+            primaryclanid               - 64-bit unique clan identifier
+            profilestate                - ?
+            profileurl                  - Steam profile URL
+            realname                    - User's given name
+            steamid                     - Unique Steam ID
+            timecreated                 - Unix timestamp of profile creation time
         }
     }
+
+communityvisibilitystate
+========================
+
+.. csv-table::
+    :header: "Value", "Description"
+
+    1, Private
+    2, Friends only
+    3, Friends of friends
+    4, Users only
+    5, Public
+
+personastate
+============
+
+.. csv-table::
+    :header: "Value", "Description"
+
+    0, Offline
+    1, Online
+    2, Busy
+    3, Away
+    4, Snooze
+    5, Looking to trade
+    6, Looking to play
 
 ************
 get_heroes()
@@ -291,13 +353,17 @@ get_heroes()
 .. code-block:: text
 
     {
-        count               - number of results
-        status              - ?
+        count                       - number of results
+        status                      - HTTP status code
         [heroes]
         {
-            id              - unique hero ID
-            name            - hero's name
-            localized_name  - localized version of hero's name
+            id                      - unique hero ID
+            name                    - hero's name
+            localized_name          - localized version of hero's name
+            url_full_portrait       - URL to full-size hero portrait (256x144)
+            url_large_portrait      - URL to large hero portrait (205x115)
+            url_small_portrait      - URL to small hero portrait (59x33)
+            url_vertical_portrait   - URL to vertical hero portrait (235x272)
         }
     }
 
@@ -309,12 +375,12 @@ get_game_items()
 
     {
         count               - number of results
-        status              - ?
+        status              - HTTP status respose
         [items]
         {
             id              - Unique item ID
             name            - item's name
-            cost            - item's gold cost
+            cost            - item's gold cost in game, 0 if recipe
             localized_name  - item's localized name
             recipe          - true if item is a recipe item, false otherwise
             secret_shop     - true if item is bought at the secret shop, false otherwise
@@ -331,7 +397,7 @@ get_tournament_prize_pool()
     {
         league_id   - unique league ID
         prizepool   - Current prize pool if the league includes a community-funded pool, otherwise 0
-        status      - ?
+        status      - HTTP status code
     }
 
 .. _towers_and_barracks:
@@ -421,6 +487,26 @@ Status code mappings
 These tables outline various codes/status in responses and their meaning.
 
 See ``dota2api.parse`` for various parsing utilities.
+
+.. _series_type:
+
+series_type
+===========
+.. csv-table::
+    :header: "Value", "Description"
+
+    0, Non-series
+    1, Best of 3
+    2, Best of 5
+
+league_tier
+===========
+.. csv-table::
+    :header: "Value", "Description"
+
+    1, Amateur
+    2, Professional
+    3, Premier
 
 .. _game_mode:
 
