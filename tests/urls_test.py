@@ -139,5 +139,9 @@ class UrlsMatchTests(unittest.TestCase):
         self.api.get_player_summaries(321)
         self.api.executor.assert_called()
 
+    def test_get_top_live_games(self):
+        matcher = UrlMatcher(BASE_URL + GET_TOP_LIVE_GAME, STEAM_ID_PAR, LANGUAGE_PAR, 'partner=', 'format=json')
 
-
+        self.api.executor = RequestMock(matcher).configure_success()
+        self.api.get_top_live_games()
+        self.api.executor.assert_called()

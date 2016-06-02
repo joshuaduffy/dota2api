@@ -216,6 +216,21 @@ class Initialise(object):
         if not self.__check_http_err(req.status_code):
             return response.build(req, url)
 
+    def get_top_live_games(self, partner='', **kwargs):
+        """Returns a dictionary that includes top MMR live games
+
+        :param partner: (int, optional)
+        :return: dictionary of prize pools, see :doc:`responses </responses>`
+        """
+        if 'partner' not in kwargs:
+            kwargs['partner'] = partner
+        url = self.__build_url(urls.GET_TOP_LIVE_GAME, **kwargs)
+        req = self.executor(url)
+        if self.logger:
+            self.logger.info('URL: {0}'.format(url))
+        if not self.__check_http_err(req.status_code):
+            return response.build(req, url)
+
     def update_game_items(self):
         """
         Update the item reference data via the API
