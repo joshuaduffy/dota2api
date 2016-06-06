@@ -576,3 +576,43 @@ team_id
     1, Dire
     2, Broadcaster
     3+, unassigned (?)
+
+
+****************
+get_top_live_games()
+****************
+
+Returns a dictionary that includes top MMR live games
+
+.. code-block:: text
+
+    {
+        [game_list]
+        {
+            activate_time
+            deactivate_time
+            server_steam_id
+            lobby_id
+            league_id
+            lobby_type
+            game_time
+            delay
+            spectators
+            game_mode
+            average_mmr
+            team_name_radiant
+            team_name_dire
+            sort_score
+            last_update_time
+            radiant_lead
+            radiant_score
+            dire_score
+            building_state
+            [players]
+            {
+                account_id
+                hero_id
+            }
+
+        }
+    }

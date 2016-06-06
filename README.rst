@@ -15,7 +15,7 @@ Wrapper and parser in Python created for interacting and getting data easily fro
 This library parses some ID's into the dictionary keys like ``hero_name`` and so on. See ``src.parse`` for details.
 
 This also comes with a growing set of tests and some documentation for the API itself.
- 
+
 Look how easy it is...
 
 .. code-block:: python
@@ -70,6 +70,7 @@ Supported API calls
 - get_heroes
 - get_tournament_prize_pool
 - get_game_items
+- get_top_live_games
 
 
 Unsupported
