@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.3.1"
+__version__ = "1.3.2"
 __licence__ = "GPL"
 
 import json
