@@ -4,16 +4,37 @@
 """Setup script"""
 
 from setuptools import setup
-import dota2api
+import re
+
+
+with open('dota2api/__init__.py', 'r') as fd:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(),
+                        re.MULTILINE).group(1)
+
+with open('dota2api/__init__.py', 'r') as fd:
+    author = re.search(r'^__author__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(),
+                        re.MULTILINE).group(1)
+
+with open('dota2api/__init__.py', 'r') as fd:
+    doc = re.search(r'^__doc__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(),
+                        re.MULTILINE).group(1)
+
+with open('dota2api/__init__.py', 'r') as fd:
+    licence = re.search(r'^__licence__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(),
+                        re.MULTILINE).group(1)
 
 setup(
     name="dota2api",
-    version=dota2api.__version__,
-    author=dota2api.__author__,
+    version=version,
+    author=author,
     author_email="mail@joshuaduffy.org",
     url="https://github.com/joshuaduffy/dota2api",
-    description=dota2api.__doc__,
-    license=dota2api.__licence__,
+    description=doc,
+    license=licence,
     keywords="dota2 dota api dota2api parser",
     packages=['dota2api', 'dota2api.src', 'dota2api.ref'],
     package_data={'dota2api.ref': ['abilities.json',
