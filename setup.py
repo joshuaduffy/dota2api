@@ -14,13 +14,8 @@ with open('dota2api/__init__.py', 'r') as fd:
 
 with open('dota2api/__init__.py', 'r') as fd:
     author = re.search(r'^__author__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(),
-                        re.MULTILINE).group(1)
-
-with open('dota2api/__init__.py', 'r') as fd:
-    doc = re.search(r'^__doc__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(),
-                        re.MULTILINE).group(1)
+                       fd.read(),
+                       re.MULTILINE).group(1)
 
 with open('dota2api/__init__.py', 'r') as fd:
     licence = re.search(r'^__licence__\s*=\s*[\'"]([^\'"]*)[\'"]',
@@ -33,7 +28,7 @@ setup(
     author=author,
     author_email="mail@joshuaduffy.org",
     url="https://github.com/joshuaduffy/dota2api",
-    description=doc,
+    description="Dota 2 API wrapper and parser in Python",
     license=licence,
     keywords="dota2 dota api dota2api parser",
     packages=['dota2api', 'dota2api.src', 'dota2api.ref'],
