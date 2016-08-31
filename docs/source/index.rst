@@ -8,7 +8,7 @@ Dota 2 API Documentation
 ########################
 
 Welcome to the dota2api documentation. This Python library is an unofficial wrapper for the `Dota 2 API`_ from `Valve Software`_.
-The repository can be found on`GitHub`_.
+The repository can be found on `GitHub`_.
 
 
 ********
