@@ -43,7 +43,7 @@ Returns a dictionary with a list of ``players`` within.
             match_seq_num       - Number indicating position in which this match was recorded
             start_time          - Unix timestamp of beginning of match
             lobby_type          - See lobby_type table
-            [player]            - list of players in the match
+            [player]            - List of players in the match
             {
                 account_id      - Unique account ID
                 player_slot     - Player's position within the team
@@ -78,7 +78,7 @@ Returns a dictionary with a list of ``matches`` within. See :ref:`get_match_deta
     {
         status
             1 - Success
-            8 - matches_requested must be greater than 0
+            8 - Matches_requested must be greater than 0
         statusDetail        - Message explaining a status that is not equal to 1
         [matches]           - See get_match_details()
     }
@@ -92,7 +92,7 @@ get_match_details()
 Returns a ``match`` dictionary with  with ``players``.
 
 For dynamic values such as kills or gold, if the match is live, then the value is current as of
-the API call. For matches that have finished, these values are simply the value at the end of the 
+the API call. For matches that have finished, these values are simply the value at the end of the
 match for the player.
 
 ``lobby_type`` -- see :ref:`lobby_type`.
@@ -113,18 +113,18 @@ match for the player.
         barracks_status_radiant - Status of Radiant barracks
         barracks_status_dire    - Status of Dire barracks
         cluster                 - The server cluster the match was played on, used in retrieving replays
-        cluster_name            - ?
+        cluster_name            - The region the match was played on
         first_blood_time        - Time elapsed in seconds since first blood of the match
         lobby_type              - See lobby_type table
         lobby_name              - See lobby_type table
-        human_players           - Number of human players in the match 
-        leagueid                - Unique league ID   
+        human_players           - Number of human players in the match
+        leagueid                - Unique league ID
         positive_votes          - Number of positive/thumbs up votes
         negative_votes          - Number of negative/thumbs down votes
         game_mode               - See game_mode table
         game_mode_name          - See game_mode table
-        radiant_captain         - account ID for Radiant captain
-        dire_captain            - account ID for Dire captain
+        radiant_captain         - Account ID for Radiant captain
+        dire_captain            - Account ID for Dire captain
         [pick_bans]
         {
             {
@@ -138,13 +138,13 @@ match for the player.
         [players]
         {
             account_id          - Unique account ID
-            player_slot         - Player's position within the team   
+            player_slot         - Player's position within the team
             hero_id             - Unique hero ID
             hero_name           - Hero's name
-            item_#              - Item ID for item in slot # (0-5)     
+            item_#              - Item ID for item in slot # (0-5)
             item_#_name         - Item name for item in slot # (0-5)
             kills               - Number of kills by player
-            deaths              - Number of player deaths 
+            deaths              - Number of player deaths
             assists             - Number of player assists
             leaver_status       - Connection/leaving status of player
             gold                - Gold held by player
@@ -173,15 +173,15 @@ match for the player.
         // These fields are only available for matches with teams //
         [radiant_team]
         {
-            team_name            - team name for Radiant
-            team_logo            - team logo for Radiant
-            team_complete   - ?
+            team_name            - Team name for Radiant
+            team_logo            - Team logo for Radiant
+            team_complete        - ?
         }
         [dire_team]
         {
-            team_name               - team name for Dire
-            team_logo               - team logo for Dire
-            team_team_complete      - ?
+            team_name            - Team name for Dire
+            team_logo            - Team logo for Dire
+            team_team_complete   - ?
         }
     }
 
@@ -199,13 +199,13 @@ Returns a dictionary with a list of ``leagues`` within; can be viewed with DotaT
         [leagues]
         {
             description     - Description of the league
-            itemdef         - ?
+            itemdef         - ID for an item associated with the tournament
             leagueid        - Unique league ID
-            name            - name of the league
+            name            - Name of the league
             tournament_url  - League website information
         }
     }
-    
+
 
 ***********************
 get_live_league_games()
@@ -232,33 +232,33 @@ Returns a dictionary with a list of league ``games`` within.
             [players]               - list of all players in the match
             {
                 account_id          - Unique account ID
-                name                - in-game display name
+                name                - In-game display name
                 hero_id             - Unique hero ID
                 team                - Team the player is on
             }
-            series_id               - ?
+            series_id               - ID for the game series
             series_type             - Type of tournament series
             stage_name              - ?
             game_number             - Game number of the series
             radiant_series_wins     - Number of wins by Radiant during the series
             dire_series_wins        - Number of wins by Dire during the series
-            tower_state             - state of *all* towers in the match
+            tower_state             - State of *all* towers in the match
             spectators              - Number of spectators watching
             lobby_id                - ID for the match's lobby
-            stream_delay_s          - (?) Delay in seconds that match replay is delayed
+            stream_delay_s          - Delay in seconds for streaming to spectators
 
             // These fields are only available for matches with teams //
             [radiant_team]
             {
-                team_name            - team name for Radiant
-                team_logo            - team logo for Radiant
+                team_name            - Team name for Radiant
+                team_logo            - Team logo for Radiant
                 team_complete        - ?
             }
             [dire_team]
             {
-                team_name               - team name for Dire
-                team_logo               - team logo for Dire
-                team_team_complete      - ?
+                team_name            - Team name for Dire
+                team_logo            - Team logo for Dire
+                team_team_complete   - ?
             }
         }
     }
@@ -275,19 +275,19 @@ Returns a dictionary with a list of ``teams`` within.
         status                                  - 1 if success, non-1 otherwise
         [teams]
         {
-            admin_account_id                    - account ID for team admin
+            admin_account_id                    - Account ID for team admin
             calibration_games_remaining         - ?
             country_code                        - ISO 3166-1 country code
-            games_played                        - number of games played by team with current team members
-            league_id_#                         - (?) team ID for league #
+            games_played                        - Number of games played by team with current team members
+            league_id_#                         - League IDs in which the team has played
             logo                                - UGC ID for the team logo
             logo_sponsor                        - UGC ID for the team sponsor logo
-            name                                - team's name
-            player_#_account_id                 - account ID for player # (0-5)
-            tag                                 - team's tag
+            name                                - Team's name
+            player_#_account_id                 - Account ID for player # (0-5)
+            tag                                 - Team's tag
             team_id                             - Unique team ID
             time_created                        - Unix timestamp of team creation
-            url                                 - team-provided URL
+            url                                 - Team-provided URL
         }
     }
 
@@ -305,7 +305,7 @@ Returns a dictionary with a list of ``players`` within.
         {
             avatar                      - 32x32 avatar image
             avatarfull                  - 184x184 avatar image
-            avatarmedium                - 64x64 avatar image 
+            avatarmedium                - 64x64 avatar image
             communityvisibilitystate    - See table below.
             lastlogoff                  - Unix timestamp since last time logged out of steam
             personaname                 - Equivalent of Steam username
@@ -353,13 +353,13 @@ get_heroes()
 .. code-block:: text
 
     {
-        count                       - number of results
+        count                       - Number of results
         status                      - HTTP status code
         [heroes]
         {
-            id                      - unique hero ID
-            name                    - hero's name
-            localized_name          - localized version of hero's name
+            id                      - Unique hero ID
+            name                    - Hero's name
+            localized_name          - Localized version of hero's name
             url_full_portrait       - URL to full-size hero portrait (256x144)
             url_large_portrait      - URL to large hero portrait (205x115)
             url_small_portrait      - URL to small hero portrait (59x33)
@@ -374,17 +374,17 @@ get_game_items()
 .. code-block:: text
 
     {
-        count               - number of results
+        count               - Number of results
         status              - HTTP status respose
         [items]
         {
             id              - Unique item ID
-            name            - item's name
-            cost            - item's gold cost in game, 0 if recipe
-            localized_name  - item's localized name
-            recipe          - true if item is a recipe item, false otherwise
-            secret_shop     - true if item is bought at the secret shop, false otherwise
-            side_shop       - true if item is bought at the side shop, false otherwise
+            name            - Item's name
+            cost            - Item's gold cost in game, 0 if recipe
+            localized_name  - Item's localized name
+            recipe          - True if item is a recipe item, false otherwise
+            secret_shop     - True if item is bought at the secret shop, false otherwise
+            side_shop       - True if item is bought at the side shop, false otherwise
         }
     }
 
@@ -395,7 +395,7 @@ get_tournament_prize_pool()
 .. code-block:: text
 
     {
-        league_id   - unique league ID
+        league_id   - Unique league ID
         prizepool   - Current prize pool if the league includes a community-funded pool, otherwise 0
         status      - HTTP status code
     }
@@ -424,7 +424,7 @@ The overall match tower and barracks status uses 32 bits for representation and 
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────────── Dire Middle Tier 1
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────────── Dire Top Tier 3
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────────── Dire Top Tier 2
-    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────── Dire Top Tier 1 
+    │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────────── Dire Top Tier 1
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────────── Radiant Ancient Top
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─────────────────── Radiant Ancient Bottom
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───────────────── Radiant Bottom Tier 3
@@ -459,7 +459,7 @@ The tower status for a single team uses 16 bits for representation and should be
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─── Top Tier 2
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─ Top Tier 1
     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
 Single team barracks status
 ===========================
@@ -467,7 +467,7 @@ Single team barracks status
 The barracks status uses 8 bits for representation and should be interpreted as follows:
 
 .. code-block:: text
-    
+
     ┌─┬───────────── Not used.
     │ │ ┌─────────── Bottom Ranged
     │ │ │ ┌───────── Bottom Melee
@@ -515,7 +515,7 @@ game_mode
 .. csv-table::
     :header: "Value", "Description"
 
-    0, None
+    0, Unknown
     1, All Pick
     2, Captain's Mode
     3, Random Draft
@@ -530,7 +530,14 @@ game_mode
     12, Least Played
     13, New Player Pool
     14, Compendium Matchmaking
+    15, Custom
     16, Captains Draft
+    17, Balanced Draft
+    18, Ability Draft
+    19, Event (?)
+    20, All Random Death Match
+    21, Solo Mid 1 vs 1
+    22, Ranked All Pick
 
 .. _lobby_type:
 
@@ -539,7 +546,7 @@ lobby_type
 .. csv-table::
     :header: "Status", "Description"
 
-    -1, invalid
+    -1, Invalid
     0, Public matchmaking
     1, Practice
     2, Tournament
@@ -548,7 +555,7 @@ lobby_type
     5, Team match
     6, Solo queue
     7, Ranked matchmaking
-    8, 1v1 solo mid
+    8, Solo Mid 1 vs 1
 
 .. _leaver_status:
 
@@ -575,7 +582,7 @@ team_id
     0, Radiant
     1, Dire
     2, Broadcaster
-    3+, unassigned (?)
+    3+, Unassigned (?)
 
 
 ****************
@@ -589,29 +596,29 @@ Returns a dictionary that includes top MMR live games
     {
         [game_list]
         {
-            activate_time
-            deactivate_time
-            server_steam_id
-            lobby_id
-            league_id
-            lobby_type
-            game_time
-            delay
-            spectators
-            game_mode
-            average_mmr
-            team_name_radiant
-            team_name_dire
-            sort_score
-            last_update_time
-            radiant_lead
-            radiant_score
-            dire_score
-            building_state
+            activate_time           -
+            deactivate_time         -
+            server_steam_id         -
+            lobby_id                -
+            league_id               - League ID (Available for league matches)
+            lobby_type              - See lobby_type table
+            game_time               - Current in-game time (in seconds)
+            delay                   - Delay in seconds for spectators
+            spectators              - Number of spectators in-game
+            game_mode               - See game_mode table
+            average_mmr             - Average MMR of players in the game
+            team_name_radiant       - Radiant team name (Available for matches with teams)
+            team_name_dire          - Dire team name (Available for matches with teams)
+            sort_score              -
+            last_update_time        -
+            radiant_lead            - Gold lead for Radiant (negative if Dire leads)
+            radiant_score           - Radiant kill score
+            dire_score              - Dire kill score
+            building_state          -
             [players]
             {
-                account_id
-                hero_id
+                account_id          - Player's 32-bit Steam ID
+                hero_id             - Player's hero ID
             }
 
         }
