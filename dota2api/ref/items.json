@@ -136,7 +136,7 @@
             "name": "item_wind_lace", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 235, 
+            "cost": 250, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/wind_lace_lg.png", 
             "id": 244
@@ -316,7 +316,7 @@
             "name": "item_lifesteal", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 900, 
+            "cost": 1200, 
             "side_shop": 1, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/lifesteal_lg.png", 
             "id": 26
@@ -376,7 +376,7 @@
             "name": "item_talisman_of_evasion", 
             "recipe": 0, 
             "secret_shop": 1, 
-            "cost": 1700, 
+            "cost": 1450, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/talisman_of_evasion_lg.png", 
             "id": 32
@@ -446,7 +446,7 @@
             "name": "item_enchanted_mango", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 125, 
+            "cost": 110, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/enchanted_mango_lg.png", 
             "id": 216
@@ -836,7 +836,7 @@
             "name": "item_recipe_bracer", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 210, 
+            "cost": 190, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_bracer_lg.png", 
             "id": 72
@@ -846,20 +846,10 @@
             "name": "item_bracer", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 525, 
+            "cost": 505, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/bracer_lg.png", 
             "id": 73
-        }, 
-        {
-            "localized_name": "Banana", 
-            "name": "item_banana", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/banana_lg.png", 
-            "id": 264
         }, 
         {
             "localized_name": "Recipe: Wraith Band", 
@@ -926,7 +916,7 @@
             "name": "item_recipe_vladmir", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 300, 
+            "cost": 0, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_vladmir_lg.png", 
             "id": 80
@@ -1146,7 +1136,7 @@
             "name": "item_cyclone", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2735, 
+            "cost": 2750, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/cyclone_lg.png", 
             "id": 100
@@ -1156,7 +1146,7 @@
             "name": "item_recipe_aether_lens", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 550, 
+            "cost": 600, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_aether_lens_lg.png", 
             "id": 233
@@ -1166,7 +1156,7 @@
             "name": "item_aether_lens", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2300, 
+            "cost": 2350, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/aether_lens_lg.png", 
             "id": 232
@@ -1516,7 +1506,7 @@
             "name": "item_bloodstone", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 4875, 
+            "cost": 4900, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/bloodstone_lg.png", 
             "id": 121
@@ -1736,7 +1726,7 @@
             "name": "item_butterfly", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 5775, 
+            "cost": 5525, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/butterfly_lg.png", 
             "id": 139
@@ -1946,7 +1936,7 @@
             "name": "item_recipe_satanic", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 1100, 
+            "cost": 0, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_satanic_lg.png", 
             "id": 155
@@ -1956,7 +1946,7 @@
             "name": "item_satanic", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 5900, 
+            "cost": 5800, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/satanic_lg.png", 
             "id": 156
@@ -2026,7 +2016,7 @@
             "name": "item_recipe_helm_of_the_dominator", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 0, 
+            "cost": 725, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_helm_of_the_dominator_lg.png", 
             "id": 163
@@ -2106,7 +2096,7 @@
             "name": "item_recipe_mask_of_madness", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 900, 
+            "cost": 700, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_mask_of_madness_lg.png", 
             "id": 171
@@ -2116,7 +2106,7 @@
             "name": "item_mask_of_madness", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1800, 
+            "cost": 1900, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mask_of_madness_lg.png", 
             "id": 172
@@ -2186,7 +2176,7 @@
             "name": "item_recipe_soul_ring", 
             "recipe": 1, 
             "secret_shop": 0, 
-            "cost": 125, 
+            "cost": 150, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/recipe_soul_ring_lg.png", 
             "id": 177
@@ -2196,7 +2186,7 @@
             "name": "item_soul_ring", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 775, 
+            "cost": 800, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/soul_ring_lg.png", 
             "id": 178
@@ -2276,7 +2266,7 @@
             "name": "item_ancient_janggo", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 1785, 
+            "cost": 1780, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/ancient_janggo_lg.png", 
             "id": 185
@@ -2316,7 +2306,7 @@
             "name": "item_solar_crest", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 2875, 
+            "cost": 2625, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/solar_crest_lg.png", 
             "id": 229
@@ -2456,7 +2446,7 @@
             "name": "item_heavens_halberd", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 3750, 
+            "cost": 3500, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/heavens_halberd_lg.png", 
             "id": 210
@@ -2530,216 +2520,6 @@
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/glimmer_cape_lg.png", 
             "id": 254
-        }, 
-        {
-            "localized_name": "Greevil Taffy", 
-            "name": "item_halloween_candy_corn", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/halloween_candy_corn_lg.png", 
-            "id": 1000
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_mystery_hook", 
-            "name": "item_mystery_hook", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mystery_hook_lg.png", 
-            "id": 1001
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_mystery_arrow", 
-            "name": "item_mystery_arrow", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mystery_arrow_lg.png", 
-            "id": 1002
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_mystery_missile", 
-            "name": "item_mystery_missile", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mystery_missile_lg.png", 
-            "id": 1003
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_mystery_toss", 
-            "name": "item_mystery_toss", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mystery_toss_lg.png", 
-            "id": 1004
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_mystery_vacuum", 
-            "name": "item_mystery_vacuum", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mystery_vacuum_lg.png", 
-            "id": 1005
-        }, 
-        {
-            "localized_name": "DOTA_Tooltip_Ability_item_halloween_rapier", 
-            "name": "item_halloween_rapier", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 6200, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/halloween_rapier_lg.png", 
-            "id": 1006
-        }, 
-        {
-            "localized_name": "Greevil Whistle", 
-            "name": "item_greevil_whistle", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/greevil_whistle_lg.png", 
-            "id": 1007
-        }, 
-        {
-            "localized_name": "Greevil Whistle", 
-            "name": "item_greevil_whistle_toggle", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/greevil_whistle_toggle_lg.png", 
-            "id": 1008
-        }, 
-        {
-            "localized_name": "A Gift!", 
-            "name": "item_present", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/present_lg.png", 
-            "id": 1009
-        }, 
-        {
-            "localized_name": "Xmas Stocking", 
-            "name": "item_winter_stocking", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_stocking_lg.png", 
-            "id": 1010
-        }, 
-        {
-            "localized_name": "Speed Skates", 
-            "name": "item_winter_skates", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_skates_lg.png", 
-            "id": 1011
-        }, 
-        {
-            "localized_name": "Fruit-bit Cake", 
-            "name": "item_winter_cake", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_cake_lg.png", 
-            "id": 1012
-        }, 
-        {
-            "localized_name": "Wizard Cookie", 
-            "name": "item_winter_cookie", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_cookie_lg.png", 
-            "id": 1013
-        }, 
-        {
-            "localized_name": "Cocoa with Marshmallows", 
-            "name": "item_winter_coco", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_coco_lg.png", 
-            "id": 1014
-        }, 
-        {
-            "localized_name": "Clove Studded Ham", 
-            "name": "item_winter_ham", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_ham_lg.png", 
-            "id": 1015
-        }, 
-        {
-            "localized_name": "Kringle", 
-            "name": "item_winter_kringle", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_kringle_lg.png", 
-            "id": 1016
-        }, 
-        {
-            "localized_name": "Snow Mushroom", 
-            "name": "item_winter_mushroom", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_mushroom_lg.png", 
-            "id": 1017
-        }, 
-        {
-            "localized_name": "Greevil Treat", 
-            "name": "item_winter_greevil_treat", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_greevil_treat_lg.png", 
-            "id": 1018
-        }, 
-        {
-            "localized_name": "Greevil Chow", 
-            "name": "item_winter_greevil_garbage", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_greevil_garbage_lg.png", 
-            "id": 1019
-        }, 
-        {
-            "localized_name": "Greevil Blink Bone", 
-            "name": "item_winter_greevil_chewy", 
-            "recipe": 0, 
-            "secret_shop": 0, 
-            "cost": 0, 
-            "side_shop": 0, 
-            "url_image": "http://cdn.dota2.com/apps/dota2/images/items/winter_greevil_chewy_lg.png", 
-            "id": 1020
         }, 
         {
             "localized_name": "River Vial: Chrome", 

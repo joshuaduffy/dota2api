@@ -1,6 +1,6 @@
 {
     "status": 200, 
-    "count": 112, 
+    "count": 113, 
     "heroes": [
         {
             "localized_name": "Anti-Mage", 
@@ -1009,6 +1009,15 @@
             "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/abyssal_underlord_lg.png", 
             "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/abyssal_underlord_vert.jpg", 
             "id": 108
+        }, 
+        {
+            "localized_name": "Monkey King", 
+            "url_full_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_full.png", 
+            "name": "npc_dota_hero_monkey_king", 
+            "url_small_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png", 
+            "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_lg.png", 
+            "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_vert.jpg", 
+            "id": 114
         }
     ]
 }
