@@ -27,9 +27,10 @@ class Initialise(object):
 
     :param api_key: (str) string with the ``api key``
     :param logging: (bool, optional) set this to True for logging output
+    :param raw_mode: (bool, optional) get the raw data from dota2 API without parsing it into human-readable string
     """
 
-    def __init__(self, api_key=None, executor=None, language=None, logging=None):
+    def __init__(self, api_key=None, executor=None, language=None, logging=None, raw_mode=None):
         if api_key:
             self.api_key = api_key
         elif 'D2_API_KEY' in os.environ:
@@ -52,7 +53,15 @@ class Initialise(object):
         else:
             self.logger = None
 
+        if raw_mode:
+            self.raw_mode = True
+        else:
+            self.raw_mode = False
+
         self.__format = "json"
+
+    def set_raw_mode(self, raw_mode):
+        self.raw_mode = raw_mode
 
     def get_match_history(self, account_id=None, **kwargs):
         """Returns a dictionary containing a list of the most recent Dota matches
@@ -82,7 +91,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_match_history_by_seq_num(self, start_at_match_seq_num=None, **kwargs):
         """Returns a dictionary containing a list of Dota matches in the order they were recorded
@@ -99,7 +108,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_match_details(self, match_id=None, **kwargs):
         """Returns a dictionary containing the details for a Dota 2 match
@@ -114,7 +123,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_league_listing(self):
         """Returns a dictionary containing a list of all ticketed leagues
@@ -126,7 +135,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_live_league_games(self):
         """Returns a dictionary containing a list of ticked games in progress
@@ -138,7 +147,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_team_info_by_team_id(self, start_at_team_id=None, **kwargs):
         """Returns a dictionary containing a in-game teams
@@ -154,7 +163,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_player_summaries(self, steamids=None, **kwargs):
         """Returns a dictionary containing a player summaries
@@ -175,7 +184,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_heroes(self, **kwargs):
         """Returns a dictionary of in-game heroes, used to parse ids into localised names
@@ -187,7 +196,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_game_items(self, **kwargs):
         """Returns a dictionary of in-game items, used to parse ids into localised names
@@ -199,7 +208,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_tournament_prize_pool(self, leagueid=None, **kwargs):
         """Returns a dictionary that includes community funded tournament prize pools
@@ -214,7 +223,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def get_top_live_games(self, partner='', **kwargs):
         """Returns a dictionary that includes top MMR live games
@@ -229,7 +238,7 @@ class Initialise(object):
         if self.logger:
             self.logger.info('URL: {0}'.format(url))
         if not self.__check_http_err(req.status_code):
-            return response.build(req, url)
+            return response.build(req, url, self.raw_mode)
 
     def update_game_items(self):
         """

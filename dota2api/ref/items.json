@@ -496,7 +496,7 @@
             "name": "item_ward_sentry", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 200, 
+            "cost": 100, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/ward_sentry_lg.png", 
             "id": 43
@@ -516,7 +516,7 @@
             "name": "item_ward_dispenser", 
             "recipe": 0, 
             "secret_shop": 0, 
-            "cost": 265, 
+            "cost": 165, 
             "side_shop": 0, 
             "url_image": "http://cdn.dota2.com/apps/dota2/images/items/ward_dispenser_lg.png", 
             "id": 218

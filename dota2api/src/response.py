@@ -11,7 +11,7 @@ class Dota2Dict(dict):
     pass
 
 
-def build(req, url):
+def build(req, url, raw_mode=False):
     req_resp = req.json()
     if 'result' in req_resp:
         if 'error' in req_resp['result']:
@@ -28,16 +28,17 @@ def build(req, url):
     else:
         resp = Dota2Dict(req_resp)
 
-    try:
-        if 'players' in resp:
-            resp = hero_id(resp)
-            resp = item_id(resp)
-            resp = lobby_type(resp)
-            resp = game_mode(resp)
-            resp = cluster(resp)
-            resp = leaver(resp)
-    except KeyError:
-        pass  # Only do the above for matches
+    if not raw_mode:
+        try:
+            if 'players' in resp:
+                resp = hero_id(resp)
+                resp = item_id(resp)
+                resp = lobby_type(resp)
+                resp = game_mode(resp)
+                resp = cluster(resp)
+                resp = leaver(resp)
+        except KeyError:
+            pass  # Only do the above for matches
 
     if 'items' in resp:
         parse_items_images_urls(resp)

@@ -40,6 +40,17 @@ If not you'll need to pass it into the constructor:
     >>> import dota2api
     >>> api = dota2api.Initialise("45735474375437457457")
 
+
+Official DOTA2 web API would response identifiers for records like heroes, items, lobby type, game mode, etc. By default, this dota2api would translate most dota2 identifiers into human readable strings.
+But you can disable our translation by enabling raw mode:
+
+.. code-block:: python
+
+    >>> import dota2api
+    >>> api = dota2api.Initialise("45735474375437457457", raw_mode=True)
+
+By default, you'll get {"hero_name": "axe"} for axe but when raw_mode is on, it will be replaced by {"hero_id", 2}.
+
 *********
 API calls
 *********

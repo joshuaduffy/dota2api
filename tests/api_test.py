@@ -70,8 +70,6 @@ class APITest(unittest.TestCase):
         except TypeError:
             anti_mage = filter(lambda h: h['name'] == 'npc_dota_hero_antimage', heroes['heroes'])
 
-
-
     def test_parse_items_urls(self):
         items = self.api.get_game_items()
 
@@ -82,3 +80,18 @@ class APITest(unittest.TestCase):
         except TypeError:
             blink_dagger = filter(lambda i: i['name'] == 'item_blink', items['items'])
 
+    def test_raw_mode(self):
+        # Pass the API key as a positional argument
+        self.api_key = os.environ['D2_API_KEY']
+        api = dota2api.Initialise(self.api_key, raw_mode=True)
+        match = api.get_match_details(match_id=988604774)
+        # Do we get a match back
+        mock = RequestMock()
+        stored_match = mock.configure_single_match_result().json_result
+
+        # hero_id should not be parsed into hero_name
+        self.assertEqual('hero_name' in match['players'][0], False)
+        self.assertEqual(stored_match['result']['players'][0]['hero_id'], match['players'][0]['hero_id'])
+
+        # Check it is our custom dict type
+        self.assertEqual(type(Dota2Dict()), type(match))
