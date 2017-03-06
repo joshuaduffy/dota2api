@@ -4,7 +4,7 @@
 
 __author__ = "Joshua Duffy, Evaldo Bratti"
 __date__ = "29/10/2014"
-__version__ = "1.3.2"
+__version__ = "1.3.3"
 __licence__ = "GPL"
 
 import json
@@ -70,10 +70,6 @@ class Initialise(object):
         :param hero_id: (int, optional)
         :param game_mode: (int, optional) see ``ref/modes.json``
         :param skill: (int, optional) see ``ref/skill.json``
-        :param date_min: (int, optional) unix timestamp rounded to the
-            nearest day
-        :param date_max: (int, optional) unix timestamp rounded to the
-            nearest day
         :param min_players: (int, optional) only return matches with minimum
             amount of players
         :param league_id: (int, optional) for ids use ``get_league_listing()``
