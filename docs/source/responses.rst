@@ -89,7 +89,7 @@ Returns a dictionary with a list of ``matches`` within. See :ref:`get_match_deta
 get_match_details()
 *******************
 
-Returns a ``match`` dictionary with  with ``players``.
+Returns a ``match`` dictionary with ``players``.
 
 For dynamic values such as kills or gold, if the match is live, then the value is current as of
 the API call. For matches that have finished, these values are simply the value at the end of the
