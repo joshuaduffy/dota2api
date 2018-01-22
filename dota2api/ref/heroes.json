@@ -1,6 +1,6 @@
 {
     "status": 200, 
-    "count": 113, 
+    "count": 115, 
     "heroes": [
         {
             "localized_name": "Anti-Mage", 
@@ -1018,6 +1018,24 @@
             "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_lg.png", 
             "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_vert.jpg", 
             "id": 114
+        }, 
+        {
+            "localized_name": "Pangolier", 
+            "url_full_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_full.png", 
+            "name": "npc_dota_hero_pangolier", 
+            "url_small_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_sb.png", 
+            "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_lg.png", 
+            "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_vert.jpg", 
+            "id": 120
+        }, 
+        {
+            "localized_name": "Dark Willow", 
+            "url_full_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_full.png", 
+            "name": "npc_dota_hero_dark_willow", 
+            "url_small_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_sb.png", 
+            "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_lg.png", 
+            "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_vert.jpg", 
+            "id": 119
         }
     ]
 }
