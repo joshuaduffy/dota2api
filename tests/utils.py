@@ -4,7 +4,12 @@ import os
 
 DEFAULT_MATCHES_SIZE = 100
 LANGUAGE_PAR = 'language=en_us'
-STEAM_ID_PAR = 'key=' + os.environ.get('D2_API_KEY')
+
+if not os.environ.get('D2_API_KEY'):
+    exit("Please set D2_API_KEY environment variable.")
+else:
+    STEAM_ID_PAR = 'key=' + os.environ.get('D2_API_KEY')
+
 
 
 def convert_to_64_bit(number):

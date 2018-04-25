@@ -7,6 +7,8 @@ from dota2api.src.exceptions import *
 from dota2api.src.urls import *
 from tests.utils import *
 
+PLAYER_ID=3420585
+
 
 class TestBuildDota2Dict(unittest.TestCase):
     def setUp(self):
@@ -34,7 +36,7 @@ class TestBuildDota2Dict(unittest.TestCase):
         self.assertEqual(len(dota2dict['matches']), 1)
 
     def test_get_match_history_from_only_one_player(self):
-        url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=112351324', STEAM_ID_PAR,
+        url = BASE_URL + GET_MATCH_HISTORY + request_pars(LANGUAGE_PAR, 'account_id=%d' % PLAYER_ID, STEAM_ID_PAR,
                                                           'format=json', 'matches_requested=10')
         request = self.executor(url)
 
@@ -44,7 +46,7 @@ class TestBuildDota2Dict(unittest.TestCase):
 
         self.assertEqual(len(dota2dict['matches']), 10)
         for match in dota2dict['matches']:
-            player_is_in_match = bool([p for p in match['players'] if p['account_id'] == 112351324])
+            player_is_in_match = bool([p for p in match['players'] if p['account_id'] == PLAYER_ID])
             self.assertTrue(player_is_in_match, 'Player was not in a match from the result')
 
     def test_request_match_detail_on_a_non_existent_match(self):
