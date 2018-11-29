@@ -1,13 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""Not many exceptions exist due to server side validation on the parameters"""
-
-
-class BaseError(Exception):
-    pass
-
-
-class APIError(BaseError):
+class APIError(Exception):
     """
     Raised when the API response is an error, or the status does not equal one
     """
@@ -19,7 +10,7 @@ class APIError(BaseError):
         return repr(self.msg)
 
 
-class APIAuthenticationError(BaseError):
+class APIAuthenticationError(Exception):
     """
     Raised when the API key supplied is invalid
 
@@ -33,7 +24,7 @@ class APIAuthenticationError(BaseError):
         return repr(self.msg)
 
 
-class APITimeoutError(BaseError):
+class APITimeoutError(Exception):
     """
     Raised when too many requests are been made or the server is busy
     """
